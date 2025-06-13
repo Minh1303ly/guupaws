@@ -74,7 +74,6 @@ document.addEventListener("DOMContentLoaded", async function () {
     const firstName = document.getElementById("firstName").value;
     const lastName = document.getElementById("lastName").value;
     const email = document.getElementById("newEmail").value;
-    const username = document.getElementById("username").value;
     const password = document.getElementById("newPassword").value;
     const confirmPassword = document.getElementById("confirmPassword").value;
     if (password !== confirmPassword) {

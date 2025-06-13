@@ -1521,10 +1521,10 @@
     </div>
   </footer>
   <!-- Back to Top Button -->
-  <button id="back-to-top"
+  <!-- <button id="back-to-top"
     class="fixed bottom-20 right-6 w-12 h-12 bg-primary text-white rounded-full shadow-lg flex items-center justify-center opacity-0 invisible transition-all duration-300 z-50">
     <i class="ri-arrow-up-line ri-lg"></i>
-  </button>
+  </button> -->
   <!-- Mobile Navigation (Fixed at bottom) -->
   <div class="md:hidden fixed bottom-0 left-0 right-0 bg-white shadow-lg border-t border-gray-200 z-40">
     <div class="flex justify-around">
@@ -1650,6 +1650,9 @@
   </script>
   <script src="navigation.js"></script>
   <script src="global.js"></script>
+  <script>
+    (function(){if(!window.chatbase||window.chatbase("getState")!=="initialized"){window.chatbase=(...arguments)=>{if(!window.chatbase.q){window.chatbase.q=[]}window.chatbase.q.push(arguments)};window.chatbase=new Proxy(window.chatbase,{get(target,prop){if(prop==="q"){return target.q}return(...args)=>target(prop,...args)}})}const onLoad=function(){const script=document.createElement("script");script.src="https://www.chatbase.co/embed.min.js";script.id="hrUO4CP17SdTN0LWq62A0";script.domain="www.chatbase.co";document.body.appendChild(script)};if(document.readyState==="complete"){onLoad()}else{window.addEventListener("load",onLoad)}})();
+  </script>
 </body>
 
 </html>
