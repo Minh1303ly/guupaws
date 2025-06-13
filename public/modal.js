@@ -113,7 +113,7 @@
 <i class="ri-check-line text-primary"></i>
 </div>
 <div>
-<p class="font-medium text-gray-800">Welcome to PawFashion!</p>
+<p class="font-medium text-gray-800">Welcome to GuuPawz!</p>
 <p class="text-sm text-gray-600">Account created successfully</p>
 </div>
 </div>
