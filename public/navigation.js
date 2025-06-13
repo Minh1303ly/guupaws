@@ -1,15 +1,14 @@
 document.addEventListener("DOMContentLoaded", async function () {
-
-  await fetch('modal.html') // Adjust path if needed
-                .then(response => response.text())
-                .then(html => {
-                    const wrapper = document.createElement('div');
-                    wrapper.innerHTML = html;
-                    document.body.appendChild(wrapper);
-                })
-                .catch(error => {
-                    console.error('Error loading footer:', error);
-                });
+  await fetch("modal.html") // Adjust path if needed
+    .then((response) => response.text())
+    .then((html) => {
+      const wrapper = document.createElement("div");
+      wrapper.innerHTML = html;
+      document.body.appendChild(wrapper);
+    })
+    .catch((error) => {
+      console.error("Error loading footer:", error);
+    });
 
   const signInLink = document.getElementById("signInLink");
   const myOrdersLink = document.getElementById("myOrdersLink");
@@ -246,40 +245,39 @@ document.addEventListener("DOMContentLoaded", async function () {
     }
   });
 
-
-
   // Handle search feature
-    const input = document.getElementById('search-input');
-    const icon = document.getElementById('search-icon');
+  const input = document.getElementById("search-input");
+  const icon = document.getElementById("search-icon");
 
-    input.addEventListener('input', () => {
-        if (input.value.trim() !== '') {
-            icon.classList.remove('left-3');
-            icon.classList.add('right-3', 'left-auto');
-        } else {
-            icon.classList.remove('right-3', 'left-auto');
-            icon.classList.add('left-3');
-        }
-    });
+  input.addEventListener("input", () => {
+    if (input.value.trim() !== "") {
+      icon.classList.remove("left-3");
+      icon.classList.add("right-3", "left-auto");
+    } else {
+      icon.classList.remove("right-3", "left-auto");
+      icon.classList.add("left-3");
+    }
+  });
 
-    icon.addEventListener('click', () => {
-        console.log("Hi");
-        location.href = "shop.html"; 
-    })
+  icon.addEventListener("click", () => {
+    console.log("Hi");
+    location.href = "shop.html";
+  });
 
   //load featured product
   loadFeaturedProducts();
 });
 
+
 // Load products
 async function loadFeaturedProducts() {
   const products = await getProducts();
   const productsDiv = document.getElementById("product-slider");
-  if(!productsDiv) return;
+  if (!productsDiv) return;
   productsDiv.innerHTML = products
     .map(
       (product) => `
-                <div class="bg-white rounded-lg shadow-md overflow-hidden group flex-shrink-0 snap-start w-[300px] md:w-[350px]">
+                <div class="animation-product bg-white rounded-lg shadow-md overflow-hidden group flex-shrink-0 snap-start w-[300px] md:w-[350px]">
                     <div class="relative">
                         <img src="${product.imgUrl}"
                             alt="${
@@ -321,9 +319,9 @@ async function loadFeaturedProducts() {
 }
 
 function loadCheckoutPage() {
-    const carts = getCookieObject("cart_items");
-    // debugger
-    if(carts.length > 0){
-        location.href = "checkout.html";
-    }
+  const carts = getCookieObject("cart_items");
+  // debugger
+  if (carts.length > 0) {
+    location.href = "checkout.html";
+  }
 }

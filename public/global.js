@@ -15,35 +15,52 @@ async function getProducts() {
 }
 
 // Load products
-async function loadProducts(query = "") {
-  // const url = query ? `${apiUrl}/products/search?query=${encodeURIComponent(query)}` : `${apiUrl}/products`;
-  // const response = await fetch(url);
-  // const products = await response.json();
-  // const productsDiv = document.getElementById('products');
-  // productsDiv.innerHTML = products.map(product => `
-  //   <div class="product">
-  //     <h3>${product.name}</h3>
-  //     <p>Price: ${product.price} VND</p>
-  //     <p>Pet Type: ${product.pet_type}</p>
-  //     <p>Material: ${product.material}</p>
-  //     <p>Stock: ${product.stock}</p>
-  //     <img src="${product.imgUrl}" alt="${product.name}" style="max-width: 100px;">
-  //     <div>
-  //       <label>Size: </label>
-  //       <select id="size-${product.id}">
-  //         ${product.size.map(size => `<option value="${size}">${size}</option>`).join('')}
-  //       </select>
-  //     </div>
-  //     <div>
-  //       <label>Color: </label>
-  //       <select id="color-${product.id}">
-  //         ${product.color.map(color => `<option value="${color}">${color}</option>`).join('')}
-  //       </select>
-  //     </div>
-  //     <button onclick="addToCart(${product.id})" ${!userId ? 'disabled' : ''}>Add to Cart</button>
-  //   </div>
-  // `).join('');
+async function loadShopProduct(products, divContainer) {
+  if (!products || !divContainer) return;
+  console.log("Load");
+  divContainer.innerHTML = products
+    .map(
+      (
+        product
+      ) => `<div class="animation-product bg-white rounded-lg shadow-md overflow-hidden group">
+          <div class="relative">
+            <img
+              src="${product.imgUrl}"
+              alt="${
+                product.name
+              }" class="w-full h-64 object-cover object-top" />
+            <button
+              class="absolute top-3 right-3 w-10 h-10 flex items-center justify-center bg-white rounded-full shadow-md opacity-0 group-hover:opacity-100 transition">
+              <i class="ri-heart-line text-pink-500 ri-lg"></i>
+            </button>
+          </div>
+          <div class="p-4">
+            <div class="flex text-yellow-400 mb-2">
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+              <span class="text-gray-500 text-sm ml-2">(28)</span>
+            </div>
+            <h4 class="font-semibold text-lg mb-1">${product.name}</h4>
+            <p class="text-gray-500 text-sm mb-3">
+              ${product.description}
+            </p>
+            <div class="flex justify-between items-center">
+              <span class="font-bold text-lg">${formatCurrencyVND(
+                product.price
+              )}</span>
+                            <button onclick="addToCart(${product.id})"
+                                class="bg-primary text-white px-4 py-2 rounded-button hover:bg-pink-400 transition whitespace-nowrap">Add
+                                to Cart</button>
+            </div>
+          </div>
+        </div>`
+    )
+    .join("");
 }
+
 async function getCartItems() {
   cartItems = getCookieObject("cart_items");
 }
@@ -55,7 +72,10 @@ async function loadCart() {
   const cartDiv = document.getElementById("cart-item");
   const totalCartDiv = document.getElementById("cart-subtotal");
   const sizeCartDiv = document.getElementById("cart-size");
-  let total = cartItems.reduce((sum, item) => sum + (item.quantity * item.price), 0);
+  let total = cartItems.reduce(
+    (sum, item) => sum + item.quantity * item.price,
+    0
+  );
   totalCartDiv.textContent = formatCurrencyVND(total);
   sizeCartDiv.textContent = cartItems.length;
   cartDiv.innerHTML = cartItems
@@ -71,12 +91,19 @@ async function loadCart() {
                                         }</h4>
                                         <div class="text-gray-500 text-xs mt-1">
                                             Size:
-                                            <select  onchange="setSize(this, ${item.id})" class="text-xs bg-transparent focus:outline-none ml-1">
+                                            <select  onchange="setSize(this, ${
+                                              item.id
+                                            })" class="text-xs bg-transparent focus:outline-none ml-1">
                                                 ${(item.size || [])
                                                   .map(
                                                     (size) =>
                                                       `<option value="${size}" 
-                                                        ${size === item.selectedSize ? "selected" : ""}
+                                                        ${
+                                                          size ===
+                                                          item.selectedSize
+                                                            ? "selected"
+                                                            : ""
+                                                        }
                                                       >${size}</option>`
                                                   )
                                                   .join("")}
@@ -87,12 +114,20 @@ async function loadCart() {
                                               item.price
                                             )}</span>
                                             <div class="flex items-center gap-2">
-                                                <button onclick="setQuantity(${item.id},false)"
+                                                <button onclick="setQuantity(${
+                                                  item.id
+                                                },false)"
                                                    class="text-gray-400 hover:text-primary">
                                                     <i class="ri-subtract-line"></i>
                                                 </button>
-                                                <span id="cart-quantity-${item.id}" class="text-sm">${item.quantity}</span>
-                                                <button onclick="setQuantity(${item.id},true)" 
+                                                <span id="cart-quantity-${
+                                                  item.id
+                                                }" class="text-sm">${
+        item.quantity
+      }</span>
+                                                <button onclick="setQuantity(${
+                                                  item.id
+                                                },true)" 
                                                     class="text-gray-400 hover:text-primary">
                                                     <i class="ri-add-line"></i>
                                                 </button>
@@ -185,7 +220,7 @@ async function setProfile() {
   }
 
   const user = result.user;
-  
+
   // Convert to YYYY-MM-DD format
   const rawDate = new Date(user.dateOfBirth);
   const formattedDate = rawDate.toISOString().split("T")[0]; // "2025-06-10"
@@ -214,7 +249,6 @@ async function updateProfile(
   formattedDate,
   description
 ) {
-  
   const response = await fetch(`${apiUrl}/update_profile`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -273,7 +307,7 @@ async function addToCart(productId) {
   if (existItem) {
     existItem.quantity++;
   } else {
-    let idNumber = Math.max(...cartItems.map(item => item.id)) ?? 0;
+    let idNumber = Math.max(...cartItems.map((item) => item.id)) ?? 0;
     cartItems.push({
       id: idNumber + 1,
       productId: productId,
@@ -282,9 +316,10 @@ async function addToCart(productId) {
       imgUrl: result.imgUrl,
       price: result.price,
       quantity: 1,
-      selectedSize: result.size[0]
+      selectedSize: result.size[0],
     });
   }
+  notification("Goto cart🎉", "Add product successfully!");
   setCookieObject("cart_items", cartItems, 7);
 
   loadCart();
@@ -293,8 +328,7 @@ async function addToCart(productId) {
 // Remove from cart
 async function removeFromCart(id) {
   cartItems = getCookieObject("cart_items");
-  cartItems = cartItems.filter(
-    (item) => item.id != id);
+  cartItems = cartItems.filter((item) => item.id != id);
   setCookieObject("cart_items", cartItems, 7);
   loadCart();
 }
@@ -361,32 +395,32 @@ function getCookieObject(name) {
   return null;
 }
 
-function setQuantity(id, isIncrease){
+function setQuantity(id, isIncrease) {
   const min = 0;
   const max = 101;
-  const quantityElement = document.getElementById("cart-quantity-"+id);
+  const quantityElement = document.getElementById("cart-quantity-" + id);
   let quantity = Number(quantityElement.textContent);
-  
+
   quantity = isIncrease ? ++quantity : --quantity;
-  if(quantity == min || quantity == max) return;
+  if (quantity == min || quantity == max) return;
   quantityElement.textContent = quantity;
   const carts = getCookieObject("cart_items");
   //debugger
-  const cart = carts.find(item => item.id === id);
-  if(cart){
+  const cart = carts.find((item) => item.id === id);
+  if (cart) {
     cart.quantity = quantity;
-    setCookieObject("cart_items",carts,7);
+    setCookieObject("cart_items", carts, 7);
     loadCart();
   }
 }
 
-function setSize(element, id){
+function setSize(element, id) {
   const carts = getCookieObject("cart_items");
-  const cart = carts.find(item => item.id === id);
-  if(cart){
+  const cart = carts.find((item) => item.id === id);
+  if (cart) {
     cart.selectedSize = element.value;
     //debugger
-    setCookieObject("cart_items",carts,7);
+    setCookieObject("cart_items", carts, 7);
   }
 }
 
@@ -394,6 +428,33 @@ function setSize(element, id){
 //   const carts = getCartItems("cart_items");
 //   return carts.find(item => item.id === id);
 // }
+
+function notification(messageTitle, message) {
+  const notification = document.createElement("div");
+  notification.className =
+    "fixed top-20 right-4 bg-white shadow-lg rounded-lg p-4 z-50 transform translate-x-full opacity-0 transition-all duration-500";
+  notification.innerHTML = `
+            <div class="flex items-center">
+            <div class="w-8 h-8 flex items-center justify-center bg-primary/20 rounded-full mr-3">
+            <i class="ri-check-line text-primary"></i>
+            </div>
+            <div>
+            <p class="font-medium text-gray-800">${messageTitle}</p>
+            <p class="text-sm text-gray-600">${message}</p>
+            </div>
+            </div>
+            `;
+  document.body.appendChild(notification);
+  setTimeout(() => {
+    notification.classList.remove("translate-x-full", "opacity-0");
+  }, 100);
+  setTimeout(() => {
+    notification.classList.add("translate-x-full", "opacity-0");
+    setTimeout(() => {
+      notification.remove();
+    }, 500);
+  }, 3000);
+}
 
 // Initialize
 function init() {
