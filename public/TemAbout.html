@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Discover GuuPawz, your go-to brand for adorable pet fashion since 2020. Learn about our story, mission, and love for furry friends!">
+    <meta name="keywords" content="pet fashion, dog clothes, cat accessories, GuuPawz, cute pet outfits">
+    <title>About Us - GuuPawz</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+        .hero {
+            background: url('https://images.pexels.com/photos/4587971/pexels-photo-4587971.jpeg') no-repeat center center;
+            background-size: cover;
+            position: relative;
+            border-bottom: 8px solid #f9a8d4;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.3);
+        }
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+        .value-card, .team-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-radius: 20px;
+        }
+        .value-card:hover, .team-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        .cta-button {
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+        .cta-button:hover {
+            background-color: #ec4899;
+            transform: scale(1.1);
+        }
+        .emoji {
+            font-size: 1.5rem;
+        }
+        .section-bg {
+            background: linear-gradient(to bottom, #fef3f2, #fff1f2);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+    <header class="bg-pink-100 py-6 shadow-sm">
+        <div class="container mx-auto flex justify-between items-center px-4">
+            <h1 class="text-3xl font-bold text-pink-600">GuuPawz 🐾</h1>
+            <nav class="space-x-4">
+                <a href="https://guupawz.onrender.com" class="text-gray-800 hover:text-pink-600 font-semibold">Home</a>
+                <a href="#" class="text-gray-800 hover:text-pink-600 font-semibold">Shop by Pet</a>
+                <a href="#" class="text-gray-800 hover:text-pink-600 font-semibold">Categories</a>
+                <a href="#" class="text-gray-800 hover:text-pink-600 font-semibold">New Arrivals</a>
+                <a href="#" class="text-gray-800 hover:text-pink-600 font-semibold">Sale</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero py-28 text-center text-white">
+        <div class="hero-content container mx-auto px-4">
+            <h1 class="text-4xl md:text-5xl font-bold mb-4">About GuuPawz 🐶😺</h1>
+            <p class="text-lg md:text-xl max-w-2xl mx-auto">We’re all about making your furry friends look pawsitively adorable with stylish, comfy outfits since 2020!</p>
+            <a href="https://guupawz.onrender.com/#shop" class="mt-6 inline-block bg-pink-500 text-white py-3 px-8 rounded-full font-semibold cta-button">Shop Cute Outfits! 🛍️</a>
+        </div>
+    </section>
+
+    <section class="py-16 section-bg">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-pink-600 text-center mb-8">Our Story 🐾</h2>
+            <p class="text-lg text-gray-600 text-center max-w-3xl mx-auto mb-6">GuuPawz started in 2020 when a group of pet lovers decided to bring some serious style to the pet world. Tired of dull pet clothes, we dreamed up a collection that’s as cute as your furry friends! From snuggly sweaters to fancy collars, every piece is made with love to keep your pets happy and stylish.</p>
+            <p class="text-lg text-gray-600 text-center max-w-3xl mx-auto">We’re pet parents too, so we know how much joy a well-dressed pup or kitty can bring. Join us in celebrating the love for our furry besties! 💖</p>
+        </div>
+    </section>
+
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-pink-600 text-center mb-8">Our Values 🌟</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="value-card bg-pink-50 p-6 rounded-lg shadow-sm text-center">
+                    <img src="https://images.pexels.com/photos/825947/pexels-photo-825947.jpeg" alt="Comfort" class="w-full h-48 object-cover rounded-lg mb-4">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Comfy & Cozy 🛋️</h3>
+                    <p class="text-gray-600">Soft, pet-safe materials to keep your furry friends snug and happy all day.</p>
+                </div>
+                <div class="value-card bg-pink-50 p-6 rounded-lg shadow-sm text-center">
+                    <img src="https://images.pexels.com/photos/4587997/pexels-photo-4587997.jpeg" alt="Style" class="w-full h-48 object-cover rounded-lg mb-4">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Super Stylish ✨</h3>
+                    <p class="text-gray-600">Trendy designs to make your pet the cutest star of every paw-ty!</p>
+                </div>
+                <div class="value-card bg-pink-50 p-6 rounded-lg shadow-sm text-center">
+                    <img src="https://images.pexels.com/photos/4201728/pexels-photo-4201728.jpeg" alt="Love" class="w-full h-48 object-cover rounded-lg mb-4">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Made with Love 💕</h3>
+                    <p class="text-gray-600">Every outfit is crafted to celebrate the special bond with your pet.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-16 section-bg">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-pink-600 text-center mb-8">Meet Our Pet Models 🐕😻</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="team-card bg-white p-6 rounded-lg shadow-sm text-center">
+                    <img src="https://images.pexels.com/photos/3931155/pexels-photo-3931155.jpeg" alt="Coco the Corgi" class="w-full h-48 object-cover rounded-lg mb-4">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Coco the Corgi</h3>
+                    <p class="text-gray-600">Our sweater-loving model who rocks every outfit with a wagging tail!</p>
+                </div>
+                <div class="team-card bg-white p-6 rounded-lg shadow-sm text-center">
+                    <img src="https://images.pexels.com/photos/5745215/pexels-photo-5745215.jpeg" alt="Mimi the Kitty" class="w-full h-48 object-cover rounded-lg mb-4">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Mimi the Kitty</h3>
+                    <p class="text-gray-600">The queen of bow tie collars, strutting with purr-fect style!</p>
+                </div>
+                <div class="team-card bg-white p-6 rounded-lg shadow-sm text-center">
+                    <img src="https://images.pexels.com/photos/4588065/pexels-photo-4588065.jpeg" alt="Max the Pug" class="w-full h-48 object-cover rounded-lg mb-4">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Max the Pug</h3>
+                    <p class="text-gray-600">Our denim jacket star, always ready for a stylish adventure!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold text-pink-600 mb-8">Our Mission 🐾💖</h2>
+            <p class="text-lg text-gray-600 max-w-3xl mx-auto">At GuuPawz, we’re here to make every pet shine with adorable, comfy, and affordable fashion. We believe in sustainable designs and spreading joy to pet parents everywhere!</p>
+            <a href="#contact" class="mt-6 inline-block bg-pink-500 text-white py-3 px-8 rounded-full font-semibold cta-button">Join Our Paw-ty! 🎉</a>
+        </div>
+    </section>
+
+    <footer class="bg-pink-100 py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 text-center md:text-left">
+                <div>
+                    <h3 class="text-xl font-bold text-pink-600 mb-4">GuuPawz 🐾</h3>
+                    <p class="text-gray-600">Stylish fashion for your furry friends since 2020.</p>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold text-pink-600 mb-4">Shop</h3>
+                    <a href="#" class="block text-gray-600 hover:text-pink-600 mb-2">Dog Fashion</a>
+                    <a href="#" class="block text-gray-600 hover:text-pink-600 mb-2">Cat Fashion</a>
+                    <a href="#" class="block text-gray-600 hover:text-pink-600 mb-2">Accessories</a>
+                    <a href="#" class="block text-gray-600 hover:text-pink-600 mb-2">New Arrivals</a>
+                    <a href="#" class="block text-gray-600 hover:text-pink-600">Sale</a>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold text-pink-600 mb-4">Customer Service</h3>
+                    <a href="#" class="block text-gray-600 hover:text-pink-600 mb-2">Contact Us</a>
+                    <a href="#" class="block text-gray-600 hover:text-pink-600 mb-2">Shipping & Returns</a>
+                    <a href="#" class="block text-gray-600 hover:text-pink-600 mb-2">FAQ</a>
+                    <a href="#" class="block text-gray-600 hover:text-pink-600 mb-2">Size Guide</a>
+                    <a href="#" class="block text-gray-600 hover:text-pink-600">Track Order</a>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold text-pink-600 mb-4">About</h3>
+                    <a href="about.html" class="block text-gray-600 hover:text-pink-600 mb-2">Our Story</a>
+                    <a href="#" class="block text-gray-600 hover:text-pink-600 mb-2">Blog</a>
+                    <a href="#" class="block text-gray-600 hover:text-pink-600 mb-2">Testimonials</a>
+                    <a href="#" class="block text-gray-600 hover:text-pink-600 mb-2">Privacy Policy</a>
+                    <a href="#" class="block text-gray-600 hover:text-pink-600">Terms of Service</a>
+                </div>
+            </div>
+            <div class="mt-8 flex justify-center space-x-4">
+                <a href="#"><img src="https://images.pexels.com/photos/1127391/pexels-photo-1127391.jpeg?auto=compress&cs=tinysrgb&h=30" alt="Instagram" class="w-8 rounded-full"></a>
+                <a href="#"><img src="https://images.pexels.com/photos/1127391/pexels-photo-1127391.jpeg?auto=compress&cs=tinysrgb&h=30" alt="Facebook" class="w-8 rounded-full"></a>
+                <a href="#"><img src="https://images.pexels.com/photos/1127391/pexels-photo-1127391.jpeg?auto=compress&cs=tinysrgb&h=30" alt="Twitter" class="w-8 rounded-full"></a>
+                <a href="#"><img src="https://images.pexels.com/photos/1127391/pexels-photo-1127391.jpeg?auto=compress&cs=tinysrgb&h=30" alt="Pinterest" class="w-8 rounded-full"></a>
+            </div>
+            <p class="mt-8 text-gray-600 text-center">© 2025 GuuPawz. All rights reserved.</p>
+            <p class="text-gray-600 text-center">Payment Methods: 
+                <img src="https://images.pexels.com/photos/1127391/pexels-photo-1127391.jpeg?auto=compress&cs=tinysrgb&h=30" alt="Visa" class="inline w-8 rounded-full"> 
+                <img src="https://images.pexels.com/photos/1127391/pexels-photo-1127391.jpeg?auto=compress&cs=tinysrgb&h=30" alt="Mastercard" class="inline w-8 rounded-full"> 
+                <img src="https://images.pexels.com/photos/1127391/pexels-photo-1127391.jpeg?auto=compress&cs=tinysrgb&h=30" alt="Paypal" class="inline w-8 rounded-full"> 
+                <img src="https://images.pexels.com/photos/1127391/pexels-photo-1127391.jpeg?auto=compress&cs=tinysrgb&h=30" alt="Amex" class="inline w-8 rounded-full">
+            </p>
+        </div>
+    </footer>
+
+</body>
+</html>
