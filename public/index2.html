@@ -1,0 +1,1728 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PawFashion - Stylish Clothing for Your Pets</title>
+    <script src="https://cdn.tailwindcss.com/3.4.16">
+    </script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: { primary: "#f9a8d4", secondary: "#a5f3fc" },
+                    borderRadius: {
+                        none: "0px",
+                        sm: "4px",
+                        DEFAULT: "8px",
+                        md: "12px",
+                        lg: "16px",
+                        xl: "20px",
+                        "2xl": "24px",
+                        "3xl": "32px",
+                        full: "9999px",
+                        button: "8px",
+                    },
+                },
+            },
+        };
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+    <style>
+        :where([class^="ri-"])::before {
+            content: "\f3c2";
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background-color: #fffbfb;
+        }
+
+        .paw-pattern {
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23f9a8d4' fill-opacity='0.1' fill-rule='evenodd'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(249, 168, 212, 0.2);
+        }
+
+        .category-card:hover {
+            transform: scale(1.05);
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #f9a8d4;
+        }
+
+        .custom-checkbox {
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border: 2px solid #f9a8d4;
+            border-radius: 4px;
+            position: relative;
+        }
+
+        .custom-checkbox:checked {
+            background-color: #f9a8d4;
+        }
+
+        .custom-checkbox:checked::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            height: 10px;
+            border: solid white;
+            border-width: 0 2px 2px 0;
+            top: 2px;
+            left: 6px;
+            transform: rotate(45deg);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="sticky top-0 z-50 bg-white shadow-sm">
+        <div class="container mx-auto px-4 py-3 flex items-center justify-between">
+            <a href="#" class="flex items-center">
+                <span class="text-3xl font-['Pacifico'] text-primary">PawFashion</span>
+            </a>
+            <nav class="hidden md:flex items-center space-x-8">
+                <a href="#" class="font-medium text-gray-800 hover:text-primary transition-colors">Home</a>
+                <a href="#" class="font-medium text-gray-800 hover:text-primary transition-colors">Categories</a>
+                <a href="#" class="font-medium text-gray-800 hover:text-primary transition-colors">New Arrivals</a>
+                <a href="#" class="font-medium text-gray-800 hover:text-primary transition-colors">Sale</a>
+                <a href="#" class="font-medium text-gray-800 hover:text-primary transition-colors">Contact</a>
+            </nav>
+            <div class="flex items-center space-x-4">
+                <div class="relative hidden md:block">
+                    <input type="text" placeholder="Search..."
+                        class="pl-10 pr-4 py-2 w-64 rounded-full border border-gray-200 text-sm">
+                    <div
+                        class="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 flex items-center justify-center text-gray-400">
+                        <i class="ri-search-line"></i>
+                    </div>
+                </div>
+                <div id="userMenuContainer"
+                    class="w-10 h-10 flex items-center justify-center relative cursor-pointer text-gray-700 hover:text-primary">
+                    <i class="ri-user-line text-xl"></i>
+                    <div id="userDropdown"
+                        class="absolute right-0 top-full mt-2 w-48 bg-white rounded-lg shadow-lg py-2 invisible opacity-0 transform -translate-y-2 transition-all duration-300 z-50">
+                        <a href="#" id="signInLink"
+                            class="flex items-center px-4 py-2 text-gray-700 hover:bg-pink-50 hover:text-primary">
+                            <div class="w-8 h-8 flex items-center justify-center"><i class="ri-login-circle-line"></i>
+                            </div>
+                            <span>Sign In</span>
+                        </a>
+                        <a href="#"
+                            class="flex items-center px-4 py-2 text-gray-700 hover:bg-pink-50 hover:text-primary">
+                            <div class="w-8 h-8 flex items-center justify-center"><i class="ri-user-add-line"></i></div>
+                            <span>Create Account</span>
+                        </a>
+                        <a href="#"
+                            class="flex items-center px-4 py-2 text-gray-700 hover:bg-pink-50 hover:text-primary">
+                            <div class="w-8 h-8 flex items-center justify-center"><i class="ri-user-settings-line"></i>
+                            </div>
+                            <span>My Profile</span>
+                        </a>
+                        <a href="#" id="myOrdersLink"
+                            class="flex items-center px-4 py-2 text-gray-700 hover:bg-pink-50 hover:text-primary">
+                            <div class="w-8 h-8 flex items-center justify-center"><i class="ri-shopping-bag-line"></i>
+                            </div>
+                            <span>My Orders</span>
+                        </a>
+                        <a href="#"
+                            class="flex items-center px-4 py-2 text-gray-700 hover:bg-pink-50 hover:text-primary">
+                            <div class="w-8 h-8 flex items-center justify-center"><i class="ri-heart-line"></i></div>
+                            <span>Wishlist</span>
+                        </a>
+                        <div class="h-px bg-gray-200 my-2"></div>
+                        <a href="#"
+                            class="flex items-center px-4 py-2 text-gray-700 hover:bg-pink-50 hover:text-primary">
+                            <div class="w-8 h-8 flex items-center justify-center"><i class="ri-logout-circle-line"></i>
+                            </div>
+                            <span>Sign Out</span>
+                        </a>
+                    </div>
+                </div>
+                <div
+                    class="w-10 h-10 flex items-center justify-center relative cursor-pointer text-gray-700 hover:text-primary">
+                    <i class="ri-heart-line text-xl"></i>
+                </div>
+                <div
+                    class="w-10 h-10 flex items-center justify-center relative cursor-pointer text-gray-700 hover:text-primary">
+                    <i class="ri-shopping-bag-line text-xl"></i>
+                    <span
+                        class="absolute -top-1 -right-1 w-5 h-5 flex items-center justify-center bg-primary text-white text-xs rounded-full">3</span>
+                </div>
+                <div class="md:hidden w-10 h-10 flex items-center justify-center">
+                    <i class="ri-menu-line text-xl"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- Hero Section -->
+    <section class="relative overflow-hidden"
+        style="background-image: url('https://readdy.ai/api/search-image?query=cute%20pets%20wearing%20stylish%20clothes%2C%20pastel%20pink%20and%20mint%20green%20background%2C%20soft%20lighting%2C%20professional%20photography%2C%20high%20quality%2C%20adorable%20dogs%20and%20cats%20in%20fashionable%20outfits%2C%20clean%20background%2C%20modern%20aesthetic%2C%20high-end%20pet%20fashion&width=1600&height=800&seq=hero1&orientation=landscape'); background-size: cover; background-position: center;">
+        <div class="absolute inset-0 bg-gradient-to-r from-white/90 to-white/30"></div>
+        <div class="container mx-auto px-4 py-20 relative z-10">
+            <div class="max-w-lg">
+                <h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4">Stylish Fashion for Your Furry Friends
+                </h1>
+                <p class="text-lg text-gray-600 mb-8">Discover our collection of adorable, comfortable, and trendy
+                    outfits designed especially for your beloved pets.</p>
+                <div class="flex flex-wrap gap-4">
+                    <button
+                        class="bg-primary text-white px-8 py-3 rounded-button font-medium shadow-lg hover:shadow-xl transition-all whitespace-nowrap">Shop
+                        Now</button>
+                    <button
+                        class="bg-white text-primary border border-primary px-8 py-3 rounded-button font-medium shadow-md hover:shadow-lg transition-all whitespace-nowrap">View
+                        Collections</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Category Navigation -->
+    <section class="py-12 bg-pink-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-10">Shop by Category</h2>
+            <div class="flex overflow-x-auto pb-4 -mx-4 px-4 space-x-6 scrollbar-hide">
+                <div class="category-card flex-shrink-0 w-32 text-center transition-transform duration-300">
+                    <div
+                        class="w-24 h-24 mx-auto bg-white rounded-full shadow-md flex items-center justify-center mb-3 border-2 border-primary">
+                        <div class="w-12 h-12 flex items-center justify-center">
+                            <i class="ri-footprint-line text-3xl text-primary"></i>
+                        </div>
+                    </div>
+                    <p class="font-medium">Dogs</p>
+                </div>
+                <div class="category-card flex-shrink-0 w-32 text-center transition-transform duration-300">
+                    <div
+                        class="w-24 h-24 mx-auto bg-white rounded-full shadow-md flex items-center justify-center mb-3">
+                        <div class="w-12 h-12 flex items-center justify-center">
+                            <i class="ri-footprint-line text-3xl text-gray-600"></i>
+                        </div>
+                    </div>
+                    <p class="font-medium">Cats</p>
+                </div>
+                <div class="category-card flex-shrink-0 w-32 text-center transition-transform duration-300">
+                    <div
+                        class="w-24 h-24 mx-auto bg-white rounded-full shadow-md flex items-center justify-center mb-3">
+                        <div class="w-12 h-12 flex items-center justify-center">
+                            <i class="ri-t-shirt-line text-3xl text-gray-600"></i>
+                        </div>
+                    </div>
+                    <p class="font-medium">Clothing</p>
+                </div>
+                <div class="category-card flex-shrink-0 w-32 text-center transition-transform duration-300">
+                    <div
+                        class="w-24 h-24 mx-auto bg-white rounded-full shadow-md flex items-center justify-center mb-3">
+                        <div class="w-12 h-12 flex items-center justify-center">
+                            <i class="ri-glasses-line text-3xl text-gray-600"></i>
+                        </div>
+                    </div>
+                    <p class="font-medium">Accessories</p>
+                </div>
+                <div class="category-card flex-shrink-0 w-32 text-center transition-transform duration-300">
+                    <div
+                        class="w-24 h-24 mx-auto bg-white rounded-full shadow-md flex items-center justify-center mb-3">
+                        <div class="w-12 h-12 flex items-center justify-center">
+                            <i class="ri-gamepad-line text-3xl text-gray-600"></i>
+                        </div>
+                    </div>
+                    <p class="font-medium">Toys</p>
+                </div>
+                <div class="category-card flex-shrink-0 w-32 text-center transition-transform duration-300">
+                    <div
+                        class="w-24 h-24 mx-auto bg-white rounded-full shadow-md flex items-center justify-center mb-3">
+                        <div class="w-12 h-12 flex items-center justify-center">
+                            <i class="ri-gift-line text-3xl text-gray-600"></i>
+                        </div>
+                    </div>
+                    <p class="font-medium">Gifts</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Featured Products -->
+    <section class="py-16">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-2">Featured Products</h2>
+            <p class="text-center text-gray-600 mb-10">Our most popular pet fashion items</p>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="product-card bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300">
+                    <div class="relative">
+                        <img src="https://readdy.ai/api/search-image?query=cute%20small%20dog%20wearing%20a%20pink%20sweater%2C%20professional%20product%20photography%20on%20white%20background%2C%20high%20quality%2C%20studio%20lighting%2C%20adorable%20pet%20fashion%2C%20clear%20details%2C%20no%20human%2C%20centered%20composition&width=500&height=500&seq=prod1&orientation=squarish"
+                            alt="Dog Sweater" class="w-full h-64 object-cover object-top">
+                        <div
+                            class="absolute top-3 right-3 w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-sm cursor-pointer hover:bg-pink-50">
+                            <i class="ri-heart-line text-primary"></i>
+                        </div>
+                        <div class="absolute top-3 left-3 bg-primary text-white text-xs px-2 py-1 rounded-full">
+                            New
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-semibold text-gray-800 mb-1">Cozy Pink Sweater</h3>
+                        <div class="flex items-center mb-2">
+                            <div class="flex text-yellow-400">
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-half-fill"></i>
+                            </div>
+                            <span class="text-xs text-gray-500 ml-1">(42)</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <span class="text-gray-500 line-through text-sm">$29.99</span>
+                                <span class="font-bold text-gray-800 ml-1">$24.99</span>
+                            </div>
+                            <button
+                                class="w-10 h-10 bg-primary text-white rounded-full flex items-center justify-center shadow-md hover:shadow-lg transition-all !rounded-full whitespace-nowrap">
+                                <i class="ri-shopping-bag-line"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300">
+                    <div class="relative">
+                        <img src="https://readdy.ai/api/search-image?query=cute%20cat%20wearing%20a%20bowtie%20collar%2C%20professional%20product%20photography%20on%20white%20background%2C%20high%20quality%2C%20studio%20lighting%2C%20adorable%20pet%20fashion%2C%20clear%20details%2C%20no%20human%2C%20centered%20composition&width=500&height=500&seq=prod2&orientation=squarish"
+                            alt="Cat Bowtie" class="w-full h-64 object-cover object-top">
+                        <div
+                            class="absolute top-3 right-3 w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-sm cursor-pointer hover:bg-pink-50">
+                            <i class="ri-heart-line text-primary"></i>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-semibold text-gray-800 mb-1">Elegant Bowtie Collar</h3>
+                        <div class="flex items-center mb-2">
+                            <div class="flex text-yellow-400">
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-fill"></i>
+                            </div>
+                            <span class="text-xs text-gray-500 ml-1">(78)</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <span class="font-bold text-gray-800">$14.99</span>
+                            </div>
+                            <button
+                                class="w-10 h-10 bg-primary text-white rounded-full flex items-center justify-center shadow-md hover:shadow-lg transition-all !rounded-full whitespace-nowrap">
+                                <i class="ri-shopping-bag-line"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300">
+                    <div class="relative">
+                        <img src="https://readdy.ai/api/search-image?query=small%20dog%20wearing%20a%20denim%20jacket%2C%20professional%20product%20photography%20on%20white%20background%2C%20high%20quality%2C%20studio%20lighting%2C%20adorable%20pet%20fashion%2C%20clear%20details%2C%20no%20human%2C%20centered%20composition&width=500&height=500&seq=prod3&orientation=squarish"
+                            alt="Dog Denim Jacket" class="w-full h-64 object-cover object-top">
+                        <div
+                            class="absolute top-3 right-3 w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-sm cursor-pointer hover:bg-pink-50">
+                            <i class="ri-heart-line text-primary"></i>
+                        </div>
+                        <div class="absolute top-3 left-3 bg-red-500 text-white text-xs px-2 py-1 rounded-full">
+                            -20%
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-semibold text-gray-800 mb-1">Denim Jacket</h3>
+                        <div class="flex items-center mb-2">
+                            <div class="flex text-yellow-400">
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-line"></i>
+                            </div>
+                            <span class="text-xs text-gray-500 ml-1">(36)</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <span class="text-gray-500 line-through text-sm">$34.99</span>
+                                <span class="font-bold text-gray-800 ml-1">$27.99</span>
+                            </div>
+                            <button
+                                class="w-10 h-10 bg-primary text-white rounded-full flex items-center justify-center shadow-md hover:shadow-lg transition-all !rounded-full whitespace-nowrap">
+                                <i class="ri-shopping-bag-line"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300">
+                    <div class="relative">
+                        <img src="https://readdy.ai/api/search-image?query=cat%20wearing%20sunglasses%20accessory%2C%20professional%20product%20photography%20on%20white%20background%2C%20high%20quality%2C%20studio%20lighting%2C%20adorable%20pet%20fashion%2C%20clear%20details%2C%20no%20human%2C%20centered%20composition&width=500&height=500&seq=prod4&orientation=squarish"
+                            alt="Cat Sunglasses" class="w-full h-64 object-cover object-top">
+                        <div
+                            class="absolute top-3 right-3 w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-sm cursor-pointer hover:bg-pink-50">
+                            <i class="ri-heart-line text-primary"></i>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-semibold text-gray-800 mb-1">Cool Cat Sunglasses</h3>
+                        <div class="flex items-center mb-2">
+                            <div class="flex text-yellow-400">
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-half-fill"></i>
+                                <i class="ri-star-line"></i>
+                            </div>
+                            <span class="text-xs text-gray-500 ml-1">(23)</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <span class="font-bold text-gray-800">$12.99</span>
+                            </div>
+                            <button
+                                class="w-10 h-10 bg-primary text-white rounded-full flex items-center justify-center shadow-md hover:shadow-lg transition-all !rounded-full whitespace-nowrap">
+                                <i class="ri-shopping-bag-line"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-10">
+                <button
+                    class="bg-white text-primary border border-primary px-8 py-3 rounded-button font-medium shadow-md hover:shadow-lg transition-all whitespace-nowrap">View
+                    All Products</button>
+            </div>
+        </div>
+    </section>
+    <!-- Special Offer Banner -->
+    <section class="py-16 bg-gradient-to-r from-pink-100 to-blue-50 paw-pattern">
+        <div class="container mx-auto px-4">
+            <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+                <div class="flex flex-col md:flex-row">
+                    <div class="md:w-1/2 p-8 md:p-12 flex flex-col justify-center">
+                        <div
+                            class="inline-block bg-pink-100 text-primary px-4 py-1 rounded-full text-sm font-medium mb-4">
+                            Limited Time Offer</div>
+                        <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Summer Collection Sale</h2>
+                        <p class="text-gray-600 mb-6">Get 30% off on our new summer collection. Dress your pets in style
+                            for the warm weather!</p>
+                        <div class="flex flex-wrap gap-4">
+                            <button
+                                class="bg-primary text-white px-8 py-3 rounded-button font-medium shadow-lg hover:shadow-xl transition-all whitespace-nowrap">Shop
+                                Now</button>
+                            <div class="flex items-center">
+                                <span class="text-gray-500 font-medium">Use code:</span>
+                                <span class="ml-2 bg-gray-100 px-3 py-1 rounded text-gray-700 font-bold">SUMMER30</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="md:w-1/2">
+                        <img src="https://readdy.ai/api/search-image?query=group%20of%20pets%20wearing%20summer%20outfits%2C%20professional%20photography%2C%20high%20quality%2C%20studio%20lighting%2C%20adorable%20dogs%20and%20cats%20in%20summer%20fashion%2C%20beach%20theme%2C%20bright%20and%20colorful%2C%20clear%20background&width=600&height=500&seq=summer&orientation=landscape"
+                            alt="Summer Collection" class="w-full h-full object-cover object-top">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Features Section -->
+    <section class="py-16 bg-cyan-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">Why Choose Us</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white p-6 rounded-xl shadow-md text-center">
+                    <div class="w-16 h-16 mx-auto bg-pink-100 rounded-full flex items-center justify-center mb-4">
+                        <div class="w-8 h-8 flex items-center justify-center">
+                            <i class="ri-truck-line text-2xl text-primary"></i>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">Free Shipping</h3>
+                    <p class="text-gray-600">Free shipping on all orders over $50. Delivery within 2-5 business days.
+                    </p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-md text-center">
+                    <div class="w-16 h-16 mx-auto bg-pink-100 rounded-full flex items-center justify-center mb-4">
+                        <div class="w-8 h-8 flex items-center justify-center">
+                            <i class="ri-refresh-line text-2xl text-primary"></i>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">Easy Returns</h3>
+                    <p class="text-gray-600">30-day return policy. If it doesn't fit, send it back for free.</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-md text-center">
+                    <div class="w-16 h-16 mx-auto bg-pink-100 rounded-full flex items-center justify-center mb-4">
+                        <div class="w-8 h-8 flex items-center justify-center">
+                            <i class="ri-ruler-line text-2xl text-primary"></i>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">Size Guide</h3>
+                    <p class="text-gray-600">Detailed size guides for all pets. Find the perfect fit for your furry
+                        friend.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- New Arrivals -->
+    <section class="py-16">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center mb-10">
+                <h2 class="text-3xl font-bold text-gray-800">New Arrivals</h2>
+                <a href="#" class="text-primary font-medium flex items-center hover:underline">
+                    View All
+                    <i class="ri-arrow-right-line ml-1"></i>
+                </a>
+            </div>
+            <div class="flex overflow-x-auto -mx-4 px-4 pb-4 space-x-6 scrollbar-hide">
+                <div
+                    class="product-card flex-shrink-0 w-64 bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300">
+                    <div class="relative">
+                        <img src="https://readdy.ai/api/search-image?query=small%20dog%20wearing%20a%20raincoat%2C%20professional%20product%20photography%20on%20white%20background%2C%20high%20quality%2C%20studio%20lighting%2C%20adorable%20pet%20fashion%2C%20clear%20details%2C%20no%20human%2C%20centered%20composition&width=400&height=400&seq=new1&orientation=squarish"
+                            alt="Dog Raincoat" class="w-full h-64 object-cover object-top">
+                        <div
+                            class="absolute top-3 right-3 w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-sm cursor-pointer hover:bg-pink-50">
+                            <i class="ri-heart-line text-primary"></i>
+                        </div>
+                        <div class="absolute top-3 left-3 bg-primary text-white text-xs px-2 py-1 rounded-full">
+                            New
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-semibold text-gray-800 mb-1">Waterproof Raincoat</h3>
+                        <div class="flex items-center mb-2">
+                            <div class="flex text-yellow-400">
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-line"></i>
+                            </div>
+                            <span class="text-xs text-gray-500 ml-1">(12)</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <span class="font-bold text-gray-800">$32.99</span>
+                            </div>
+                            <button
+                                class="w-10 h-10 bg-primary text-white rounded-full flex items-center justify-center shadow-md hover:shadow-lg transition-all !rounded-full whitespace-nowrap">
+                                <i class="ri-shopping-bag-line"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div
+                    class="product-card flex-shrink-0 w-64 bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300">
+                    <div class="relative">
+                        <img src="https://readdy.ai/api/search-image?query=cat%20wearing%20a%20cute%20hat%2C%20professional%20product%20photography%20on%20white%20background%2C%20high%20quality%2C%20studio%20lighting%2C%20adorable%20pet%20fashion%2C%20clear%20details%2C%20no%20human%2C%20centered%20composition&width=400&height=400&seq=new2&orientation=squarish"
+                            alt="Cat Hat" class="w-full h-64 object-cover object-top">
+                        <div
+                            class="absolute top-3 right-3 w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-sm cursor-pointer hover:bg-pink-50">
+                            <i class="ri-heart-line text-primary"></i>
+                        </div>
+                        <div class="absolute top-3 left-3 bg-primary text-white text-xs px-2 py-1 rounded-full">
+                            New
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-semibold text-gray-800 mb-1">Cute Cat Hat</h3>
+                        <div class="flex items-center mb-2">
+                            <div class="flex text-yellow-400">
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-half-fill"></i>
+                            </div>
+                            <span class="text-xs text-gray-500 ml-1">(8)</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <span class="font-bold text-gray-800">$15.99</span>
+                            </div>
+                            <button
+                                class="w-10 h-10 bg-primary text-white rounded-full flex items-center justify-center shadow-md hover:shadow-lg transition-all !rounded-full whitespace-nowrap">
+                                <i class="ri-shopping-bag-line"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div
+                    class="product-card flex-shrink-0 w-64 bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300">
+                    <div class="relative">
+                        <img src="https://readdy.ai/api/search-image?query=small%20dog%20wearing%20a%20bow%20tie%20collar%2C%20professional%20product%20photography%20on%20white%20background%2C%20high%20quality%2C%20studio%20lighting%2C%20adorable%20pet%20fashion%2C%20clear%20details%2C%20no%20human%2C%20centered%20composition&width=400&height=400&seq=new3&orientation=squarish"
+                            alt="Dog Bow Tie" class="w-full h-64 object-cover object-top">
+                        <div
+                            class="absolute top-3 right-3 w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-sm cursor-pointer hover:bg-pink-50">
+                            <i class="ri-heart-line text-primary"></i>
+                        </div>
+                        <div class="absolute top-3 left-3 bg-primary text-white text-xs px-2 py-1 rounded-full">
+                            New
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-semibold text-gray-800 mb-1">Fancy Bow Tie</h3>
+                        <div class="flex items-center mb-2">
+                            <div class="flex text-yellow-400">
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-line"></i>
+                            </div>
+                            <span class="text-xs text-gray-500 ml-1">(15)</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <span class="font-bold text-gray-800">$9.99</span>
+                            </div>
+                            <button
+                                class="w-10 h-10 bg-primary text-white rounded-full flex items-center justify-center shadow-md hover:shadow-lg transition-all !rounded-full whitespace-nowrap">
+                                <i class="ri-shopping-bag-line"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div
+                    class="product-card flex-shrink-0 w-64 bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300">
+                    <div class="relative">
+                        <img src="https://readdy.ai/api/search-image?query=cat%20wearing%20a%20bandana%2C%20professional%20product%20photography%20on%20white%20background%2C%20high%20quality%2C%20studio%20lighting%2C%20adorable%20pet%20fashion%2C%20clear%20details%2C%20no%20human%2C%20centered%20composition&width=400&height=400&seq=new4&orientation=squarish"
+                            alt="Cat Bandana" class="w-full h-64 object-cover object-top">
+                        <div
+                            class="absolute top-3 right-3 w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-sm cursor-pointer hover:bg-pink-50">
+                            <i class="ri-heart-line text-primary"></i>
+                        </div>
+                        <div class="absolute top-3 left-3 bg-primary text-white text-xs px-2 py-1 rounded-full">
+                            New
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-semibold text-gray-800 mb-1">Stylish Bandana</h3>
+                        <div class="flex items-center mb-2">
+                            <div class="flex text-yellow-400">
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-half-fill"></i>
+                                <i class="ri-star-line"></i>
+                            </div>
+                            <span class="text-xs text-gray-500 ml-1">(7)</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <span class="font-bold text-gray-800">$8.99</span>
+                            </div>
+                            <button
+                                class="w-10 h-10 bg-primary text-white rounded-full flex items-center justify-center shadow-md hover:shadow-lg transition-all !rounded-full whitespace-nowrap">
+                                <i class="ri-shopping-bag-line"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div
+                    class="product-card flex-shrink-0 w-64 bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300">
+                    <div class="relative">
+                        <img src="https://readdy.ai/api/search-image?query=small%20dog%20wearing%20a%20party%20costume%2C%20professional%20product%20photography%20on%20white%20background%2C%20high%20quality%2C%20studio%20lighting%2C%20adorable%20pet%20fashion%2C%20clear%20details%2C%20no%20human%2C%20centered%20composition&width=400&height=400&seq=new5&orientation=squarish"
+                            alt="Dog Party Costume" class="w-full h-64 object-cover object-top">
+                        <div
+                            class="absolute top-3 right-3 w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-sm cursor-pointer hover:bg-pink-50">
+                            <i class="ri-heart-line text-primary"></i>
+                        </div>
+                        <div class="absolute top-3 left-3 bg-primary text-white text-xs px-2 py-1 rounded-full">
+                            New
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-semibold text-gray-800 mb-1">Party Costume</h3>
+                        <div class="flex items-center mb-2">
+                            <div class="flex text-yellow-400">
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-fill"></i>
+                            </div>
+                            <span class="text-xs text-gray-500 ml-1">(19)</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <span class="font-bold text-gray-800">$29.99</span>
+                            </div>
+                            <button
+                                class="w-10 h-10 bg-primary text-white rounded-full flex items-center justify-center shadow-md hover:shadow-lg transition-all !rounded-full whitespace-nowrap">
+                                <i class="ri-shopping-bag-line"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Testimonials -->
+    <section class="py-16 bg-pink-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">What Pet Parents Say</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white p-6 rounded-xl shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-primary/20 rounded-full flex items-center justify-center mr-4">
+                            <span class="text-primary font-bold">EB</span>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-gray-800">Emma Bennett</h4>
+                            <div class="flex text-yellow-400">
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-fill"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600">"My Corgi, Biscuit, looks absolutely adorable in his new sweater! The
+                        quality is excellent, and it fits him perfectly. Will definitely be ordering more items soon!"
+                    </p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-primary/20 rounded-full flex items-center justify-center mr-4">
+                            <span class="text-primary font-bold">JT</span>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-gray-800">James Thompson</h4>
+                            <div class="flex text-yellow-400">
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-half-fill"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600">"My cat usually hates wearing anything, but she seems to love the bow tie
+                        collar I got from PawFashion. The material is soft and comfortable, and the design is super
+                        cute!"</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-primary/20 rounded-full flex items-center justify-center mr-4">
+                            <span class="text-primary font-bold">SL</span>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-gray-800">Sophia Lee</h4>
+                            <div class="flex text-yellow-400">
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-fill"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600">"The raincoat I purchased for my Pomeranian is not only functional but also
+                        super stylish! We get compliments every time we go for a walk in the rain. Fast shipping too!"
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Instagram Feed -->
+    <section class="py-16">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-4">Follow Us on Instagram</h2>
+            <p class="text-center text-gray-600 mb-10">Tag your photos with #PawFashion for a chance to be featured</p>
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4">
+                <div class="relative group overflow-hidden rounded-lg">
+                    <img src="https://readdy.ai/api/search-image?query=cute%20dog%20in%20fashionable%20outfit%20outdoors%2C%20Instagram%20style%20photo%2C%20high%20quality%2C%20bright%20lighting%2C%20pet%20fashion%2C%20lifestyle%20photography&width=300&height=300&seq=insta1&orientation=squarish"
+                        alt="Instagram Post"
+                        class="w-full h-40 object-cover transition-transform duration-300 group-hover:scale-110">
+                    <div
+                        class="absolute inset-0 bg-primary/60 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <div class="w-8 h-8 flex items-center justify-center text-white">
+                            <i class="ri-instagram-line text-xl"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative group overflow-hidden rounded-lg">
+                    <img src="https://readdy.ai/api/search-image?query=cat%20wearing%20sunglasses%2C%20Instagram%20style%20photo%2C%20high%20quality%2C%20bright%20lighting%2C%20pet%20fashion%2C%20lifestyle%20photography&width=300&height=300&seq=insta2&orientation=squarish"
+                        alt="Instagram Post"
+                        class="w-full h-40 object-cover transition-transform duration-300 group-hover:scale-110">
+                    <div
+                        class="absolute inset-0 bg-primary/60 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <div class="w-8 h-8 flex items-center justify-center text-white">
+                            <i class="ri-instagram-line text-xl"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative group overflow-hidden rounded-lg">
+                    <img src="https://readdy.ai/api/search-image?query=small%20dog%20in%20party%20hat%2C%20Instagram%20style%20photo%2C%20high%20quality%2C%20bright%20lighting%2C%20pet%20fashion%2C%20lifestyle%20photography&width=300&height=300&seq=insta3&orientation=squarish"
+                        alt="Instagram Post"
+                        class="w-full h-40 object-cover transition-transform duration-300 group-hover:scale-110">
+                    <div
+                        class="absolute inset-0 bg-primary/60 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <div class="w-8 h-8 flex items-center justify-center text-white">
+                            <i class="ri-instagram-line text-xl"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative group overflow-hidden rounded-lg">
+                    <img src="https://readdy.ai/api/search-image?query=cat%20in%20bow%20tie%2C%20Instagram%20style%20photo%2C%20high%20quality%2C%20bright%20lighting%2C%20pet%20fashion%2C%20lifestyle%20photography&width=300&height=300&seq=insta4&orientation=squarish"
+                        alt="Instagram Post"
+                        class="w-full h-40 object-cover transition-transform duration-300 group-hover:scale-110">
+                    <div
+                        class="absolute inset-0 bg-primary/60 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <div class="w-8 h-8 flex items-center justify-center text-white">
+                            <i class="ri-instagram-line text-xl"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative group overflow-hidden rounded-lg">
+                    <img src="https://readdy.ai/api/search-image?query=dog%20in%20winter%20sweater%2C%20Instagram%20style%20photo%2C%20high%20quality%2C%20bright%20lighting%2C%20pet%20fashion%2C%20lifestyle%20photography&width=300&height=300&seq=insta5&orientation=squarish"
+                        alt="Instagram Post"
+                        class="w-full h-40 object-cover transition-transform duration-300 group-hover:scale-110">
+                    <div
+                        class="absolute inset-0 bg-primary/60 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <div class="w-8 h-8 flex items-center justify-center text-white">
+                            <i class="ri-instagram-line text-xl"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative group overflow-hidden rounded-lg">
+                    <img src="https://readdy.ai/api/search-image?query=pet%20wearing%20bandana%2C%20Instagram%20style%20photo%2C%20high%20quality%2C%20bright%20lighting%2C%20pet%20fashion%2C%20lifestyle%20photography&width=300&height=300&seq=insta6&orientation=squarish"
+                        alt="Instagram Post"
+                        class="w-full h-40 object-cover transition-transform duration-300 group-hover:scale-110">
+                    <div
+                        class="absolute inset-0 bg-primary/60 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <div class="w-8 h-8 flex items-center justify-center text-white">
+                            <i class="ri-instagram-line text-xl"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Newsletter -->
+    <section class="py-16 bg-gradient-to-r from-pink-100 to-blue-50">
+        <div class="container mx-auto px-4">
+            <div class="max-w-2xl mx-auto text-center">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">Join Our Newsletter</h2>
+                <p class="text-gray-600 mb-8">Subscribe to get updates on new products, special offers, and cute pet
+                    fashion tips!</p>
+                <div class="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
+                    <input type="email" placeholder="Your email address"
+                        class="flex-grow px-4 py-3 rounded-lg border-none shadow-sm focus:ring-2 focus:ring-primary text-sm">
+                    <button
+                        class="bg-primary text-white px-6 py-3 rounded-button font-medium shadow-md hover:shadow-lg transition-all whitespace-nowrap">Subscribe</button>
+                </div>
+                <div class="mt-4 flex items-center justify-center">
+                    <input type="checkbox" id="consent" class="custom-checkbox">
+                    <label for="consent" class="ml-2 text-sm text-gray-600">I agree to receive marketing emails from
+                        PawFashion</label>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Footer -->
+    <footer class="bg-white pt-16 pb-8 border-t border-gray-100">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+                <div>
+                    <a href="#" class="inline-block mb-4">
+                        <span class="text-3xl font-['Pacifico'] text-primary">PawFashion</span>
+                    </a>
+                    <p class="text-gray-600 mb-4">Stylish, comfortable, and adorable fashion for your beloved pets.</p>
+                    <div class="flex space-x-4">
+                        <a href="#"
+                            class="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center text-gray-600 hover:bg-primary hover:text-white transition-colors">
+                            <i class="ri-facebook-fill"></i>
+                        </a>
+                        <a href="#"
+                            class="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center text-gray-600 hover:bg-primary hover:text-white transition-colors">
+                            <i class="ri-instagram-line"></i>
+                        </a>
+                        <a href="#"
+                            class="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center text-gray-600 hover:bg-primary hover:text-white transition-colors">
+                            <i class="ri-twitter-x-line"></i>
+                        </a>
+                        <a href="#"
+                            class="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center text-gray-600 hover:bg-primary hover:text-white transition-colors">
+                            <i class="ri-pinterest-line"></i>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold text-gray-800 mb-4">Shop</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-600 hover:text-primary">Dogs</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-primary">Cats</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-primary">Clothing</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-primary">Accessories</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-primary">New Arrivals</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-primary">Sale</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold text-gray-800 mb-4">Help</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-600 hover:text-primary">Size Guide</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-primary">Shipping & Returns</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-primary">FAQs</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-primary">Contact Us</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-primary">Privacy Policy</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-primary">Terms of Service</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold text-gray-800 mb-4">Contact</h4>
+                    <ul class="space-y-2">
+                        <li class="flex items-start">
+                            <div class="w-5 h-5 flex items-center justify-center mt-1 mr-2 text-primary">
+                                <i class="ri-map-pin-line"></i>
+                            </div>
+                            <span class="text-gray-600">123 Pet Street, Fashion Avenue, NY 10001, USA</span>
+                        </li>
+                        <li class="flex items-center">
+                            <div class="w-5 h-5 flex items-center justify-center mr-2 text-primary">
+                                <i class="ri-phone-line"></i>
+                            </div>
+                            <span class="text-gray-600">+1 (555) 123-4567</span>
+                        </li>
+                        <li class="flex items-center">
+                            <div class="w-5 h-5 flex items-center justify-center mr-2 text-primary">
+                                <i class="ri-mail-line"></i>
+                            </div>
+                            <span class="text-gray-600">hello@pawfashion.com</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="pt-8 border-t border-gray-100">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <p class="text-sm text-gray-500 mb-4 md:mb-0">© 2025 PawFashion. All rights reserved.</p>
+                    <div class="flex items-center space-x-4">
+                        <div class="w-8 h-5 flex items-center justify-center">
+                            <i class="ri-visa-fill text-gray-600"></i>
+                        </div>
+                        <div class="w-8 h-5 flex items-center justify-center">
+                            <i class="ri-mastercard-fill text-gray-600"></i>
+                        </div>
+                        <div class="w-8 h-5 flex items-center justify-center">
+                            <i class="ri-paypal-fill text-gray-600"></i>
+                        </div>
+                        <div class="w-8 h-5 flex items-center justify-center">
+                            <i class="ri-apple-fill text-gray-600"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Back to top button -->
+    <button id="backToTop"
+        class="fixed bottom-6 right-6 w-12 h-12 bg-primary text-white rounded-full shadow-lg flex items-center justify-center opacity-0 invisible transition-all duration-300 !rounded-full whitespace-nowrap">
+        <i class="ri-arrow-up-line text-xl"></i>
+    </button>
+    <script id="backToTopScript">
+        document.addEventListener("DOMContentLoaded", function () {
+            const backToTopButton = document.getElementById("backToTop");
+            window.addEventListener("scroll", function () {
+                if (window.pageYOffset > 300) {
+                    backToTopButton.classList.remove("opacity-0", "invisible");
+                    backToTopButton.classList.add("opacity-100", "visible");
+                } else {
+                    backToTopButton.classList.remove("opacity-100", "visible");
+                    backToTopButton.classList.add("opacity-0", "invisible");
+                }
+            });
+            backToTopButton.addEventListener("click", function () {
+                window.scrollTo({
+                    top: 0,
+                    behavior: "smooth",
+                });
+            });
+        });
+    </script>
+    <script id="userMenuScript">
+        document.addEventListener("DOMContentLoaded", function () {
+            const userMenuContainer = document.getElementById("userMenuContainer");
+            const userDropdown = document.getElementById("userDropdown");
+            let isDropdownOpen = false;
+            userMenuContainer.addEventListener("click", function (e) {
+                e.stopPropagation();
+                isDropdownOpen = !isDropdownOpen;
+                if (isDropdownOpen) {
+                    userDropdown.classList.remove("invisible", "opacity-0", "-translate-y-2");
+                    userDropdown.classList.add("visible", "opacity-100", "translate-y-0");
+                } else {
+                    userDropdown.classList.remove("visible", "opacity-100", "translate-y-0");
+                    userDropdown.classList.add("invisible", "opacity-0", "-translate-y-2");
+                }
+            });
+            document.addEventListener("click", function (e) {
+                if (!userMenuContainer.contains(e.target) && isDropdownOpen) {
+                    isDropdownOpen = false;
+                    userDropdown.classList.remove("visible", "opacity-100", "translate-y-0");
+                    userDropdown.classList.add("invisible", "opacity-0", "-translate-y-2");
+                }
+            });
+        });
+    </script>
+    <script id="productInteractionScript">
+        document.addEventListener("DOMContentLoaded", function () {
+            const heartIcons = document.querySelectorAll(".ri-heart-line");
+            heartIcons.forEach((icon) => {
+                icon.addEventListener("click", function (e) {
+                    e.stopPropagation();
+                    if (this.classList.contains("ri-heart-line")) {
+                        this.classList.remove("ri-heart-line");
+                        this.classList.add("ri-heart-fill", "text-red-500");
+                    } else {
+                        this.classList.remove("ri-heart-fill", "text-red-500");
+                        this.classList.add("ri-heart-line");
+                    }
+                });
+            });
+            const addToCartButtons = document.querySelectorAll(".ri-shopping-bag-line");
+            addToCartButtons.forEach((button) => {
+                button.parentElement.addEventListener("click", function () {
+                    const cartCount = document.querySelector(".ri-shopping-bag-line")
+                        .parentElement.nextElementSibling;
+                    const currentCount = parseInt(cartCount.textContent);
+                    cartCount.textContent = currentCount + 1;
+                    const productName =
+                        this.closest(".product-card").querySelector("h3").textContent;
+                    const notification = document.createElement("div");
+                    notification.className =
+                        "fixed top-20 right-4 bg-white shadow-lg rounded-lg p-4 z-50 transform translate-x-full opacity-0 transition-all duration-500";
+                    notification.innerHTML = `
+<div class="flex items-center">
+<div class="w-8 h-8 flex items-center justify-center bg-primary/20 rounded-full mr-3">
+<i class="ri-check-line text-primary"></i>
+</div>
+<div>
+<p class="font-medium text-gray-800">${productName}</p>
+<p class="text-sm text-gray-600">Added to cart</p>
+</div>
+</div>
+`;
+                    document.body.appendChild(notification);
+                    setTimeout(() => {
+                        notification.classList.remove("translate-x-full", "opacity-0");
+                    }, 100);
+                    setTimeout(() => {
+                        notification.classList.add("translate-x-full", "opacity-0");
+                        setTimeout(() => {
+                            notification.remove();
+                        }, 500);
+                    }, 3000);
+                });
+            });
+        });
+    </script>
+    <!-- Cart Page -->
+    <div id="cartPage" class="fixed inset-0 bg-black/50 z-50 hidden">
+        <div
+            class="fixed inset-y-0 right-0 max-w-2xl w-full bg-white shadow-xl flex flex-col transform transition-transform duration-300 translate-x-full">
+            <div class="flex items-center justify-between p-4 border-b">
+                <h2 class="text-2xl font-bold text-gray-800">Shopping Cart</h2>
+                <button id="closeCart"
+                    class="w-10 h-10 flex items-center justify-center text-gray-500 hover:text-gray-700">
+                    <i class="ri-close-line text-2xl"></i>
+                </button>
+            </div>
+            <div id="cartContent" class="flex-grow overflow-y-auto p-4">
+                <div id="cartItems" class="space-y-4">
+                    <div class="flex items-center bg-white rounded-lg p-4 border">
+                        <img src="https://readdy.ai/api/search-image?query=cute%20pink%20sweater%20for%20small%20dog%2C%20professional%20product%20photography%20on%20white%20background%2C%20high%20quality%2C%20studio%20lighting%2C%20adorable%20pet%20fashion%2C%20clear%20details&width=200&height=200&seq=cart1&orientation=squarish"
+                            alt="Cozy Pink Sweater" class="w-20 h-20 object-cover rounded-lg">
+                        <div class="ml-4 flex-grow">
+                            <h3 class="font-semibold text-gray-800">Cozy Pink Sweater</h3>
+                            <p class="text-sm text-gray-500">Size: Small</p>
+                            <div class="flex items-center justify-between mt-2">
+                                <span class="font-bold text-gray-800">$24.99</span>
+                                <div class="flex items-center border rounded-full">
+                                    <button
+                                        class="w-8 h-8 flex items-center justify-center text-gray-500 hover:text-primary">
+                                        <i class="ri-subtract-line"></i>
+                                    </button>
+                                    <span class="w-8 text-center">1</span>
+                                    <button
+                                        class="w-8 h-8 flex items-center justify-center text-gray-500 hover:text-primary">
+                                        <i class="ri-add-line"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="ml-4 w-8 h-8 flex items-center justify-center text-gray-400 hover:text-red-500">
+                            <i class="ri-delete-bin-line"></i>
+                        </button>
+                    </div>
+                    <div class="flex items-center bg-white rounded-lg p-4 border">
+                        <img src="https://readdy.ai/api/search-image?query=elegant%20bowtie%20collar%20for%20cat%2C%20professional%20product%20photography%20on%20white%20background%2C%20high%20quality%2C%20studio%20lighting%2C%20adorable%20pet%20fashion%2C%20clear%20details&width=200&height=200&seq=cart2&orientation=squarish"
+                            alt="Elegant Bowtie Collar" class="w-20 h-20 object-cover rounded-lg">
+                        <div class="ml-4 flex-grow">
+                            <h3 class="font-semibold text-gray-800">Elegant Bowtie Collar</h3>
+                            <p class="text-sm text-gray-500">Size: Universal</p>
+                            <div class="flex items-center justify-between mt-2">
+                                <span class="font-bold text-gray-800">$14.99</span>
+                                <div class="flex items-center border rounded-full">
+                                    <button
+                                        class="w-8 h-8 flex items-center justify-center text-gray-500 hover:text-primary">
+                                        <i class="ri-subtract-line"></i>
+                                    </button>
+                                    <span class="w-8 text-center">2</span>
+                                    <button
+                                        class="w-8 h-8 flex items-center justify-center text-gray-500 hover:text-primary">
+                                        <i class="ri-add-line"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="ml-4 w-8 h-8 flex items-center justify-center text-gray-400 hover:text-red-500">
+                            <i class="ri-delete-bin-line"></i>
+                        </button>
+                    </div>
+                </div>
+                <div id="emptyCart" class="hidden flex flex-col items-center justify-center py-12">
+                    <div class="w-24 h-24 bg-pink-50 rounded-full flex items-center justify-center mb-4">
+                        <i class="ri-shopping-bag-line text-4xl text-primary"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">Your cart is empty</h3>
+                    <p class="text-gray-600 text-center mb-6">Looks like you haven't added any items to your cart yet
+                    </p>
+                    <button
+                        class="bg-primary text-white px-6 py-3 rounded-button font-medium shadow-md hover:shadow-lg transition-all whitespace-nowrap">
+                        Start Shopping
+                    </button>
+                </div>
+            </div>
+            <div class="border-t p-4">
+                <div class="space-y-3 mb-4">
+                    <div class="flex justify-between text-gray-600">
+                        <span>Subtotal</span>
+                        <span class="font-medium text-gray-800">$54.97</span>
+                    </div>
+                    <div class="flex justify-between text-gray-600">
+                        <span>Shipping</span>
+                        <span class="font-medium text-gray-800">Free</span>
+                    </div>
+                    <div class="flex justify-between text-lg font-bold text-gray-800 pt-3 border-t">
+                        <span>Total</span>
+                        <span>$54.97</span>
+                    </div>
+                </div>
+                <a href="https://readdy.ai/home/57732b66-6a4c-477f-ab49-f7a997048a41/30c4d925-2d57-404c-9a89-0bbb4bcb18cc"
+                    data-readdy="true">
+                    <button
+                        class="w-full bg-primary text-white py-3 rounded-button font-medium shadow-md hover:shadow-lg transition-all mb-3 whitespace-nowrap">
+                        Proceed to Checkout
+                    </button>
+                </a>
+                <button id="continueShopping"
+                    class="w-full bg-white text-primary border border-primary py-3 rounded-button font-medium shadow-sm hover:shadow-md transition-all whitespace-nowrap">
+                    Continue Shopping
+                </button>
+            </div>
+        </div>
+    </div>
+    <script id="cartScript">
+        document.addEventListener("DOMContentLoaded", function () {
+            const cartPage = document.getElementById("cartPage");
+            const cartSlider = cartPage.querySelector(".transform");
+            const closeCart = document.getElementById("closeCart");
+            const continueShopping = document.getElementById("continueShopping");
+            const cartButtons = document.querySelectorAll(".ri-shopping-bag-line");
+            function openCart() {
+                cartPage.classList.remove("hidden");
+                setTimeout(() => {
+                    cartSlider.classList.remove("translate-x-full");
+                }, 10);
+            }
+            function closeCartModal() {
+                cartSlider.classList.add("translate-x-full");
+                setTimeout(() => {
+                    cartPage.classList.add("hidden");
+                }, 300);
+            }
+            cartButtons.forEach((button) => {
+                button.parentElement.addEventListener("click", function (e) {
+                    e.preventDefault();
+                    openCart();
+                });
+            });
+            closeCart.addEventListener("click", closeCartModal);
+            continueShopping.addEventListener("click", closeCartModal);
+            cartPage.addEventListener("click", function (e) {
+                if (e.target === cartPage) {
+                    closeCartModal();
+                }
+            });
+            const quantityButtons = document.querySelectorAll(
+                ".ri-add-line, .ri-subtract-line",
+            );
+            quantityButtons.forEach((button) => {
+                button.parentElement.addEventListener("click", function () {
+                    const quantitySpan = this.parentElement.querySelector("span");
+                    let quantity = parseInt(quantitySpan.textContent);
+                    if (button.classList.contains("ri-add-line")) {
+                        quantity++;
+                    } else if (quantity > 1) {
+                        quantity--;
+                    }
+                    quantitySpan.textContent = quantity;
+                    updateTotal();
+                });
+            });
+            const deleteButtons = document.querySelectorAll(".ri-delete-bin-line");
+            deleteButtons.forEach((button) => {
+                button.parentElement.addEventListener("click", function () {
+                    const cartItem = this.closest(".flex.items-center");
+                    cartItem.style.opacity = "0";
+                    setTimeout(() => {
+                        cartItem.remove();
+                        checkEmptyCart();
+                        updateTotal();
+                    }, 300);
+                });
+            });
+            function checkEmptyCart() {
+                const cartItems = document.getElementById("cartItems");
+                const emptyCart = document.getElementById("emptyCart");
+                if (cartItems.children.length === 0) {
+                    cartItems.classList.add("hidden");
+                    emptyCart.classList.remove("hidden");
+                } else {
+                    cartItems.classList.remove("hidden");
+                    emptyCart.classList.add("hidden");
+                }
+            }
+            function updateTotal() {
+                const cartItems = document.querySelectorAll("#cartItems > div");
+                let subtotal = 0;
+                cartItems.forEach((item) => {
+                    const price = parseFloat(
+                        item.querySelector(".font-bold").textContent.replace("$", ""),
+                    );
+                    const quantity = parseInt(
+                        item.querySelector(".w-8.text-center").textContent,
+                    );
+                    subtotal += price * quantity;
+                });
+                document.querySelector(".space-y-3 .font-medium").textContent =
+                    `$${subtotal.toFixed(2)}`;
+                document.querySelector(
+                    ".font-bold.text-gray-800 span:last-child",
+                ).textContent = `$${subtotal.toFixed(2)}`;
+            }
+        });
+    </script>
+    <!-- Create Account Modal -->
+    <div id="createAccountModal" class="fixed inset-0 bg-black/50 z-50 hidden">
+        <div class="fixed inset-0 flex items-center justify-center p-4">
+            <div
+                class="bg-white rounded-xl shadow-xl max-w-md w-full transform transition-all duration-300 scale-95 opacity-0">
+                <div class="p-6">
+                    <div class="flex justify-between items-center mb-6">
+                        <h2 class="text-2xl font-bold text-gray-800">Create Account</h2>
+                        <button
+                            class="closeModal w-10 h-10 flex items-center justify-center text-gray-500 hover:text-gray-700">
+                            <i class="ri-close-line text-2xl"></i>
+                        </button>
+                    </div>
+                    <form id="createAccountForm" class="space-y-4">
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <label for="firstName" class="block text-sm font-medium text-gray-700 mb-1">First
+                                    Name</label>
+                                <input type="text" id="firstName" name="firstName" required
+                                    class="w-full px-4 py-2 rounded-lg border-gray-200 focus:ring-2 focus:ring-primary text-sm"
+                                    placeholder="Enter first name">
+                            </div>
+                            <div>
+                                <label for="lastName" class="block text-sm font-medium text-gray-700 mb-1">Last
+                                    Name</label>
+                                <input type="text" id="lastName" name="lastName" required
+                                    class="w-full px-4 py-2 rounded-lg border-gray-200 focus:ring-2 focus:ring-primary text-sm"
+                                    placeholder="Enter last name">
+                            </div>
+                        </div>
+                        <div>
+                            <label for="newEmail" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                            <input type="email" id="newEmail" name="email" required
+                                class="w-full px-4 py-2 rounded-lg border-gray-200 focus:ring-2 focus:ring-primary text-sm"
+                                placeholder="Enter your email">
+                        </div>
+                        <div>
+                            <label for="newPassword"
+                                class="block text-sm font-medium text-gray-700 mb-1">Password</label>
+                            <input type="password" id="newPassword" name="password" required
+                                class="w-full px-4 py-2 rounded-lg border-gray-200 focus:ring-2 focus:ring-primary text-sm"
+                                placeholder="Create password">
+                        </div>
+                        <div>
+                            <label for="confirmPassword" class="block text-sm font-medium text-gray-700 mb-1">Confirm
+                                Password</label>
+                            <input type="password" id="confirmPassword" name="confirmPassword" required
+                                class="w-full px-4 py-2 rounded-lg border-gray-200 focus:ring-2 focus:ring-primary text-sm"
+                                placeholder="Confirm password">
+                        </div>
+                        <div class="flex items-center">
+                            <input type="checkbox" id="terms" required class="custom-checkbox">
+                            <label for="terms" class="ml-2 text-sm text-gray-600">I agree to the <a href="#"
+                                    class="text-primary hover:underline">Terms of Service</a> and <a href="#"
+                                    class="text-primary hover:underline">Privacy Policy</a></label>
+                        </div>
+                        <button type="submit"
+                            class="w-full bg-primary text-white py-2 rounded-button font-medium shadow-md hover:shadow-lg transition-all whitespace-nowrap">Create
+                            Account</button>
+                    </form>
+                    <div class="mt-6 text-center">
+                        <p class="text-sm text-gray-600">Already have an account? <a href="#"
+                                class="text-primary hover:underline" id="switchToSignIn">Sign In</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- My Profile Modal -->
+    <div id="myProfileModal" class="fixed inset-0 bg-black/50 z-50 hidden">
+        <div class="fixed inset-0 flex items-center justify-center p-4">
+            <div
+                class="bg-white rounded-xl shadow-xl max-w-4xl w-full h-[80vh] transform transition-all duration-300 scale-95 opacity-0">
+                <div class="flex flex-col h-full">
+                    <div class="flex justify-between items-center p-6 border-b">
+                        <h2 class="text-2xl font-bold text-gray-800">My Profile</h2>
+                        <button
+                            class="closeModal w-10 h-10 flex items-center justify-center text-gray-500 hover:text-gray-700">
+                            <i class="ri-close-line text-2xl"></i>
+                        </button>
+                    </div>
+                    <div class="flex-grow overflow-y-auto">
+                        <div class="grid grid-cols-1 md:grid-cols-3 h-full">
+                            <div class="p-6 border-r">
+                                <div class="flex flex-col items-center text-center">
+                                    <div
+                                        class="w-24 h-24 bg-primary/20 rounded-full flex items-center justify-center mb-4">
+                                        <span class="text-2xl font-bold text-primary">JD</span>
+                                    </div>
+                                    <h3 class="text-xl font-bold text-gray-800 mb-1">John Doe</h3>
+                                    <p class="text-gray-500 mb-4">john.doe@example.com</p>
+                                    <button class="text-sm text-primary hover:underline">Change Profile Picture</button>
+                                </div>
+                                <nav class="mt-8">
+                                    <button
+                                        class="w-full text-left px-4 py-2 rounded-lg bg-primary/10 text-primary font-medium mb-2">Profile
+                                        Information</button>
+                                    <button
+                                        class="w-full text-left px-4 py-2 rounded-lg text-gray-600 hover:bg-gray-50 font-medium mb-2">Address
+                                        Book</button>
+                                    <button
+                                        class="w-full text-left px-4 py-2 rounded-lg text-gray-600 hover:bg-gray-50 font-medium mb-2">Payment
+                                        Methods</button>
+                                    <button
+                                        class="w-full text-left px-4 py-2 rounded-lg text-gray-600 hover:bg-gray-50 font-medium mb-2">Notifications</button>
+                                    <button
+                                        class="w-full text-left px-4 py-2 rounded-lg text-gray-600 hover:bg-gray-50 font-medium">Security</button>
+                                </nav>
+                            </div>
+                            <div class="md:col-span-2 p-6">
+                                <div class="max-w-lg">
+                                    <h3 class="text-lg font-bold text-gray-800 mb-4">Profile Information</h3>
+                                    <form id="profileForm" class="space-y-4">
+                                        <div class="grid grid-cols-2 gap-4">
+                                            <div>
+                                                <label class="block text-sm font-medium text-gray-700 mb-1">First
+                                                    Name</label>
+                                                <input type="text" value="John"
+                                                    class="w-full px-4 py-2 rounded-lg border-gray-200 focus:ring-2 focus:ring-primary text-sm">
+                                            </div>
+                                            <div>
+                                                <label class="block text-sm font-medium text-gray-700 mb-1">Last
+                                                    Name</label>
+                                                <input type="text" value="Doe"
+                                                    class="w-full px-4 py-2 rounded-lg border-gray-200 focus:ring-2 focus:ring-primary text-sm">
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <label class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                                            <input type="email" value="john.doe@example.com"
+                                                class="w-full px-4 py-2 rounded-lg border-gray-200 focus:ring-2 focus:ring-primary text-sm">
+                                        </div>
+                                        <div>
+                                            <label class="block text-sm font-medium text-gray-700 mb-1">Phone
+                                                Number</label>
+                                            <input type="tel" value="+1 (555) 123-4567"
+                                                class="w-full px-4 py-2 rounded-lg border-gray-200 focus:ring-2 focus:ring-primary text-sm">
+                                        </div>
+                                        <div>
+                                            <label class="block text-sm font-medium text-gray-700 mb-1">Date of
+                                                Birth</label>
+                                            <input type="date" value="1990-01-01"
+                                                class="w-full px-4 py-2 rounded-lg border-gray-200 focus:ring-2 focus:ring-primary text-sm">
+                                        </div>
+                                        <div>
+                                            <label class="block text-sm font-medium text-gray-700 mb-1">Bio</label>
+                                            <textarea
+                                                class="w-full px-4 py-2 rounded-lg border-gray-200 focus:ring-2 focus:ring-primary text-sm"
+                                                rows="4">Pet lover and fashion enthusiast. Always looking for the best styles for my furry friends.</textarea>
+                                        </div>
+                                        <div class="flex items-center justify-between pt-4">
+                                            <button type="button"
+                                                class="text-gray-600 hover:text-gray-800">Cancel</button>
+                                            <button type="submit"
+                                                class="bg-primary text-white px-6 py-2 rounded-button font-medium shadow-md hover:shadow-lg transition-all whitespace-nowrap">Save
+                                                Changes</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+        <!-- Sign In Modal -->
+        <div id="signInModal" class="fixed inset-0 bg-black/50 z-50 hidden">
+            <div class="fixed inset-0 flex items-center justify-center p-4">
+                <div
+                    class="bg-white rounded-xl shadow-xl max-w-md w-full transform transition-all duration-300 scale-95 opacity-0">
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-6">
+                            <h2 class="text-2xl font-bold text-gray-800">Sign In</h2>
+                            <button
+                                class="closeModal w-10 h-10 flex items-center justify-center text-gray-500 hover:text-gray-700">
+                                <i class="ri-close-line text-2xl"></i>
+                            </button>
+                        </div>
+                        <form id="signInForm" class="space-y-4">
+                            <div>
+                                <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                                <input type="email" id="email" name="email" required
+                                    class="w-full px-4 py-2 rounded-lg border-gray-200 focus:ring-2 focus:ring-primary text-sm"
+                                    placeholder="Enter your email">
+                            </div>
+                            <div>
+                                <label for="password"
+                                    class="block text-sm font-medium text-gray-700 mb-1">Password</label>
+                                <input type="password" id="password" name="password" required
+                                    class="w-full px-4 py-2 rounded-lg border-gray-200 focus:ring-2 focus:ring-primary text-sm"
+                                    placeholder="Enter your password">
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center">
+                                    <input type="checkbox" id="remember" class="custom-checkbox">
+                                    <label for="remember" class="ml-2 text-sm text-gray-600">Remember me</label>
+                                </div>
+                                <a href="#" class="text-sm text-primary hover:underline">Forgot password?</a>
+                            </div>
+                            <button type="submit"
+                                class="w-full bg-primary text-white py-2 rounded-button font-medium shadow-md hover:shadow-lg transition-all whitespace-nowrap">Sign
+                                In</button>
+                        </form>
+                        <div class="mt-6 text-center">
+                            <p class="text-sm text-gray-600">Don't have an account? <a href="#"
+                                    class="text-primary hover:underline">Create Account</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- My Orders Modal -->
+        <div id="myOrdersModal" class="fixed inset-0 bg-black/50 z-50 hidden">
+            <div class="fixed inset-0 flex items-center justify-center p-4">
+                <div
+                    class="bg-white rounded-xl shadow-xl max-w-4xl w-full h-[80vh] transform transition-all duration-300 scale-95 opacity-0">
+                    <div class="flex flex-col h-full">
+                        <div class="flex justify-between items-center p-6 border-b">
+                            <h2 class="text-2xl font-bold text-gray-800">My Orders</h2>
+                            <button
+                                class="closeModal w-10 h-10 flex items-center justify-center text-gray-500 hover:text-gray-700">
+                                <i class="ri-close-line text-2xl"></i>
+                            </button>
+                        </div>
+                        <div class="flex-grow overflow-y-auto p-6">
+                            <div class="space-y-6">
+                                <!-- Order Item -->
+                                <div class="bg-white rounded-lg border p-6">
+                                    <div class="flex justify-between items-start mb-4">
+                                        <div>
+                                            <div class="flex items-center gap-3 mb-2">
+                                                <span class="text-sm font-medium text-gray-500">Order #12345</span>
+                                                <span
+                                                    class="px-2 py-1 text-xs font-medium text-green-700 bg-green-100 rounded-full">Delivered</span>
+                                            </div>
+                                            <p class="text-sm text-gray-500">Placed on June 5, 2025</p>
+                                        </div>
+                                        <button class="text-primary hover:underline text-sm">View Details</button>
+                                    </div>
+                                    <div class="flex items-center gap-4">
+                                        <img src="https://readdy.ai/api/search-image?query=cute%20pink%20sweater%20for%20small%20dog%2C%20professional%20product%20photography%20on%20white%20background%2C%20high%20quality%2C%20studio%20lighting%2C%20adorable%20pet%20fashion%2C%20clear%20details&width=100&height=100&seq=order1&orientation=squarish"
+                                            alt="Product" class="w-20 h-20 object-cover rounded-lg">
+                                        <div>
+                                            <h3 class="font-medium text-gray-800">Cozy Pink Sweater</h3>
+                                            <p class="text-sm text-gray-500">Size: Small</p>
+                                            <p class="text-sm font-medium text-gray-800 mt-1">$24.99</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Order Item -->
+                                <div class="bg-white rounded-lg border p-6">
+                                    <div class="flex justify-between items-start mb-4">
+                                        <div>
+                                            <div class="flex items-center gap-3 mb-2">
+                                                <span class="text-sm font-medium text-gray-500">Order #12344</span>
+                                                <span
+                                                    class="px-2 py-1 text-xs font-medium text-blue-700 bg-blue-100 rounded-full">In
+                                                    Transit</span>
+                                            </div>
+                                            <p class="text-sm text-gray-500">Placed on June 3, 2025</p>
+                                        </div>
+                                        <button class="text-primary hover:underline text-sm">View Details</button>
+                                    </div>
+                                    <div class="flex items-center gap-4">
+                                        <img src="https://readdy.ai/api/search-image?query=elegant%20bowtie%20collar%20for%20cat%2C%20professional%20product%20photography%20on%20white%20background%2C%20high%20quality%2C%20studio%20lighting%2C%20adorable%20pet%20fashion%2C%20clear%20details&width=100&height=100&seq=order2&orientation=squarish"
+                                            alt="Product" class="w-20 h-20 object-cover rounded-lg">
+                                        <div>
+                                            <h3 class="font-medium text-gray-800">Elegant Bowtie Collar</h3>
+                                            <p class="text-sm text-gray-500">Size: Universal</p>
+                                            <p class="text-sm font-medium text-gray-800 mt-1">$14.99</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Order Item -->
+                                <div class="bg-white rounded-lg border p-6">
+                                    <div class="flex justify-between items-start mb-4">
+                                        <div>
+                                            <div class="flex items-center gap-3 mb-2">
+                                                <span class="text-sm font-medium text-gray-500">Order #12343</span>
+                                                <span
+                                                    class="px-2 py-1 text-xs font-medium text-gray-700 bg-gray-100 rounded-full">Cancelled</span>
+                                            </div>
+                                            <p class="text-sm text-gray-500">Placed on May 29, 2025</p>
+                                        </div>
+                                        <button class="text-primary hover:underline text-sm">View Details</button>
+                                    </div>
+                                    <div class="flex items-center gap-4">
+                                        <img src="https://readdy.ai/api/search-image?query=small%20dog%20wearing%20a%20denim%20jacket%2C%20professional%20product%20photography%20on%20white%20background%2C%20high%20quality%2C%20studio%20lighting%2C%20adorable%20pet%20fashion%2C%20clear%20details&width=100&height=100&seq=order3&orientation=squarish"
+                                            alt="Product" class="w-20 h-20 object-cover rounded-lg">
+                                        <div>
+                                            <h3 class="font-medium text-gray-800">Denim Jacket</h3>
+                                            <p class="text-sm text-gray-500">Size: Medium</p>
+                                            <p class="text-sm font-medium text-gray-800 mt-1">$27.99</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script id="modalScript">
+            document.addEventListener("DOMContentLoaded", function () {
+                const signInLink = document.getElementById("signInLink");
+                const myOrdersLink = document.getElementById("myOrdersLink");
+                const createAccountLink = document.querySelector(
+                    'a[href="#"].text-primary.hover\\:underline',
+                );
+                const myProfileLink = document.querySelector(
+                    'a[href="#"].flex.items-center.px-4.py-2.text-gray-700.hover\\:bg-pink-50.hover\\:text-primary',
+                );
+                const signInModal = document.getElementById("signInModal");
+                const myOrdersModal = document.getElementById("myOrdersModal");
+                const createAccountModal = document.getElementById("createAccountModal");
+                const myProfileModal = document.getElementById("myProfileModal");
+                const closeButtons = document.querySelectorAll(".closeModal");
+                const modals = [
+                    signInModal,
+                    myOrdersModal,
+                    createAccountModal,
+                    myProfileModal,
+                ];
+                const switchToSignIn = document.getElementById("switchToSignIn");
+                function openModal(modal) {
+                    modal.classList.remove("hidden");
+                    setTimeout(() => {
+                        const modalContent = modal.querySelector(".transform");
+                        modalContent.classList.remove("scale-95", "opacity-0");
+                        modalContent.classList.add("scale-100", "opacity-100");
+                    }, 10);
+                }
+                function closeModal(modal) {
+                    const modalContent = modal.querySelector(".transform");
+                    modalContent.classList.remove("scale-100", "opacity-100");
+                    modalContent.classList.add("scale-95", "opacity-0");
+                    setTimeout(() => {
+                        modal.classList.add("hidden");
+                    }, 300);
+                }
+                signInLink.addEventListener("click", (e) => {
+                    e.preventDefault();
+                    openModal(signInModal);
+                });
+                myOrdersLink.addEventListener("click", (e) => {
+                    e.preventDefault();
+                    openModal(myOrdersModal);
+                });
+                createAccountLink.addEventListener("click", (e) => {
+                    e.preventDefault();
+                    closeModal(signInModal);
+                    openModal(createAccountModal);
+                });
+                myProfileLink.addEventListener("click", (e) => {
+                    e.preventDefault();
+                    openModal(myProfileModal);
+                });
+                switchToSignIn.addEventListener("click", (e) => {
+                    e.preventDefault();
+                    closeModal(createAccountModal);
+                    openModal(signInModal);
+                });
+                const createAccountForm = document.getElementById("createAccountForm");
+                createAccountForm.addEventListener("submit", (e) => {
+                    e.preventDefault();
+                    const firstName = document.getElementById("firstName").value;
+                    const lastName = document.getElementById("lastName").value;
+                    const email = document.getElementById("newEmail").value;
+                    const password = document.getElementById("newPassword").value;
+                    const confirmPassword = document.getElementById("confirmPassword").value;
+                    if (password !== confirmPassword) {
+                        const notification = document.createElement("div");
+                        notification.className =
+                            "fixed top-20 right-4 bg-white shadow-lg rounded-lg p-4 z-50 transform translate-x-full opacity-0 transition-all duration-500";
+                        notification.innerHTML = `
+<div class="flex items-center">
+<div class="w-8 h-8 flex items-center justify-center bg-red-100 rounded-full mr-3">
+<i class="ri-error-warning-line text-red-500"></i>
+</div>
+<div>
+<p class="font-medium text-gray-800">Passwords do not match</p>
+<p class="text-sm text-gray-600">Please try again</p>
+</div>
+</div>
+`;
+                        document.body.appendChild(notification);
+                        setTimeout(() => {
+                            notification.classList.remove("translate-x-full", "opacity-0");
+                        }, 100);
+                        setTimeout(() => {
+                            notification.classList.add("translate-x-full", "opacity-0");
+                            setTimeout(() => {
+                                notification.remove();
+                            }, 500);
+                        }, 3000);
+                        return;
+                    }
+                    if (firstName && lastName && email && password) {
+                        const notification = document.createElement("div");
+                        notification.className =
+                            "fixed top-20 right-4 bg-white shadow-lg rounded-lg p-4 z-50 transform translate-x-full opacity-0 transition-all duration-500";
+                        notification.innerHTML = `
+<div class="flex items-center">
+<div class="w-8 h-8 flex items-center justify-center bg-primary/20 rounded-full mr-3">
+<i class="ri-check-line text-primary"></i>
+</div>
+<div>
+<p class="font-medium text-gray-800">Welcome to PawFashion!</p>
+<p class="text-sm text-gray-600">Account created successfully</p>
+</div>
+</div>
+`;
+                        document.body.appendChild(notification);
+                        setTimeout(() => {
+                            notification.classList.remove("translate-x-full", "opacity-0");
+                        }, 100);
+                        setTimeout(() => {
+                            notification.classList.add("translate-x-full", "opacity-0");
+                            setTimeout(() => {
+                                notification.remove();
+                            }, 500);
+                        }, 3000);
+                        closeModal(createAccountModal);
+                    }
+                });
+                const profileForm = document.getElementById("profileForm");
+                profileForm.addEventListener("submit", (e) => {
+                    e.preventDefault();
+                    const notification = document.createElement("div");
+                    notification.className =
+                        "fixed top-20 right-4 bg-white shadow-lg rounded-lg p-4 z-50 transform translate-x-full opacity-0 transition-all duration-500";
+                    notification.innerHTML = `
+<div class="flex items-center">
+<div class="w-8 h-8 flex items-center justify-center bg-primary/20 rounded-full mr-3">
+<i class="ri-check-line text-primary"></i>
+</div>
+<div>
+<p class="font-medium text-gray-800">Profile Updated</p>
+<p class="text-sm text-gray-600">Your changes have been saved</p>
+</div>
+</div>
+`;
+                    document.body.appendChild(notification);
+                    setTimeout(() => {
+                        notification.classList.remove("translate-x-full", "opacity-0");
+                    }, 100);
+                    setTimeout(() => {
+                        notification.classList.add("translate-x-full", "opacity-0");
+                        setTimeout(() => {
+                            notification.remove();
+                        }, 500);
+                    }, 3000);
+                });
+                closeButtons.forEach((button) => {
+                    button.addEventListener("click", () => {
+                        const modal = button.closest(".fixed.inset-0");
+                        closeModal(modal);
+                    });
+                });
+                modals.forEach((modal) => {
+                    modal.addEventListener("click", (e) => {
+                        if (e.target === modal) {
+                            closeModal(modal);
+                        }
+                    });
+                });
+                const signInForm = document.getElementById("signInForm");
+                signInForm.addEventListener("submit", (e) => {
+                    e.preventDefault();
+                    const email = document.getElementById("email").value;
+                    const password = document.getElementById("password").value;
+                    if (email && password) {
+                        const notification = document.createElement("div");
+                        notification.className =
+                            "fixed top-20 right-4 bg-white shadow-lg rounded-lg p-4 z-50 transform translate-x-full opacity-0 transition-all duration-500";
+                        notification.innerHTML = `
+<div class="flex items-center">
+<div class="w-8 h-8 flex items-center justify-center bg-primary/20 rounded-full mr-3">
+<i class="ri-check-line text-primary"></i>
+</div>
+<div>
+<p class="font-medium text-gray-800">Welcome back!</p>
+<p class="text-sm text-gray-600">Successfully signed in</p>
+</div>
+</div>
+`;
+                        document.body.appendChild(notification);
+                        setTimeout(() => {
+                            notification.classList.remove("translate-x-full", "opacity-0");
+                        }, 100);
+                        setTimeout(() => {
+                            notification.classList.add("translate-x-full", "opacity-0");
+                            setTimeout(() => {
+                                notification.remove();
+                            }, 500);
+                        }, 3000);
+                        closeModal(signInModal);
+                    }
+                });
+            });
+        </script>
+</body>
+
+</html>

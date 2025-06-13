@@ -1,0 +1,46 @@
+[
+  {
+    "id": 1,
+    "name": "Áo thun cotton cho chó",
+    "pet_type": "chó",
+    "size": ["S", "M", "XL", "XXL"],
+    "color": ["đỏ", "xanh", "cam"],
+    "material": "cotton",
+    "imgUrl": "dog_tshirt.png",
+    "price": 150000,
+    "stock": 50
+  },
+  {
+    "id": 2,
+    "name": "Yếm lông cho mèo",
+    "pet_type": "mèo",
+    "size": ["S", "M", "L"],
+    "color": ["trắng", "đen", "hồng"],
+    "material": "lông nhân tạo",
+    "imgUrl": "cat_harness.png",
+    "price": 200000,
+    "stock": 30
+  },
+  {
+    "id": 3,
+    "name": "Áo khoác mùa đông cho chó",
+    "pet_type": "chó",
+    "size": ["M", "L", "XL"],
+    "color": ["xám", "nâu"],
+    "material": "vải nỉ",
+    "imgUrl": "dog_jacket.png",
+    "price": 300000,
+    "stock": 20
+  },
+  {
+    "id": 4,
+    "name": "Vòng cổ lấp lánh cho mèo",
+    "pet_type": "mèo",
+    "size": ["S", "M"],
+    "color": ["bạc", "vàng"],
+    "material": "kim loại",
+    "imgUrl": "cat_collar.png",
+    "price": 100000,
+    "stock": 100
+  }
+]
