@@ -44,8 +44,8 @@ async function sendOrderConfirmationEmail(order) {
     <ul>
       <li><strong>Địa chỉ:</strong> ${infor.address}, ${infor.city}</li>
       <li><strong>Điện thoại:</strong> ${infor.phone}</li>
-      <li><strong>Giao hàng:</strong> ${infor.shippingMethod}</li>
-      <li><strong>Thanh toán:</strong> ${infor.paymentMethod}</li>
+      <li><strong>Giao hàng:</strong> ${infor.shippingMethod == "standard" ? "Giao hàng nhanh" : "Giao hàng hỏa tốc"}</li>
+      <li><strong>Thanh toán:</strong> ${infor.paymentMethod == "cashDelivered" ? "Thanh toán khi nhận hàng": "Thanh toán online"}</li>
       <li><strong>Ngày đặt:</strong> ${new Date(date).toLocaleString("vi-VN")}</li>
     </ul>
 
@@ -94,8 +94,8 @@ async function sendNewOrderToShop(order) {
     <p><strong>Địa chỉ:</strong> ${infor.address}, ${infor.city}</p>
 
     <ul>
-      <li><strong>Giao hàng:</strong> ${infor.shippingMethod}</li>
-      <li><strong>Thanh toán:</strong> ${infor.paymentMethod}</li>
+      <li><strong>Giao hàng:</strong> ${infor.shippingMethod == "standard" ? "Giao hàng nhanh" : "Giao hàng hỏa tốc"}</li>
+      <li><strong>Thanh toán:</strong> ${infor.paymentMethod == "cashDelivered" ? "Thanh toán khi nhận hàng": "Thanh toán online"}</li>
       <li><strong>Ngày đặt:</strong> ${new Date(date).toLocaleString("vi-VN")}</li>
     </ul>
 
