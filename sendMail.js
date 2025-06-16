@@ -7,12 +7,12 @@ require('dotenv').config();
     port: 587,
     secure: false, // Use TLS
     auth: {
-      user: 'minhbqhe171754@fpt.edu.vn', // Your Gmail address
+      user: process.env.MAIL_FROM, // Your Gmail address
       pass: process.env.GG_MAIL     // App Password from Step 2
     }
   });
 
-const from = '"GuuPawz Shop 🐶" <minhbqhe171754@fpt.edu.vn>';
+const from = `"GuuPawz Shop 🐶" <${process.env.MAIL_FROM}>`;
 
 function sendMail(to, subject, htmlContent){
     return transporter.sendMail({
