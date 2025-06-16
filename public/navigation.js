@@ -23,6 +23,7 @@ document.addEventListener("DOMContentLoaded", async function () {
   const closeButtons = document.querySelectorAll(".closeModal");
   const modals = [signInModal, myOrdersModal, signUpModal, myProfileModal];
   const switchToSignIn = document.getElementById("switchToSignIn");
+  const switchToSignUp = document.getElementById("switchToSignUp");
   function openModal(modal) {
     modal.classList.remove("hidden");
     setTimeout(() => {
@@ -66,6 +67,11 @@ document.addEventListener("DOMContentLoaded", async function () {
     e.preventDefault();
     logout();
     location.reload();
+  });
+  switchToSignUp.addEventListener("click", (e) => {
+    e.preventDefault();
+    closeModal(signInModal);
+    openModal(signUpModal);
   });
   const createAccountForm = document.getElementById("createAccountForm");
   createAccountForm.addEventListener("submit", (e) => {
@@ -140,7 +146,8 @@ document.addEventListener("DOMContentLoaded", async function () {
     const phone = document.getElementById("profile-phone").value;
     const formattedDate = document.getElementById("profile-dateOfBirth").value;
     const description = document.getElementById("profile-description").value;
-    updateProfile(
+
+    const isUpdated = updateProfile(
       firstName,
       lastName,
       email,
@@ -148,6 +155,7 @@ document.addEventListener("DOMContentLoaded", async function () {
       formattedDate,
       description
     );
+    if (!isUpdated) return;
     closeModal(myProfileModal);
 
     const notification = document.createElement("div");
@@ -190,25 +198,6 @@ document.addEventListener("DOMContentLoaded", async function () {
       }
     });
   });
-
-  // Load cart popup
-  // const cartWrapper = document.getElementById('cart-wrapper');
-  // const cartPopup = document.getElementById('cart-popup');
-
-  // cartWrapper.addEventListener('mouseenter', () => {
-  //     const carts = getCookieObject("cart_items");
-
-  //     if(carts){
-  //         return;
-  //     }
-  //     cartPopup.classList.remove('opacity-0', 'invisible');
-  //     cartPopup.classList.add('opacity-100', 'visible');
-  // });
-
-  // cartWrapper.addEventListener('mouseleave', () => {
-  //     cartPopup.classList.remove('opacity-100', 'visible');
-  //     cartPopup.classList.add('opacity-0', 'invisible');
-  // });
 
   const signInForm = document.getElementById("signInForm");
   signInForm.addEventListener("submit", (e) => {
@@ -260,68 +249,474 @@ document.addEventListener("DOMContentLoaded", async function () {
   });
 
   icon.addEventListener("click", () => {
-    console.log("Hi");
     location.href = "shop.html";
   });
 
   //load featured product
-  loadFeaturedProducts();
+  console.log("RUNNNNNNNNNN");
+  loadOrders();
+  init();
 });
 
-
-// Load products
-async function loadFeaturedProducts() {
-  const products = await getProducts();
-  const productsDiv = document.getElementById("product-slider");
-  if (!productsDiv) return;
-  productsDiv.innerHTML = products
-    .map(
-      (product) => `
-                <div class="animation-product bg-white rounded-lg shadow-md overflow-hidden group flex-shrink-0 snap-start w-[300px] md:w-[350px]">
-                    <div class="relative">
-                        <img src="${product.imgUrl}"
-                            alt="${
-                              product.name
-                            }r" class="w-full h-64 object-cover object-top">
-                        <button
-                            class="absolute top-3 right-3 w-10 h-10 flex items-center justify-center bg-white rounded-full shadow-md opacity-0 group-hover:opacity-100 transition">
-                            <i class="ri-heart-line text-pink-500 ri-lg"></i>
-                        </button>
-                    </div>
-                    <div class="p-4">
-                        <div class="flex text-yellow-400 mb-2">
-                            <i class="ri-star-fill"></i>
-                            <i class="ri-star-fill"></i>
-                            <i class="ri-star-fill"></i>
-                            <i class="ri-star-fill"></i>
-                            <i class="ri-star-half-fill"></i>
-                            <span class="text-gray-500 text-sm ml-2">(42)</span>
-                        </div>
-                        <h3 class="font-semibold text-lg mb-1">${
-                          product.name
-                        }</h3>
-                        <p class="text-gray-500 text-sm mb-3">${
-                          product.description
-                        }</p>
-                        <div class="flex justify-between items-center">
-                            <span class="font-bold text-lg">${formatCurrencyVND(
-                              product.price
-                            )}</span>
-                            <button onclick="addToCart(${product.id})"
-                                class="bg-primary text-white px-4 py-2 rounded-button hover:bg-pink-400 transition whitespace-nowrap">Add
-                                to Cart</button>
-                        </div>
-                    </div>
-                </div>
-                `
+// Load orders
+async function loadOrders() {
+  userId = localStorage.getItem("userId");
+  if (!userId) return;
+  const response = await fetch(`/api/orders/${userId}`);
+  const orders = await response.json();
+  const ordersDiv = document.getElementById("orders");
+  if (!ordersDiv || orders.length == 0) return;
+  const itemOrders = orders.flatMap((aa) =>
+    JSON.parse(aa.items)?.map((n) => ({
+      id: aa.id,
+      item: n,
+      date: aa.date,
+      status: aa.status,
+    }))
+  ).sort((a, b) => b.id - a.id);;
+  ordersDiv.innerHTML = itemOrders
+    ?.map(
+      (order) => `
+    <div class="bg-white rounded-lg border p-6">
+                                <div class="flex justify-between items-start mb-4">
+                                    <div>
+                                        <div class="flex items-center gap-3 mb-2">
+                                            <span class="text-sm font-medium text-gray-500">Order #${
+                                              order.id
+                                            }</span>
+                                            <span
+                                                class="px-2 py-1 text-xs font-medium ${getHtmlStatus(
+                                                  order?.status
+                                                )} rounded-full">${
+        order?.status
+      }</span>
+                                        </div>
+                                        <p class="text-sm text-gray-500">Placed on ${
+                                          order.date
+                                        }</p>
+                                    </div>                                   
+                                </div>
+                                <div class="flex items-center gap-4">
+                                    <img src="${order.item.imgUrl}"
+                                        alt="Product" class="w-20 h-20 object-cover rounded-lg">
+                                    <div>
+                                        <h3 class="font-medium text-gray-800">${
+                                          order.item.name
+                                        }</h3>
+                                        <p class="text-sm text-gray-500">Size: ${
+                                          order.item.selectedSize
+                                        }</p>
+                                        <p class="text-sm font-medium text-gray-800 mt-1">${formatCurrencyVND(
+                                          order.item.price
+                                        )} x ${order.item.quantity}</p>
+                                    </div>
+                                </div>
+                            </div>
+  `
     )
     .join("");
 }
 
+function getHtmlStatus(status) {
+  const statusValue = {
+    Delivered: "text-green-700 bg-green-100",
+    Pending: "text-blue-700 bg-blue-100",
+    Cancel: "text-gray-700 bg-gray-100",
+  };
+  return statusValue[status];
+}
+
+        async function getProducts() {
+            const response = await fetch(`/api/products`, {
+                method: "GET",
+                headers: { "Content-Type": "application/json" },
+            });
+            const result = await response.json();
+            if (response.ok) {
+                return result;
+            }
+            return null;
+        }
+
 function loadCheckoutPage() {
   const carts = getCookieObject("cart_items");
-  // debugger
   if (carts.length > 0) {
     location.href = "checkout.html";
   }
+}
+
+let userId = null;
+const apiUrl = "/api";
+let cartItems = [];
+
+async function getCartItems() {
+  cartItems = getCookieObject("cart_items");
+}
+
+// Load cart
+async function loadCart() {
+  getCartItems();
+  if (!cartItems) return;
+  const cartDiv = document.getElementById("cart-item");
+  const totalCartDiv = document.getElementById("cart-subtotal");
+  const sizeCartDiv = document.getElementById("cart-size");
+  let total = cartItems.reduce(
+    (sum, item) => sum + item.quantity * item.price,
+    0
+  );
+  totalCartDiv.textContent = formatCurrencyVND(total);
+  sizeCartDiv.textContent = cartItems.length;
+  cartDiv.innerHTML = cartItems
+    ?.map(
+      (item) => `
+                                <!-- Cart Item -->
+                                <div class="flex items-center gap-3">
+                                    <img src="${item.imgUrl}"
+                                        alt="Blue Winter Sweater" class="w-16 h-16 object-cover rounded" />
+                                    <div class="flex-1">
+                                        <h4 class="text-sm font-medium">${
+                                          item.name
+                                        }</h4>
+                                        <div class="text-gray-500 text-xs mt-1">
+                                            Size:
+                                            <select  onchange="setSize(this, ${
+                                              item.id
+                                            })" class="text-xs bg-transparent focus:outline-none ml-1">
+                                                ${(item.size || [])
+                                                  .map(
+                                                    (size) =>
+                                                      `<option value="${size}" 
+                                                        ${
+                                                          size ===
+                                                          item.selectedSize
+                                                            ? "selected"
+                                                            : ""
+                                                        }
+                                                      >${size}</option>`
+                                                  )
+                                                  .join("")}
+                                            </select>
+                                        </div>
+                                        <div class="flex items-center justify-between mt-1">
+                                            <span class="text-sm font-semibold">${formatCurrencyVND(
+                                              item.price
+                                            )}</span>
+                                            <div class="flex items-center gap-2">
+                                                <button onclick="setQuantity(${
+                                                  item.id
+                                                },false)"
+                                                   class="text-gray-400 hover:text-primary">
+                                                    <i class="ri-subtract-line"></i>
+                                                </button>
+                                                <span id="cart-quantity-${
+                                                  item.id
+                                                }" class="text-sm">${
+        item.quantity
+      }</span>
+                                                <button onclick="setQuantity(${
+                                                  item.id
+                                                },true)" 
+                                                    class="text-gray-400 hover:text-primary">
+                                                    <i class="ri-add-line"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button class="text-gray-400 hover:text-red-500" 
+                                      onclick="removeFromCart(${item.id})">
+                                        <i class="ri-close-line"></i>
+                                    </button>
+                                </div>
+    
+  `
+    )
+    .join("");
+}
+
+// Register
+async function register(firstName, lastName, email, password) {
+  const response = await fetch(`${apiUrl}/register`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ firstName, lastName, emaetil, password }),
+  });
+  const result = await response.json();
+  alert(result.message || result.error);
+  if (response.ok) showLogin();
+}
+
+// Login
+async function login(email, password) {
+  const response = await fetch(`${apiUrl}/login`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ email, password }),
+  });
+  const result = await response.json();
+  if (response.ok) {
+    const user = result.user;
+    localStorage.setItem("userId", user.id);
+    setActionLogin();
+    setProfile();
+
+    loadCart();
+    loadOrders();
+  } else {
+    alert(result.error);
+  }
+}
+
+async function setProfile() {
+  const response = await fetch(
+    `${apiUrl}/user/${localStorage.getItem("userId")}`,
+    {
+      method: "GET",
+      headers: { "Content-Type": "application/json" },
+    }
+  );
+  const result = await response.json();
+  if (!response.ok) {
+    return;
+  }
+
+  const user = result.user;
+
+  // Convert to YYYY-MM-DD format
+  const rawDate = new Date(user.dateOfBirth);
+  const formattedDate = rawDate.toISOString().split("T")[0]; // "2025-06-10"
+
+  document.getElementById("profile-fullname").textContent = user?.firstName+" " + user?.lastName;
+  document.getElementById("profile-icon-mail").textContent = user.email;
+  document.getElementById(
+    "profile-icon-fullname"
+  ).textContent = `${user.firstName} ${user.lastName}`;
+  document.getElementById("profile-icon-icon-mail").textContent = user.email;
+  document.getElementById("profile-firstName").value = user.firstName;
+  document.getElementById("profile-lastName").value = user.lastName;
+  document.getElementById("profile-email").value = user.email;
+  document.getElementById("profile-phone").value = user.phone;
+  document.getElementById("profile-dateOfBirth").value = formattedDate;
+  document.getElementById("profile-description").value = user.description;
+}
+
+async function updateProfile(
+  firstName,
+  lastName,
+  email,
+  phone,
+  formattedDate,
+  description
+) {
+  const response = await fetch(`${apiUrl}/update_profile`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      userId,
+      firstName,
+      lastName,
+      email,
+      phone,
+      formattedDate,
+      description,
+    }),
+  });
+  const result = await response.json();
+  if (response.ok) return true;
+  alert(result.error);
+  return false;
+}
+
+// Logout
+function logout() {
+  userId = null;
+  localStorage.removeItem("userId");
+}
+
+// Show login form
+function showLogin() {
+  const signInLink = document.getElementById("signInLink");
+  signInLink.click();
+}
+
+// Show register form
+function showRegister() {
+  const signUpLink = document.getElementById("signUpLink");
+  signUpLink.click();
+}
+
+// Search products
+function searchProducts() {
+  const query = document.getElementById("search-input").value;
+}
+
+// Add to cart
+async function addToCart(productId) {
+  // const size = document.getElementById(`size-${productId}`).value;
+  // const color = document.getElementById(`color-${productId}`).value;
+  const response = await fetch(`${apiUrl}/product/${productId}`, {
+    method: "GET",
+    headers: { "Content-Type": "application/json" },
+  });
+  const result = await response.json();
+  cartItems = getCookieObject("cart_items") || [];
+  const existItem = cartItems?.find(
+    (item) => item.productId == result.productId && item.size == result.size
+  );
+  if (existItem) {
+    existItem.quantity++;
+  } else {
+    let idNumber = cartItems.reduce((max, item) => Math.max(max, item.id), 0);
+    cartItems.push({
+      id: idNumber + 1,
+      productId: productId,
+      name: result.name,
+      size: result.size,
+      imgUrl: result.imgUrl,
+      price: result.price,
+      quantity: 1,
+      selectedSize: result.size[0],
+    });
+  }
+  notification("Goto cart🎉", "Add product successfully!");
+  setCookieObject("cart_items", cartItems, 7);
+
+  loadCart();
+}
+
+// Remove from cart
+async function removeFromCart(id) {
+  cartItems = getCookieObject("cart_items");
+  cartItems = cartItems.filter((item) => item.id != id);
+  setCookieObject("cart_items", cartItems, 7);
+  loadCart();
+}
+
+function setActionLogin() {
+  const isLogged = localStorage.getItem("userId") != null;
+  document.getElementById("signInLink").style.display = isLogged
+    ? "none"
+    : "block";
+  document.getElementById("myOrdersLink").style.display = isLogged
+    ? "block"
+    : "none";
+  document.getElementById("signUpLink").style.display = isLogged
+    ? "none"
+    : "block";
+  document.getElementById("myProfileLink").style.display = isLogged
+    ? "block"
+    : "none";
+  document.getElementById("LogoutLink").style.display = isLogged
+    ? "block"
+    : "none";
+}
+
+// Format currency in VietNamese
+function formatCurrencyVND(amount) {
+  return new Intl.NumberFormat("vi-VN", {
+    style: "currency",
+    currency: "VND",
+  }).format(amount);
+}
+
+function setCookieObject(name, obj, days) {
+  const json = JSON.stringify(obj);
+  const d = new Date();
+  d.setTime(d.getTime() + days * 24 * 60 * 60 * 1000);
+  const expires = "expires=" + d.toUTCString();
+  document.cookie = `${name}=${encodeURIComponent(json)}; ${expires}; path=/`;
+}
+
+function getCookieObject(name) {
+  const nameEQ = name + "=";
+  const ca = document.cookie.split(";");
+  for (let c of ca) {
+    c = c.trim();
+    if (c.indexOf(nameEQ) === 0) {
+      const value = c.substring(nameEQ.length);
+      try {
+        return JSON.parse(decodeURIComponent(value));
+      } catch (e) {
+        return null;
+      }
+    }
+  }
+  return null;
+}
+
+function setQuantity(id, isIncrease) {
+  const min = 0;
+  const max = 101;
+  const quantityElement = document.getElementById("cart-quantity-" + id);
+  let quantity = Number(quantityElement.textContent);
+
+  quantity = isIncrease ? ++quantity : --quantity;
+  if (quantity == min || quantity == max) return;
+  quantityElement.textContent = quantity;
+  const carts = getCookieObject("cart_items");
+  //debugger
+  const cart = carts.find((item) => item.id === id);
+  if (cart) {
+    cart.quantity = quantity;
+    setCookieObject("cart_items", carts, 7);
+    loadCart();
+  }
+}
+
+function setSize(element, id) {
+  const carts = getCookieObject("cart_items");
+  const cart = carts.find((item) => item.id === id);
+  if (cart) {
+    cart.selectedSize = element.value;
+    //debugger
+    setCookieObject("cart_items", carts, 7);
+  }
+}
+
+function notification(messageTitle, message) {
+  const notification = document.createElement("div");
+  notification.className =
+    "fixed top-20 right-4 bg-white shadow-lg rounded-lg p-4 z-50 transform translate-x-full opacity-0 transition-all duration-500";
+  notification.innerHTML = `
+            <div class="flex items-center">
+            <div class="w-8 h-8 flex items-center justify-center bg-primary/20 rounded-full mr-3">
+            <i class="ri-check-line text-primary"></i>
+            </div>
+            <div>
+            <p class="font-medium text-gray-800">${messageTitle}</p>
+            <p class="text-sm text-gray-600">${message}</p>
+            </div>
+            </div>
+            `;
+  document.body.appendChild(notification);
+  setTimeout(() => {
+    notification.classList.remove("translate-x-full", "opacity-0");
+  }, 100);
+  setTimeout(() => {
+    notification.classList.add("translate-x-full", "opacity-0");
+    setTimeout(() => {
+      notification.remove();
+    }, 500);
+  }, 3000);
+}
+
+// add new order
+async function addOrder(data) {
+  const response = await fetch(`${apiUrl}/orders`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data),
+  });
+  return response.ok;
+}
+
+// Initialize
+function init() {
+  userId = localStorage.getItem("userId");
+
+  loadOrders();
+  loadCart();
+  setProfile();
+  setActionLogin();
+
+  // loadProducts();
 }

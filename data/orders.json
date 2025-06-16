@@ -1,32 +1,122 @@
 [
   {
     "id": 1,
-    "userId": 1,
-    "items": [
-      {
-        "productId": 1,
-        "name": "Áo thun cotton cho chó",
-        "pet_type": "chó",
-        "size": "M",
-        "color": "đỏ",
-        "material": "cotton",
-        "imgUrl": "dog_tshirt.png",
-        "price": 150000,
-        "quantity": 2
-      },
-      {
-        "productId": 4,
-        "name": "Vòng cổ lấp lánh cho mèo",
-        "pet_type": "mèo",
-        "size": "S",
-        "color": "bạc",
-        "material": "kim loại",
-        "imgUrl": "cat_collar.png",
-        "price": 100000,
-        "quantity": 1
-      }
-    ],
-    "total": 400000,
-    "date": "2025-06-10T11:00:00.000Z"
+    "userId": "3",
+    "infor": {
+      "fullName": "Bui Minh",
+      "email": "buiquangminh13102003@gmail.com",
+      "phone": "0367382521",
+      "address": "Nam Dinh",
+      "city": "US",
+      "district": "US",
+      "ward": "US",
+      "notes": "",
+      "shippingMethod": "standard",
+      "paymentMethod": "cashDelivered"
+    },
+    "items": "[{\"id\":1,\"productId\":3,\"name\":\"Plaid Bowtie Collar\",\"size\":[\"M\",\"L\",\"XL\"],\"imgUrl\":\"https://readdy.ai/api/search-image?query=small%2520dog%2520wearing%2520stylish%2520plaid%2520bowtie%2520collar%252C%2520product%2520photography%252C%2520studio%2520lighting%252C%2520clean%2520white%2520background%252C%2520high%2520quality%252C%2520detailed%2520fabric%2520texture%252C%2520adorable%2520puppy%2520model&width=300&height=300&seq=dog-prod3&orientation=squarish\",\"price\":300000,\"quantity\":1,\"selectedSize\":\"M\"},{\"id\":2,\"productId\":4,\"name\":\"Denim Jacket with Patches\",\"size\":[\"M\",\"L\",\"XL\"],\"imgUrl\":\"https://readdy.ai/api/search-image?query=small%2520dog%2520wearing%2520denim%2520jacket%2520with%2520patches%252C%2520product%2520photography%252C%2520studio%2520lighting%252C%2520clean%2520white%2520background%252C%2520high%2520quality%252C%2520detailed%2520fabric%2520texture%252C%2520adorable%2520puppy%2520model&width=300&height=300&seq=dog-prod4&orientation=squarish\",\"price\":300000,\"quantity\":1,\"selectedSize\":\"M\"},{\"id\":3,\"productId\":1,\"name\":\"Blue Winter Sweater\",\"size\":[\"S\",\"M\",\"XL\",\"XXL\"],\"imgUrl\":\"https://readdy.ai/api/search-image?query=small%2520dog%2520wearing%2520stylish%2520blue%2520winter%2520sweater%252C%2520product%2520photography%252C%2520studio%2520lighting%252C%2520clean%2520white%2520background%252C%2520high%2520quality%252C%2520detailed%2520fabric%2520texture%252C%2520adorable%2520puppy%2520model&width=300&height=300&seq=dog-prod1&orientation=squarish\",\"price\":150000,\"quantity\":1,\"selectedSize\":\"S\"}]",
+    "total": 750000,
+    "date": "2025-06-13T18:03:03.138Z",
+    "status": "Delivered"
+  },
+  {
+    "id": 2,
+    "userId": "3",
+    "infor": {
+      "fullName": "Bui Minh",
+      "email": "bminh1410@gmail.com",
+      "phone": "0367382521",
+      "address": "Nam Dinh",
+      "city": "US",
+      "district": "US",
+      "ward": "US",
+      "notes": "",
+      "shippingMethod": "standard",
+      "paymentMethod": "cashDelivered"
+    },
+    "items": "[{\"id\":1,\"productId\":2,\"name\":\"Waterproof Raincoat\",\"size\":[\"S\",\"M\",\"L\"],\"imgUrl\":\"https://readdy.ai/api/search-image?query=small%2520dog%2520wearing%2520raincoat%2520with%2520hood%252C%2520yellow%2520color%252C%2520product%2520photography%252C%2520studio%2520lighting%252C%2520clean%2520white%2520background%252C%2520high%2520quality%252C%2520detailed%2520fabric%2520texture%252C%2520adorable%2520puppy%2520model&width=300&height=300&seq=dog-prod2&orientation=squarish\",\"price\":200000,\"quantity\":1,\"selectedSize\":\"S\"},{\"id\":2,\"productId\":2,\"name\":\"Waterproof Raincoat\",\"size\":[\"S\",\"M\",\"L\"],\"imgUrl\":\"https://readdy.ai/api/search-image?query=small%2520dog%2520wearing%2520raincoat%2520with%2520hood%252C%2520yellow%2520color%252C%2520product%2520photography%252C%2520studio%2520lighting%252C%2520clean%2520white%2520background%252C%2520high%2520quality%252C%2520detailed%2520fabric%2520texture%252C%2520adorable%2520puppy%2520model&width=300&height=300&seq=dog-prod2&orientation=squarish\",\"price\":200000,\"quantity\":1,\"selectedSize\":\"S\"},{\"id\":3,\"productId\":8,\"name\":\"Soft Knit Sweater\",\"size\":[\"M\",\"L\",\"XL\"],\"imgUrl\":\"https://readdy.ai/api/search-image?query=cat%2520wearing%2520light%2520knit%2520sweater%2520in%2520pastel%2520pink%252C%2520product%2520photography%252C%2520studio%2520lighting%252C%2520clean%2520white%2520background%252C%2520high%2520quality%252C%2520detailed%2520fabric%2520texture%252C%2520adorable%2520kitten%2520model&width=300&height=300&seq=cat-prod2&orientation=squarish\",\"price\":300000,\"quantity\":1,\"selectedSize\":\"M\"},{\"id\":4,\"productId\":10,\"name\":\"Fashionable Cat Beret\",\"size\":[\"M\",\"L\",\"XL\"],\"imgUrl\":\"https://readdy.ai/api/search-image?query=cat%2520wearing%2520small%2520cute%2520hat%2520or%2520beret%252C%2520product%2520photography%252C%2520studio%2520lighting%252C%2520clean%2520white%2520background%252C%2520high%2520quality%252C%2520detailed%2520fabric%2520texture%252C%2520adorable%2520kitten%2520model&width=300&height=300&seq=cat-prod4&orientation=squarish\",\"price\":300000,\"quantity\":1,\"selectedSize\":\"M\"}]",
+    "total": 1000000,
+    "date": "2025-06-13T18:03:33.025Z",
+    "status": "Delivered"
+  },
+  {
+    "id": 3,
+    "userId": "3",
+    "infor": {
+      "fullName": "Bui Minh",
+      "email": "bminh1410@gmail.com",
+      "phone": "0367382521",
+      "address": "Nam Dinh",
+      "cityName": "Tỉnh Phú Thọ",
+      "districtName": "Huyện Thanh Sơn",
+      "wardName": "Xã Đông Cửu",
+      "notes": "",
+      "shippingMethod": "standard",
+      "paymentMethod": "cashDelivered"
+    },
+    "items": "[{\"id\":1,\"productId\":5,\"name\":\"Cozy Pink Puppy Sweater\",\"size\":[\"M\",\"L\",\"XL\"],\"imgUrl\":\"https://readdy.ai/api/search-image?query=cute%2520small%2520dog%2520wearing%2520pink%2520sweater%2C%2520product%2520photography%2C%2520studio%2520lighting%2C%2520clean%2520white%2520background%2C%2520high%2520quality%2C%2520detailed%2520fabric%2520texture%2C%2520adorable%2520puppy%2520model&width=400&height=400&seq=prod1&orientation=squarish\",\"price\":300000,\"quantity\":2,\"selectedSize\":\"L\"},{\"id\":2,\"productId\":6,\"name\":\"Stylish Denim Jacket\",\"size\":[\"M\",\"L\",\"XL\"],\"imgUrl\":\"https://readdy.ai/api/search-image?query=small%2520dog%2520wearing%2520denim%2520jacket%2C%2520product%2520photography%2C%2520studio%2520lighting%2C%2520clean%2520white%2520background%2C%2520high%2520quality%2C%2520detailed%2520fabric%2520texture%2C%2520adorable%2520puppy%2520model&width=400&height=400&seq=prod3&orientation=squarish\",\"price\":300000,\"quantity\":1,\"selectedSize\":\"M\"}]",
+    "total": 900000,
+    "date": "2025-06-15T17:17:40.089Z",
+    "status": "Delivered"
+  },
+  {
+    "id": 4,
+    "userId": "3",
+    "infor": {
+      "fullName": "Bui Minh",
+      "email": "bminh1410@gmail.com",
+      "phone": "0367382521",
+      "address": "Nam Dinh",
+      "cityName": "Tỉnh Bắc Ninh",
+      "districtName": "Thị xã Thuận Thành",
+      "wardName": "Xã Nghĩa Đạo",
+      "notes": "",
+      "shippingMethod": "standard",
+      "paymentMethod": "cashDelivered"
+    },
+    "items": "[{\"id\":1,\"productId\":2,\"name\":\"Waterproof Raincoat\",\"size\":[\"S\",\"M\",\"L\"],\"imgUrl\":\"https://readdy.ai/api/search-image?query=small%2520dog%2520wearing%2520raincoat%2520with%2520hood%252C%2520yellow%2520color%252C%2520product%2520photography%252C%2520studio%2520lighting%252C%2520clean%2520white%2520background%252C%2520high%2520quality%252C%2520detailed%2520fabric%2520texture%252C%2520adorable%2520puppy%2520model&width=300&height=300&seq=dog-prod2&orientation=squarish\",\"price\":200000,\"quantity\":1,\"selectedSize\":\"S\"},{\"id\":2,\"productId\":3,\"name\":\"Plaid Bowtie Collar\",\"size\":[\"M\",\"L\",\"XL\"],\"imgUrl\":\"https://readdy.ai/api/search-image?query=small%2520dog%2520wearing%2520stylish%2520plaid%2520bowtie%2520collar%252C%2520product%2520photography%252C%2520studio%2520lighting%252C%2520clean%2520white%2520background%252C%2520high%2520quality%252C%2520detailed%2520fabric%2520texture%252C%2520adorable%2520puppy%2520model&width=300&height=300&seq=dog-prod3&orientation=squarish\",\"price\":300000,\"quantity\":1,\"selectedSize\":\"M\"}]",
+    "total": 500000,
+    "date": "2025-06-15T17:22:04.295Z",
+    "status": "Delivered"
+  },
+  {
+    "id": 5,
+    "userId": null,
+    "infor": {
+      "fullName": "Bui Minh",
+      "email": "bminh1410@gmail.com",
+      "phone": "0367382521",
+      "address": "Nam Dinh",
+      "cityName": "Tỉnh Phú Thọ",
+      "districtName": "Thị xã Phú Thọ",
+      "wardName": "Chọn Phường/Xã",
+      "notes": "",
+      "shippingMethod": "standard",
+      "paymentMethod": "cashDelivered"
+    },
+    "items": "[{\"id\":1,\"productId\":2,\"name\":\"Waterproof Raincoat\",\"size\":[\"S\",\"M\",\"L\"],\"imgUrl\":\"https://readdy.ai/api/search-image?query=small%2520dog%2520wearing%2520raincoat%2520with%2520hood%252C%2520yellow%2520color%252C%2520product%2520photography%252C%2520studio%2520lighting%252C%2520clean%2520white%2520background%252C%2520high%2520quality%252C%2520detailed%2520fabric%2520texture%252C%2520adorable%2520puppy%2520model&width=300&height=300&seq=dog-prod2&orientation=squarish\",\"price\":200000,\"quantity\":1,\"selectedSize\":\"S\"},{\"id\":2,\"productId\":4,\"name\":\"Denim Jacket with Patches\",\"size\":[\"M\",\"L\",\"XL\"],\"imgUrl\":\"https://readdy.ai/api/search-image?query=small%2520dog%2520wearing%2520denim%2520jacket%2520with%2520patches%252C%2520product%2520photography%252C%2520studio%2520lighting%252C%2520clean%2520white%2520background%252C%2520high%2520quality%252C%2520detailed%2520fabric%2520texture%252C%2520adorable%2520puppy%2520model&width=300&height=300&seq=dog-prod4&orientation=squarish\",\"price\":300000,\"quantity\":1,\"selectedSize\":\"M\"}]",
+    "total": 500000,
+    "date": "2025-06-15T17:27:03.098Z",
+    "status": "Delivered"
+  },
+  {
+    "id": 6,
+    "userId": "3",
+    "infor": {
+      "fullName": "Bui Minh",
+      "email": "bminh1410@gmail.com",
+      "phone": "0367382521",
+      "address": "Nam Dinh",
+      "cityName": "Tỉnh Lào Cai",
+      "districtName": "Huyện Si Ma Cai",
+      "wardName": "Xã Sán Chải",
+      "notes": "",
+      "shippingMethod": "standard",
+      "paymentMethod": "cashDelivered"
+    },
+    "items": "[{\"id\":1,\"productId\":5,\"name\":\"Cozy Pink Puppy Sweater\",\"size\":[\"M\",\"L\",\"XL\"],\"imgUrl\":\"https://readdy.ai/api/search-image?query=cute%2520small%2520dog%2520wearing%2520pink%2520sweater%2C%2520product%2520photography%2C%2520studio%2520lighting%2C%2520clean%2520white%2520background%2C%2520high%2520quality%2C%2520detailed%2520fabric%2520texture%2C%2520adorable%2520puppy%2520model&width=400&height=400&seq=prod1&orientation=squarish\",\"price\":300000,\"quantity\":2,\"selectedSize\":\"M\"}]",
+    "total": 600000,
+    "status": "pending",
+    "date": "2025-06-16T04:09:10.738Z"
   }
 ]

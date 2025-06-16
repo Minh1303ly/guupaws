@@ -2,6 +2,7 @@ const express = require('express');
 const fs = require('fs').promises;
 const path = require('path');
 const cors = require('cors');
+const { sendOrderConfirmationEmail, sendNewOrderToShop } = require("./sendMail");
 
 const app = express();
 app.use(cors());
@@ -15,13 +16,16 @@ const ORDERS_FILE = path.join(DATA_DIR, 'orders.json');
 const CART_FILE = path.join(DATA_DIR, 'cart.json');
 
 // Helper functions
-async function readJson(file) {
+async function readJson(filePath) {
+  const fullPath = path.isAbsolute(filePath)
+  ? filePath
+  : path.join(__dirname, filePath);
   try {
-    const data = await fs.readFile(file, 'utf8');
+    const data = await fs.readFile(fullPath, 'utf-8');
+    if (!data) return []; // Trường hợp file rỗng
     return JSON.parse(data);
-  } catch (error) {
-    console.error(`Error reading ${file}:`, error);
-    return [];
+  } catch (err) {
+    return []; // fallback nếu file hỏng
   }
 }
 
@@ -32,6 +36,14 @@ async function writeJson(file, data) {
     console.error(`Error writing ${file}:`, error);
   }
 }
+
+
+// Send confirm buy mail
+app.get('/api/mail', async (req,res) => {
+  await sendMailConfirm();
+  res.json({ message: 'Send email success'});
+});
+
 
 // Get user
 app.get('/api/user/:userId', async (req, res) => {
@@ -46,6 +58,7 @@ app.post('/api/update_profile', async (req, res) => {
   const { userId, firstName, lastName, email, phone, formattedDate, description } = req.body;
   const users = await readJson(USERS_FILE);
   let user = users.find(user => user.id === Number(userId));
+
   if (user === undefined) {
     return res.status(400).json({ error: 'User not exists' });
   }
@@ -54,7 +67,7 @@ app.post('/api/update_profile', async (req, res) => {
   user.lastName = lastName;
   user.email = email;
   user.phone = phone;
-  user.formattedDate = formattedDate;
+  user.dateOfBirth = formattedDate;
   user.description = description;
 
   await writeJson(USERS_FILE, users);
@@ -206,33 +219,48 @@ app.post('/api/cart/:userId/remove', async (req, res) => {
 });
 
 // Place order
-app.post('/api/orders/:userId', async (req, res) => {
-  const carts = await readJson(CART_FILE);
-  const userCart = carts.find(cart => cart.userId === parseInt(req.params.userId));
-  if (!userCart || userCart.items.length === 0) {
-    return res.status(400).json({ error: 'Cart is empty' });
-  }
-
+app.post('/api/orders', async (req, res) => {
   const orders = await readJson(ORDERS_FILE);
+  const data = req.body;
   const order = {
     id: orders.length + 1,
-    userId: parseInt(req.params.userId),
-    items: userCart.items,
-    total: await calculateTotal(userCart.items),
+    userId: data.userId,
+    infor: data.infor,
+    items: data.items,
+    total: data.total,
+    status: "pending",
     date: new Date().toISOString()
   };
-
   orders.push(order);
-  userCart.items = []; // Clear cart
+  sendMailConfirm(order);
   await writeJson(ORDERS_FILE, orders);
-  await writeJson(CART_FILE, carts);
   res.json(order);
 });
+
+async function sendMailConfirm(order) {
+  sendOrderConfirmationEmail(order)
+    .then(() => console.log("Đã gửi mail xác nhận cho khách"))
+    .catch(console.error);
+  
+  sendNewOrderToShop(order)
+    .then(() => console.log("Đã gửi mail thông báo cho người bán"))
+    .catch(console.error);
+}
 
 // Get order history
 app.get('/api/orders/:userId', async (req, res) => {
   const orders = await readJson(ORDERS_FILE);
-  const userOrders = orders.filter(order => order.userId === parseInt(req.params.userId));
+  const userOrders = orders.filter(order => order.userId == parseInt(req.params.userId));
+  res.json(userOrders);
+});
+
+// Update status order
+app.get('/api/orders/:orderId', async (req, res) => {
+  const orders = await readJson(ORDERS_FILE);
+  const { status } = req.body;
+  const userOrders = orders.filter(order => order.id === parseInt(req.params.orderId));
+  userOrders.status = status;
+  await writeJson(ORDERS_FILE, orders);
   res.json(userOrders);
 });
 

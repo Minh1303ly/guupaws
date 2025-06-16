@@ -23,11 +23,11 @@
     "id": 3,
     "firstName": "Bui",
     "lastName": "Minh",
-    "phone": "1234567890",
+    "phone": "1234567891",
     "password": "123",
     "email": "bminh1410@gmail.com",
     "description": "Hello my name minh12",
-    "dateOfBirth": "2025-06-10",
-    "formattedDate": "2025-06-10"
+    "dateOfBirth": "2025-06-20",
+    "formattedDate": "2025-07-17"
   }
 ]
