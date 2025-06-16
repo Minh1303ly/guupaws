@@ -118,5 +118,65 @@
     "total": 600000,
     "status": "pending",
     "date": "2025-06-16T04:09:10.738Z"
+  },
+  {
+    "id": 7,
+    "userId": "3",
+    "infor": {
+      "fullName": "Bui Minh",
+      "email": "bminh1410@gmail.com",
+      "phone": "0367382521",
+      "address": "Nam Dinh",
+      "cityName": "Tỉnh Hải Dương",
+      "districtName": "Huyện Ninh Giang",
+      "wardName": "Xã Hiệp Lực",
+      "notes": "",
+      "shippingMethod": "standard",
+      "paymentMethod": "cashDelivered"
+    },
+    "items": "[{\"id\":1,\"productId\":2,\"name\":\"Waterproof Raincoat\",\"size\":[\"S\",\"M\",\"L\"],\"imgUrl\":\"https://readdy.ai/api/search-image?query=small%2520dog%2520wearing%2520raincoat%2520with%2520hood%252C%2520yellow%2520color%252C%2520product%2520photography%252C%2520studio%2520lighting%252C%2520clean%2520white%2520background%252C%2520high%2520quality%252C%2520detailed%2520fabric%2520texture%252C%2520adorable%2520puppy%2520model&width=300&height=300&seq=dog-prod2&orientation=squarish\",\"price\":200000,\"quantity\":1,\"selectedSize\":\"S\"},{\"id\":2,\"productId\":3,\"name\":\"Plaid Bowtie Collar\",\"size\":[\"M\",\"L\",\"XL\"],\"imgUrl\":\"https://readdy.ai/api/search-image?query=small%2520dog%2520wearing%2520stylish%2520plaid%2520bowtie%2520collar%252C%2520product%2520photography%252C%2520studio%2520lighting%252C%2520clean%2520white%2520background%252C%2520high%2520quality%252C%2520detailed%2520fabric%2520texture%252C%2520adorable%2520puppy%2520model&width=300&height=300&seq=dog-prod3&orientation=squarish\",\"price\":300000,\"quantity\":1,\"selectedSize\":\"M\"}]",
+    "total": 500000,
+    "status": "pending",
+    "date": "2025-06-16T07:41:06.030Z"
+  },
+  {
+    "id": 8,
+    "userId": "3",
+    "infor": {
+      "fullName": "Bui Minh",
+      "email": "bminh1410@gmail.com",
+      "phone": "0367382521",
+      "address": "hello",
+      "cityName": "Tỉnh Vĩnh Phúc",
+      "districtName": "Huyện Vĩnh Tường",
+      "wardName": "Thị trấn Tứ Trưng",
+      "notes": "",
+      "shippingMethod": "standard",
+      "paymentMethod": "cashDelivered"
+    },
+    "items": "[{\"id\":1,\"productId\":2,\"name\":\"Waterproof Raincoat\",\"size\":[\"S\",\"M\",\"L\"],\"imgUrl\":\"https://readdy.ai/api/search-image?query=small%2520dog%2520wearing%2520raincoat%2520with%2520hood%252C%2520yellow%2520color%252C%2520product%2520photography%252C%2520studio%2520lighting%252C%2520clean%2520white%2520background%252C%2520high%2520quality%252C%2520detailed%2520fabric%2520texture%252C%2520adorable%2520puppy%2520model&width=300&height=300&seq=dog-prod2&orientation=squarish\",\"price\":200000,\"quantity\":1,\"selectedSize\":\"S\"},{\"id\":2,\"productId\":4,\"name\":\"Denim Jacket with Patches\",\"size\":[\"M\",\"L\",\"XL\"],\"imgUrl\":\"https://readdy.ai/api/search-image?query=small%2520dog%2520wearing%2520denim%2520jacket%2520with%2520patches%252C%2520product%2520photography%252C%2520studio%2520lighting%252C%2520clean%2520white%2520background%252C%2520high%2520quality%252C%2520detailed%2520fabric%2520texture%252C%2520adorable%2520puppy%2520model&width=300&height=300&seq=dog-prod4&orientation=squarish\",\"price\":300000,\"quantity\":1,\"selectedSize\":\"M\"}]",
+    "total": 500000,
+    "status": "pending",
+    "date": "2025-06-16T07:43:58.507Z"
+  },
+  {
+    "id": 9,
+    "userId": "3",
+    "infor": {
+      "fullName": "Bui Minh",
+      "email": "bminh1410@gmail.com",
+      "phone": "0367382521",
+      "address": "Street Address (optional)",
+      "cityName": "Tỉnh Vĩnh Phúc",
+      "districtName": "Huyện Yên Lạc",
+      "wardName": "Xã Trung Kiên",
+      "notes": "Order Notes (optional)",
+      "shippingMethod": "standard",
+      "paymentMethod": "cashDelivered"
+    },
+    "items": "[{\"id\":1,\"productId\":3,\"name\":\"Plaid Bowtie Collar\",\"size\":[\"M\",\"L\",\"XL\"],\"imgUrl\":\"https://readdy.ai/api/search-image?query=small%2520dog%2520wearing%2520stylish%2520plaid%2520bowtie%2520collar%252C%2520product%2520photography%252C%2520studio%2520lighting%252C%2520clean%2520white%2520background%252C%2520high%2520quality%252C%2520detailed%2520fabric%2520texture%252C%2520adorable%2520puppy%2520model&width=300&height=300&seq=dog-prod3&orientation=squarish\",\"price\":300000,\"quantity\":1,\"selectedSize\":\"M\"}]",
+    "total": 300000,
+    "status": "delivered",
+    "date": "2025-06-16T07:47:55.470Z"
   }
 ]

@@ -253,7 +253,6 @@ document.addEventListener("DOMContentLoaded", async function () {
   });
 
   //load featured product
-  console.log("RUNNNNNNNNNN");
   loadOrders();
   init();
 });

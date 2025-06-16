@@ -38,12 +38,15 @@ async function sendOrderConfirmationEmail(order) {
   const htmlContent = `
   <div style="font-family:'Segoe UI',sans-serif;color:#333;padding:20px;">
     <h2 style="color:#ff6b81;">🎉 Đặt hàng thành công!</h2>
-    <p>Cảm ơn bạn <strong>${infor.fullName}</strong> đã mua hàng tại <strong>Pet Fashion Shop</strong>!</p>
+    <p>Cảm ơn bạn <strong>${infor.fullName}</strong> đã mua hàng tại <strong>GuuPawz Fashion Shop</strong>!</p>
     <p>Chúng tôi đã nhận được đơn hàng của bạn với thông tin như sau:</p>
 
-    <ul>
-      <li><strong>Địa chỉ:</strong> ${infor.address}, ${infor.city}</li>
+    <ul>     
       <li><strong>Điện thoại:</strong> ${infor.phone}</li>
+      <li><strong>Email:</strong> ${infor.email}</li>
+      <li>Địa chỉ:</strong> ${infor.cityName}, ${infor.districtName}, , ${infor.wardName}</li>
+      <li><strong>Địa chỉ cụ thể:</strong> ${infor.address}</li>
+      <li><strong>Ghi chú:</strong> ${infor.notes ?? "Không có ghi chú"}</li>
       <li><strong>Giao hàng:</strong> ${infor.shippingMethod == "standard" ? "Giao hàng nhanh" : "Giao hàng hỏa tốc"}</li>
       <li><strong>Thanh toán:</strong> ${infor.paymentMethod == "cashDelivered" ? "Thanh toán khi nhận hàng": "Thanh toán online"}</li>
       <li><strong>Ngày đặt:</strong> ${new Date(date).toLocaleString("vi-VN")}</li>
@@ -66,7 +69,7 @@ async function sendOrderConfirmationEmail(order) {
     </table>
 
     <p style="margin-top:20px;">🧡 Một lần nữa xin chân thành cảm ơn bạn đã ủng hộ!</p>
-    <p><em>- Pet Fashion Team 🐾</em></p>
+    <p><em>- GuuPawz Fashion Team 🐾</em></p>
   </div>
   `;
 
@@ -91,7 +94,9 @@ async function sendNewOrderToShop(order) {
     <p><strong>Mã đơn hàng:</strong> ${id}</p>
     <p><strong>Khách hàng:</strong> ${infor.fullName} - ${infor.phone}</p>
     <p><strong>Email:</strong> ${infor.email}</p>
-    <p><strong>Địa chỉ:</strong> ${infor.address}, ${infor.city}</p>
+    <p><strong>Địa chỉ:</strong> ${infor.cityName}, ${infor.districtName}, , ${infor.wardName}</p>
+    <p><strong>Địa chỉ cụ thể:</strong> ${infor.address}</p>
+    <p><strong>Ghi chú:</strong> ${infor.notes ?? "Không có ghi chú"}</p>
 
     <ul>
       <li><strong>Giao hàng:</strong> ${infor.shippingMethod == "standard" ? "Giao hàng nhanh" : "Giao hàng hỏa tốc"}</li>

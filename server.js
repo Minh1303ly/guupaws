@@ -255,13 +255,16 @@ app.get('/api/orders/:userId', async (req, res) => {
 });
 
 // Update status order
-app.get('/api/orders/:orderId', async (req, res) => {
+app.put('/api/orders/:orderId', async (req, res) => {
   const orders = await readJson(ORDERS_FILE);
   const { status } = req.body;
-  const userOrders = orders.filter(order => order.id === parseInt(req.params.orderId));
-  userOrders.status = status;
+  const updateOrder = orders.find(order => order.id === parseInt(req.params.orderId));
+  if(!updateOrder){
+    return res.status(400).json({ error: 'Order not exists' });
+  }
+  updateOrder.status = status;
   await writeJson(ORDERS_FILE, orders);
-  res.json(userOrders);
+  res.json(updateOrder);
 });
 
 // Helper to calculate total
