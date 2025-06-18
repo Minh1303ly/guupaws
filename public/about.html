@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GuuPawz - Stylish Clothes for Your GuuPawzs</title>
-    <link rel="icon" type="image/png" href="././icon-pet1.PNG">
+    <title>GuuPawz</title>
+    <link rel="icon" type="image/png" href="././icon-shop.jpg">
     <script src="https://cdn.tailwindcss.com/3.4.16"></script>
     <script>tailwind.config = { theme: { extend: { colors: { primary: '#f9a8d4', secondary: '#a5f3fc' }, borderRadius: { 'none': '0px', 'sm': '4px', DEFAULT: '8px', 'md': '12px', 'lg': '16px', 'xl': '20px', '2xl': '24px', '3xl': '32px', 'full': '9999px', 'button': '8px' } } } }</script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -16,6 +16,8 @@
 
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     <style>
         :where([class^="ri-"])::before {
             content: "\f3c2";
@@ -97,12 +99,14 @@
         body {
             font-family: 'Poppins', sans-serif;
         }
+
         .hero {
             background: url('https://readdy.ai/api/search-image?query=cute%20pets%20wearing%20stylish%20clothes%2C%20pastel%20pink%20and%20mint%20green%20background%2C%20soft%20lighting%2C%20professional%20photography%2C%20high%20quality%2C%20adorable%20dogs%20and%20cats%20in%20fashionable%20outfits%2C%20clean%20background%2C%20modern%20aesthetic%2C%20high-end%20pet%20fashion&width=1600&height=800&seq=hero1&orientation=landscape') no-repeat center center;
             background-size: cover;
             position: relative;
             border-bottom: 8px solid #f9a8d4;
         }
+
         .hero::before {
             content: '';
             position: absolute;
@@ -112,28 +116,37 @@
             height: 100%;
             background: rgba(0, 0, 0, 0.3);
         }
+
         .hero-content {
             position: relative;
             z-index: 1;
         }
-        .value-card, .team-card {
+
+        .value-card,
+        .team-card {
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             border-radius: 20px;
         }
-        .value-card:hover, .team-card:hover {
+
+        .value-card:hover,
+        .team-card:hover {
             transform: scale(1.05);
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
         }
+
         .cta-button {
             transition: background-color 0.3s ease, transform 0.2s ease;
         }
+
         .cta-button:hover {
             background-color: #ec4899;
             transform: scale(1.1);
         }
+
         .emoji {
             font-size: 1.5rem;
         }
+
         .section-bg {
             background: linear-gradient(to bottom, #fef3f2, #fff1f2);
         }
@@ -146,11 +159,11 @@
         <div class="container mx-auto px-4 py-3 flex items-center justify-between">
             <a href="#" class="text-3xl font-['Pacifico'] text-white">GuuPawz</a>
             <nav class="hidden md:flex items-center space-x-6">
-                <a href="./" data-readdy="true"
-                    class="text-white font-medium hover:text-pink-100 transition border-white">Home</a>
-                <a href="shop.html"
-                    class="text-white font-medium hover:text-pink-100 transition border-white">Shop</a>
-                <a href="about.html" class="text-white font-bold hover:text-pink-100 transition border-b-2">About Us</a>
+                <a href="./" data-readdy="true" class="text-white font-medium hover:text-pink-100 transition ">Trang
+                    chủ</a>
+                <a href="shop.html" class="text-white font-medium hover:text-pink-100 transition">Cửa hàng</a>
+                <a href="about.html" class="text-white font-bold hover:text-pink-100 transition border-b-2">Chúng
+                    tôi</a>
                 <!-- <a
             href="#"
             class="text-white font-medium hover:text-pink-100 transition"
@@ -165,9 +178,9 @@
             <div class="flex items-center space-x-4">
                 <form id="search-form">
                     <div class="relative">
-                        <input id="search-input" type="text" placeholder="Search..."
+                        <input id="search-input" type="text" placeholder="Tìm kiếm..."
                             class="py-2 pl-10 pr-4 rounded-full text-sm border-none focus:outline-none focus:ring-2 focus:ring-pink-300 w-40 md:w-64" />
-                        
+
                         <div id="search-icon"
                             class="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 flex items-center justify-center text-gray-400 transition-all duration-300">
                             <i class="ri-search-line"></i>
@@ -187,101 +200,20 @@
                         class="absolute right-0 top-full mt-2 w-80 bg-white rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
                         <div class="p-4">
                             <div class="flex items-center justify-between mb-4">
-                                <h3 class="font-semibold">Shopping Cart</h3>
+                                <h3 class="font-semibold">Giỏ hàng</h3>
                                 <a href="#cart" class="text-primary hover:text-pink-600 text-sm"></a>
                             </div>
                             <div id="cart-item" class="space-y-3 max-h-60 overflow-y-auto">
-                                <!-- Cart Item -->
-                                <!-- <div class="flex items-center gap-3">
-                                    <img src="https://readdy.ai/api/search-image?query=small%2520dog%2520wearing%2520stylish%2520blue%2520winter%2520sweater%252C%2520product%2520photography%252C%2520studio%2520lighting%252C%2520clean%2520white%2520background%252C%2520high%2520quality%252C%2520detailed%2520fabric%2520texture%252C%2520adorable%2520puppy%2520model&width=80&height=80&seq=cart-item1&orientation=squarish"
-                                        alt="Blue Winter Sweater" class="w-16 h-16 object-cover rounded" />
-                                    <div class="flex-1">
-                                        <h4 class="text-sm font-medium">Blue Winter Sweater</h4>
-                                        <div class="text-gray-500 text-xs mt-1">
-                                            Size:
-                                            <select class="text-xs bg-transparent focus:outline-none ml-1">
-                                                <option value="S">S</option>
-                                                <option value="M" selected>M</option>
-                                                <option value="L">L</option>
-                                                <option value="XL">XL</option>
-                                            </select>
-                                        </div>
-                                        <div class="flex items-center justify-between mt-1">
-                                            <span class="text-sm font-semibold">$22.99</span>
-                                            <div class="flex items-center gap-2">
-                                                <button class="text-gray-400 hover:text-primary">
-                                                    <i class="ri-subtract-line"></i>
-                                                </button>
-                                                <span class="text-sm">1</span>
-                                                <button class="text-gray-400 hover:text-primary">
-                                                    <i class="ri-add-line"></i>
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <button class="text-gray-400 hover:text-red-500">
-                                        <i class="ri-close-line"></i>
-                                    </button>
-                                </div> -->
 
-                                <!-- Cart Item -->
-                                <!-- <div class="flex items-center gap-3">
-                                    <img src="https://readdy.ai/api/search-image?query=cat%2520wearing%2520elegant%2520blue%2520bow%2520tie%2520collar%252C%2520product%2520photography%252C%2520studio%2520lighting%252C%2520clean%2520white%2520background%252C%2520high%2520quality%252C%2520detailed%2520fabric%2520texture%252C%2520adorable%2520kitten%2520model&width=80&height=80&seq=cart-item2&orientation=squarish"
-                                        alt="Elegant Bow Tie Collar" class="w-16 h-16 object-cover rounded" />
-                                    <div class="flex-1">
-                                        <h4 class="text-sm font-medium">
-                                            Elegant Bow Tie Collar
-                                        </h4>
-                                        <p class="text-gray-500 text-xs">Size: S</p>
-                                        <div class="flex items-center justify-between mt-1">
-                                            <span class="text-sm font-semibold">$18.99</span>
-                                            <div class="flex items-center gap-2">
-                                                <button class="text-gray-400 hover:text-primary">
-                                                    <i class="ri-subtract-line"></i>
-                                                </button>
-                                                <span class="text-sm">1</span>
-                                                <button class="text-gray-400 hover:text-primary">
-                                                    <i class="ri-add-line"></i>
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <button class="text-gray-400 hover:text-red-500">
-                                        <i class="ri-close-line"></i>
-                                    </button>
-                                </div> -->
-                                <!-- Cart Item -->
-                                <!-- <div class="flex items-center gap-3">
-                                    <img src="https://readdy.ai/api/search-image?query=small%2520dog%2520wearing%2520raincoat%2520with%2520hood%252C%2520yellow%2520color%252C%2520product%2520photography%252C%2520studio%2520lighting%252C%2520clean%2520white%2520background%252C%2520high%2520quality%252C%2520detailed%2520fabric%2520texture%252C%2520adorable%2520puppy%2520model&width=80&height=80&seq=cart-item3&orientation=squarish"
-                                        alt="Waterproof Raincoat" class="w-16 h-16 object-cover rounded" />
-                                    <div class="flex-1">
-                                        <h4 class="text-sm font-medium">Waterproof Raincoat</h4>
-                                        <p class="text-gray-500 text-xs">Size: L</p>
-                                        <div class="flex items-center justify-between mt-1">
-                                            <span class="text-sm font-semibold">$27.99</span>
-                                            <div class="flex items-center gap-2">
-                                                <button class="text-gray-400 hover:text-primary">
-                                                    <i class="ri-subtract-line"></i>
-                                                </button>
-                                                <span class="text-sm">1</span>
-                                                <button class="text-gray-400 hover:text-primary">
-                                                    <i class="ri-add-line"></i>
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <button class="text-gray-400 hover:text-red-500">
-                                        <i class="ri-close-line"></i>
-                                    </button>
-                                </div> -->
                             </div>
                             <div class="border-t border-gray-100 mt-4 pt-4">
                                 <div class="flex items-center justify-between mb-4">
-                                    <span class="text-gray-600">Subtotal</span>
+                                    <span class="text-gray-600">Tổng</span>
                                     <span id="cart-subtotal" class="font-semibold"></span>
                                 </div>
                                 <a href="#" onclick="loadCheckoutPage()"
-                                    class="block w-full bg-primary text-white text-center py-2 rounded-button font-semibold hover:bg-pink-400 transition">Checkout</a>
+                                    class="block w-full bg-primary text-white text-center py-2 rounded-button font-semibold hover:bg-pink-400 transition">Mua
+                                    hàng</a>
                             </div>
                         </div>
                     </div>
@@ -300,35 +232,35 @@
                                 </div>
                                 <div>
                                     <h3 id="profile-icon-fullname" class="font-semibold">GuuPaws</h3>
-                                    <p id="profile-icon-icon-mail" class="text-gray-500 text-sm">Welcome you!</p>
+                                    <p id="profile-icon-icon-mail" class="text-gray-500 text-sm">Chào mừng bạn!</p>
                                 </div>
                             </div>
                             <div class="space-y-1">
                                 <a href="#" id="myProfileLink"
                                     class="flex items-center gap-2 p-2 hover:bg-gray-50 rounded-lg text-gray-700">
                                     <i class="ri-user-settings-line"></i>
-                                    <span>My Profile</span>
+                                    <span>Hồ sơ</span>
                                 </a>
                                 <a href="#" id="myOrdersLink"
                                     class="flex items-center gap-2 p-2 hover:bg-gray-50 rounded-lg text-gray-700">
                                     <i class="ri-file-list-3-line"></i>
-                                    <span>Order History</span>
+                                    <span>Lịch sử mua hàng</span>
                                 </a>
                                 <a href="#" id="signInLink"
                                     class="flex items-center gap-2 p-2 hover:bg-gray-50 rounded-lg text-gray-700">
                                     <i class="ri-login-circle-line"></i>
-                                    <span>Sign in</span>
+                                    <span>Đăng nhập</span>
                                 </a>
                                 <a href="#" id="signUpLink"
                                     class="flex items-center gap-2 p-2 hover:bg-gray-50 rounded-lg text-gray-700">
                                     <i class="ri-user-add-line"></i>
-                                    <span>Sign up</span>
+                                    <span>Đăng kí</span>
                                 </a>
                                 <div class="border-t border-gray-100 my-2"></div>
                                 <a href="#" id="LogoutLink"
                                     class="flex items-center gap-2 p-2 hover:bg-gray-50 rounded-lg text-red-600">
                                     <i class="ri-logout-box-r-line"></i>
-                                    <span>Logout</span>
+                                    <span>Đăng xuất</span>
                                 </a>
                             </div>
                         </div>
@@ -341,49 +273,61 @@
         </div>
     </header>
 
-        <section class="hero py-28 text-center text-white">
+    <section class="hero py-28 text-center text-white">
         <div class="hero-content container mx-auto px-4">
-            <h1 class="text-4xl md:text-5xl font-bold mb-4">About GuuPawz 🐶😺</h1>
-            <p class="text-lg md:text-xl max-w-2xl mx-auto">We’re all about making your furry friends look pawsitively adorable with stylish, comfy outfits since 2020!</p>
-            <a href="./shop.html" class="mt-6 inline-block bg-pink-500 text-white py-3 px-8 rounded-full font-semibold cta-button">Shop Cute Outfits! 🛍️</a>
+            <h1 class="text-4xl md:text-5xl font-bold mb-4">Về GuuPawz 🐶😺</h1>
+            <p class="text-lg md:text-xl max-w-2xl mx-auto">Chúng tôi muốn giúp những người bạn thân thiết của bạn trông
+                thật đáng yêu với những bộ trang phục thoải mái, hợp thời trang kể từ năm 2025!</p>
+            <a href="./shop.html"
+                class="mt-6 inline-block bg-pink-500 text-white py-3 px-8 rounded-full font-semibold cta-button">Đến cửa
+                hàng ngay! 🛍️</a>
         </div>
     </section>
 
     <section class="py-16 section-bg">
         <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-pink-600 text-center mb-8">Our Story 🐾</h2>
-            <p class="text-lg text-gray-600 text-center max-w-3xl mx-auto mb-6">GuuPawz started in 2020 when a group of GuuPawz lovers decided to bring some serious style to the GuuPawz world. Tired of dull GuuPawz clothes, we dreamed up a collection that’s as cute as your furry friends! From snuggly sweaters to fancy collars, every piece is made with love to keep your GuuPawzs happy and stylish.</p>
-            <p class="text-lg text-gray-600 text-center max-w-3xl mx-auto">We’re pet parents too, so we know how much joy a well-dressed pup or kitty can bring. Join us in celebrating the love for our furry besties! 💖</p>
+            <h2 class="text-3xl font-bold text-pink-600 text-center mb-8">Câu chuyện của chúng tôi 🐾</h2>
+            <p class="text-lg text-gray-600 text-center max-w-3xl mx-auto mb-6">GuuPawz bắt đầu vào năm 2025 khi một
+                nhóm những người yêu thích GuuPawz quyết định mang phong cách nghiêm túc đến thế giới GuuPawz. Chán
+                những bộ quần áo GuuPawz nhàm chán, chúng tôi đã nghĩ ra một bộ sưu tập dễ thương như những người bạn
+                đáng yêu của bạn! Từ những chiếc áo len ấm áp đến những chiếc cổ áo lạ mắt, mọi sản phẩm đều được làm
+                bằng tình yêu để giữ cho GuuPawzs của bạn luôn vui vẻ và phong cách.</p>
+            <p class="text-lg text-gray-600 text-center max-w-3xl mx-auto">Chúng tôi cũng là cha mẹ nuôi thú cưng, vì
+                vậy chúng tôi biết một chú chó hay chú mèo ăn mặc đẹp có thể mang lại niềm vui như thế nào. Hãy cùng
+                chúng tôi tôn vinh tình yêu dành cho những người bạn đáng yêu của chúng ta! 💖</p>
         </div>
     </section>
 
     <section class="py-16 bg-white">
         <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-pink-600 text-center mb-8">Our Values 🌟</h2>
+            <h2 class="text-3xl font-bold text-pink-600 text-center mb-8">Giá trị mang lại 🌟</h2>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div class="value-card bg-pink-50 p-6 rounded-lg shadow-sm text-center">
-                    <img src="https://readdy.ai/api/search-image?query=cute%20dog%20in%20fashionable%20outfit%20outdoors%2C%20Instagram%20style%20photo%2C%20high%20quality%2C%20bright%20lighting%2C%20pet%20fashion%2C%20lifestyle%20photography&width=300&height=300&seq=insta1&orientation=squarish" 
-                        alt="Comfort" class="w-full h-48 object-cover rounded-lg mb-4">
-                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Comfy & Cozy 🛋️</h3>
-                    <p class="text-gray-600">Soft, pet-safe materials to keep your furry friends snug and happy all day.</p>
+                    <img src="https://readdy.ai/api/search-image?query=cute%20dog%20in%20fashionable%20outfit%20outdoors%2C%20Instagram%20style%20photo%2C%20high%20quality%2C%20bright%20lighting%2C%20pet%20fashion%2C%20lifestyle%20photography&width=300&height=300&seq=insta1&orientation=squarish"
+                        alt="Comfort" class="w-full h-48 object-cover rounded-lg mb-4" style="height: 300px;">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">THoải mái & Ấm cúng 🛋️</h3>
+                    <p class="text-gray-600">Chất liệu mềm mại, an toàn cho thú cưng giúp những người bạn đáng yêu của
+                        bạn được ấm áp và vui vẻ suốt cả ngày.</p>
                 </div>
                 <div class="value-card bg-pink-50 p-6 rounded-lg shadow-sm text-center">
-                    <img src="https://readdy.ai/api/search-image?query=cat%20wearing%20sunglasses%2C%20Instagram%20style%20photo%2C%20high%20quality%2C%20bright%20lighting%2C%20pet%20fashion%2C%20lifestyle%20photography&width=300&height=300&seq=insta2&orientation=squarish" 
-                        alt="Style" class="w-full h-48 object-cover rounded-lg mb-4">
-                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Super Stylish ✨</h3>
-                    <p class="text-gray-600">Trendy designs to make your pet the cutest star of every paw-ty!</p>
+                    <img src="https://readdy.ai/api/search-image?query=cat%20wearing%20sunglasses%2C%20Instagram%20style%20photo%2C%20high%20quality%2C%20bright%20lighting%2C%20pet%20fashion%2C%20lifestyle%20photography&width=300&height=300&seq=insta2&orientation=squarish"
+                        alt="Style" class="w-full h-48 object-cover rounded-lg mb-4" style="height: 300px;">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Siêu phong cách ✨</h3>
+                    <p class="text-gray-600">Thiết kế hợp thời trang giúp thú cưng của bạn trở thành ngôi sao dễ thương
+                        nhất trong mắt mọi người!</p>
                 </div>
                 <div class="value-card bg-pink-50 p-6 rounded-lg shadow-sm text-center">
-                    <img src="https://readdy.ai/api/search-image?query=small%20dog%20in%20party%20hat%2C%20Instagram%20style%20photo%2C%20high%20quality%2C%20bright%20lighting%2C%20pet%20fashion%2C%20lifestyle%20photography&width=300&height=300&seq=insta3&orientation=squarish" 
-                        alt="Love" class="w-full h-48 object-cover rounded-lg mb-4">
-                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Made with Love 💕</h3>
-                    <p class="text-gray-600">Every outfit is crafted to celebrate the special bond with your pet.</p>
+                    <img src="https://readdy.ai/api/search-image?query=small%20dog%20in%20party%20hat%2C%20Instagram%20style%20photo%2C%20high%20quality%2C%20bright%20lighting%2C%20pet%20fashion%2C%20lifestyle%20photography&width=300&height=300&seq=insta3&orientation=squarish"
+                        alt="Love" class="w-full h-48 object-cover rounded-lg mb-4" style="height: 300px;">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Được làm bằng tình yêy 💕</h3>
+                    <p class="text-gray-600">Mỗi bộ trang phục đều được thiết kế để tôn vinh mối liên kết đặc biệt với
+                        thú cưng của bạn.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="py-16 section-bg">
+    <!-- <section class="py-16 section-bg">
         <div class="container mx-auto px-4">
             <h2 class="text-3xl font-bold text-pink-600 text-center mb-8">Meet Our Pet Models 🐕😻</h2>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -407,13 +351,17 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
 
     <section class="py-16 bg-white">
         <div class="container mx-auto px-4 text-center">
-            <h2 class="text-3xl font-bold text-pink-600 mb-8">Our Mission 🐾💖</h2>
-            <p class="text-lg text-gray-600 max-w-3xl mx-auto">At GuuPawz, we’re here to make every pet shine with adorable, comfy, and affordable fashion. We believe in sustainable designs and spreading joy to pet parents everywhere!</p>
-            <a href="#contact" class="mt-6 inline-block bg-pink-500 text-white py-3 px-8 rounded-full font-semibold cta-button">Join Our Paw-ty! 🎉</a>
+            <h2 class="text-3xl font-bold text-pink-600 mb-8">Sứ mệnh của chúng tôi 🐾💖</h2>
+            <p class="text-lg text-gray-600 max-w-3xl mx-auto">Tại GuuPawz, chúng tôi ở đây để làm cho mọi thú cưng tỏa
+                sáng với thời trang đáng yêu, thoải mái và giá cả phải chăng. Chúng tôi tin vào các thiết kế bền vững và
+                mang lại niềm vui cho các bậc cha mẹ nuôi thú cưng ở khắp mọi nơi!</p>
+            <a href="#contact"
+                class="mt-6 inline-block bg-pink-500 text-white py-3 px-8 rounded-full font-semibold cta-button">Tham
+                gia cùng Paw-ty! 🎉</a>
         </div>
     </section>
 
@@ -424,78 +372,76 @@
                 <!-- Company Info -->
                 <div>
                     <h3 class="text-xl font-['Pacifico'] text-primary mb-4">GuuPawz</h3>
-                    <p class="text-gray-600 mb-4">Making your pets look as fabulous as they feel since 2020.</p>
+                    <p class="text-gray-600 mb-4">Kết nối với GuuPawz Shop</p>
                     <div class="flex space-x-4">
-                        <a href="#"
+                        <a href=" https://www.facebook.com/profile.php?id=61576966434198"
                             class="w-10 h-10 flex items-center justify-center bg-primary text-white rounded-full hover:bg-pink-400 transition">
                             <i class="ri-facebook-fill"></i>
                         </a>
-                        <a href="#"
+                        <a href="https://www.instagram.com/guupawz/"
                             class="w-10 h-10 flex items-center justify-center bg-primary text-white rounded-full hover:bg-pink-400 transition">
                             <i class="ri-instagram-line"></i>
                         </a>
-                        <a href="#"
+                        <!-- <a href="#"
                             class="w-10 h-10 flex items-center justify-center bg-primary text-white rounded-full hover:bg-pink-400 transition">
                             <i class="ri-twitter-x-line"></i>
                         </a>
                         <a href="#"
                             class="w-10 h-10 flex items-center justify-center bg-primary text-white rounded-full hover:bg-pink-400 transition">
-                            <i class="ri-pinterest-line"></i>
+                            <i class="ri-pinterest-line"></i> -->
                         </a>
                     </div>
                 </div>
                 <!-- Shop -->
                 <div>
-                    <h4 class="font-semibold text-lg mb-4">Shop</h4>
+                    <h4 class="font-semibold text-lg mb-4">Cửa hàng</h4>
                     <ul class="space-y-2">
-                        <li><a href="#" class="text-gray-600 hover:text-primary">Dog Fashion</a></li>
-                        <li><a href="#" class="text-gray-600 hover:text-primary">Cat Fashion</a></li>
-                        <li><a href="#" class="text-gray-600 hover:text-primary">Accessories</a></li>
-                        <li><a href="#" class="text-gray-600 hover:text-primary">New Arrivals</a></li>
-                        <li><a href="#" class="text-gray-600 hover:text-primary">Sale</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-primary">Thời trang thú cưng</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-primary">Phụ kiện</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-primary">Hàng mới đến</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-primary">Hàng giảm giá</a></li>
                     </ul>
                 </div>
                 <!-- Customer Service -->
                 <div>
-                    <h4 class="font-semibold text-lg mb-4">Customer Service</h4>
+                    <h4 class="font-semibold text-lg mb-4">Dịch vụ khách hàng</h4>
                     <ul class="space-y-2">
-                        <li><a href="#" class="text-gray-600 hover:text-primary">Contact Us</a></li>
-                        <li><a href="#" class="text-gray-600 hover:text-primary">Shipping & Returns</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-primary">Liên hệ chúng tôi</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-primary">Vận chuyển & Trả hàng</a></li>
                         <li><a href="#" class="text-gray-600 hover:text-primary">FAQ</a></li>
-                        <li><a href="#" class="text-gray-600 hover:text-primary">Size Guide</a></li>
-                        <li><a href="#" class="text-gray-600 hover:text-primary">Track Order</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-primary">Hướng dẫn chọn kích thước</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-primary">Theo dõi đơn hàng</a></li>
                     </ul>
                 </div>
                 <!-- About -->
                 <div>
-                    <h4 class="font-semibold text-lg mb-4">About</h4>
+                    <h4 class="font-semibold text-lg mb-4">Về chúng tôi</h4>
                     <ul class="space-y-2">
-                        <li><a href="#" class="text-gray-600 hover:text-primary">Our Story</a></li>
-                        <li><a href="#" class="text-gray-600 hover:text-primary">Blog</a></li>
-                        <li><a href="#" class="text-gray-600 hover:text-primary">Testimonials</a></li>
-                        <li><a href="#" class="text-gray-600 hover:text-primary">Privacy Policy</a></li>
-                        <li><a href="#" class="text-gray-600 hover:text-primary">Terms of Service</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-primary">Câu chuyện của chúng tôi</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-primary">Lời chứng thực</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-primary">Chính sách bảo mật</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-primary">Điều khoản dịch vụ</a></li>
                     </ul>
                 </div>
             </div>
             <div class="border-t border-gray-200 pt-6">
                 <div class="flex flex-col md:flex-row justify-between items-center">
                     <p class="text-gray-500 text-sm mb-4 md:mb-0">© 2025 GuuPawz. All rights reserved.</p>
-                    <div class="flex items-center space-x-4">
-                        <span class="text-gray-500 text-sm">Payment Methods:</span>
+                    <!-- <div class="flex items-center space-x-4">
+                        <span class="text-gray-500 text-sm">Các:</span>
                         <div class="flex space-x-2">
                             <i class="ri-visa-fill ri-lg text-blue-700"></i>
                             <i class="ri-mastercard-fill ri-lg text-red-500"></i>
                             <i class="ri-paypal-fill ri-lg text-blue-500"></i>
                             <i class="ri-apple-fill ri-lg text-gray-700"></i>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>
     </footer>
     <!-- Mobile Navigation (Fixed at bottom) -->
-    <div class="md:hidden fixed bottom-0 left-0 right-0 bg-white shadow-lg border-t border-gray-200 z-40">
+    <!-- <div class="md:hidden fixed bottom-0 left-0 right-0 bg-white shadow-lg border-t border-gray-200 z-40">
         <div class="flex justify-around">
             <a href="#" class="flex flex-col items-center py-2 px-3 text-primary">
                 <div class="w-6 h-6 flex items-center justify-center">
@@ -528,9 +474,9 @@
                 <span class="text-xs mt-1">Account</span>
             </a>
         </div>
-    </div>
+    </div> -->
     <script src="navigation.js"></script>
-    
+
     <script id="checkbox-script">
         document.addEventListener('DOMContentLoaded', function () {
             const checkboxes = document.querySelectorAll('.custom-checkbox input[type="checkbox"]');
@@ -546,12 +492,12 @@
             });
         });
 
-        
+
     </script>
 
-<script>
-    (function(){if(!window.chatbase||window.chatbase("getState")!=="initialized"){window.chatbase=(...arguments)=>{if(!window.chatbase.q){window.chatbase.q=[]}window.chatbase.q.push(arguments)};window.chatbase=new Proxy(window.chatbase,{get(target,prop){if(prop==="q"){return target.q}return(...args)=>target(prop,...args)}})}const onLoad=function(){const script=document.createElement("script");script.src="https://www.chatbase.co/embed.min.js";script.id="hrUO4CP17SdTN0LWq62A0";script.domain="www.chatbase.co";document.body.appendChild(script)};if(document.readyState==="complete"){onLoad()}else{window.addEventListener("load",onLoad)}})();
-</script>
+    <script>
+        (function () { if (!window.chatbase || window.chatbase("getState") !== "initialized") { window.chatbase = (...arguments) => { if (!window.chatbase.q) { window.chatbase.q = [] } window.chatbase.q.push(arguments) }; window.chatbase = new Proxy(window.chatbase, { get(target, prop) { if (prop === "q") { return target.q } return (...args) => target(prop, ...args) } }) } const onLoad = function () { const script = document.createElement("script"); script.src = "https://www.chatbase.co/embed.min.js"; script.id = "hrUO4CP17SdTN0LWq62A0"; script.domain = "www.chatbase.co"; document.body.appendChild(script) }; if (document.readyState === "complete") { onLoad() } else { window.addEventListener("load", onLoad) } })();
+    </script>
 
 
 </body>

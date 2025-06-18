@@ -7,7 +7,7 @@
     "color": ["đỏ", "xanh", "cam"],
     "material": "cotton",
     "imgUrl": "https://readdy.ai/api/search-image?query=small%2520dog%2520wearing%2520stylish%2520blue%2520winter%2520sweater%252C%2520product%2520photography%252C%2520studio%2520lighting%252C%2520clean%2520white%2520background%252C%2520high%2520quality%252C%2520detailed%2520fabric%2520texture%252C%2520adorable%2520puppy%2520model&width=300&height=300&seq=dog-prod1&orientation=squarish",
-    "price": 150000,
+    "price": -1,
     "stock": 50,
     "description": "Perfect for chilly days, this adorable sweater keeps your"
   },

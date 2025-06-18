@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GuuPawz - Stylish Clothes for Your GuuPawzs</title>
-    <link rel="icon" type="image/png" href="././icon-pet1.PNG">
+    <link rel="icon" type="image/png" href="././icon-shop.jpg">
     <script src="https://cdn.tailwindcss.com/3.4.16"></script>
     <script>tailwind.config = { theme: { extend: { colors: { primary: '#f9a8d4', secondary: '#a5f3fc' }, borderRadius: { 'none': '0px', 'sm': '4px', DEFAULT: '8px', 'md': '12px', 'lg': '16px', 'xl': '20px', '2xl': '24px', '3xl': '32px', 'full': '9999px', 'button': '8px' } } } }</script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -13,6 +13,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <style>
         :where([class^="ri-"])::before {
             content: "\f3c2";
@@ -104,9 +105,9 @@
             <a href="#" class="text-3xl font-['Pacifico'] text-white">GuuPawz</a>
             <nav class="hidden md:flex items-center space-x-6">
                 <a href="./" data-readdy="true"
-                    class="text-white font-bold hover:text-pink-100 transition border-b-2">Home</a>
-                <a href="shop.html" class="text-white font-medium hover:text-pink-100 transition border-white">Shop</a>
-                <a href="about.html" class="text-white font-medium hover:text-pink-100 transition">About Us</a>
+                    class="text-white font-bold hover:text-pink-100 transition border-b-2">Trang chủ</a>
+                <a href="shop.html" class="text-white font-medium hover:text-pink-100 transition">Cửa hàng</a>
+                <a href="about.html" class="text-white font-medium hover:text-pink-100 transition">Chúng tôi</a>
                 <!-- <a
             href="#"
             class="text-white font-medium hover:text-pink-100 transition"
@@ -121,7 +122,7 @@
             <div class="flex items-center space-x-4">
                 <form id="search-form">
                     <div class="relative">
-                        <input id="search-input" type="text" placeholder="Search..."
+                        <input id="search-input" type="text" placeholder="Tìm kiếm..."
                             class="py-2 pl-10 pr-4 rounded-full text-sm border-none focus:outline-none focus:ring-2 focus:ring-pink-300 w-40 md:w-64" />
 
                         <div id="search-icon"
@@ -143,101 +144,20 @@
                         class="absolute right-0 top-full mt-2 w-80 bg-white rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
                         <div class="p-4">
                             <div class="flex items-center justify-between mb-4">
-                                <h3 class="font-semibold">Shopping Cart</h3>
+                                <h3 class="font-semibold">Giỏ hàng</h3>
                                 <a href="#cart" class="text-primary hover:text-pink-600 text-sm"></a>
                             </div>
                             <div id="cart-item" class="space-y-3 max-h-60 overflow-y-auto">
-                                <!-- Cart Item -->
-                                <!-- <div class="flex items-center gap-3">
-                                    <img src="https://readdy.ai/api/search-image?query=small%2520dog%2520wearing%2520stylish%2520blue%2520winter%2520sweater%252C%2520product%2520photography%252C%2520studio%2520lighting%252C%2520clean%2520white%2520background%252C%2520high%2520quality%252C%2520detailed%2520fabric%2520texture%252C%2520adorable%2520puppy%2520model&width=80&height=80&seq=cart-item1&orientation=squarish"
-                                        alt="Blue Winter Sweater" class="w-16 h-16 object-cover rounded" />
-                                    <div class="flex-1">
-                                        <h4 class="text-sm font-medium">Blue Winter Sweater</h4>
-                                        <div class="text-gray-500 text-xs mt-1">
-                                            Size:
-                                            <select class="text-xs bg-transparent focus:outline-none ml-1">
-                                                <option value="S">S</option>
-                                                <option value="M" selected>M</option>
-                                                <option value="L">L</option>
-                                                <option value="XL">XL</option>
-                                            </select>
-                                        </div>
-                                        <div class="flex items-center justify-between mt-1">
-                                            <span class="text-sm font-semibold">$22.99</span>
-                                            <div class="flex items-center gap-2">
-                                                <button class="text-gray-400 hover:text-primary">
-                                                    <i class="ri-subtract-line"></i>
-                                                </button>
-                                                <span class="text-sm">1</span>
-                                                <button class="text-gray-400 hover:text-primary">
-                                                    <i class="ri-add-line"></i>
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <button class="text-gray-400 hover:text-red-500">
-                                        <i class="ri-close-line"></i>
-                                    </button>
-                                </div> -->
 
-                                <!-- Cart Item -->
-                                <!-- <div class="flex items-center gap-3">
-                                    <img src="https://readdy.ai/api/search-image?query=cat%2520wearing%2520elegant%2520blue%2520bow%2520tie%2520collar%252C%2520product%2520photography%252C%2520studio%2520lighting%252C%2520clean%2520white%2520background%252C%2520high%2520quality%252C%2520detailed%2520fabric%2520texture%252C%2520adorable%2520kitten%2520model&width=80&height=80&seq=cart-item2&orientation=squarish"
-                                        alt="Elegant Bow Tie Collar" class="w-16 h-16 object-cover rounded" />
-                                    <div class="flex-1">
-                                        <h4 class="text-sm font-medium">
-                                            Elegant Bow Tie Collar
-                                        </h4>
-                                        <p class="text-gray-500 text-xs">Size: S</p>
-                                        <div class="flex items-center justify-between mt-1">
-                                            <span class="text-sm font-semibold">$18.99</span>
-                                            <div class="flex items-center gap-2">
-                                                <button class="text-gray-400 hover:text-primary">
-                                                    <i class="ri-subtract-line"></i>
-                                                </button>
-                                                <span class="text-sm">1</span>
-                                                <button class="text-gray-400 hover:text-primary">
-                                                    <i class="ri-add-line"></i>
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <button class="text-gray-400 hover:text-red-500">
-                                        <i class="ri-close-line"></i>
-                                    </button>
-                                </div> -->
-                                <!-- Cart Item -->
-                                <!-- <div class="flex items-center gap-3">
-                                    <img src="https://readdy.ai/api/search-image?query=small%2520dog%2520wearing%2520raincoat%2520with%2520hood%252C%2520yellow%2520color%252C%2520product%2520photography%252C%2520studio%2520lighting%252C%2520clean%2520white%2520background%252C%2520high%2520quality%252C%2520detailed%2520fabric%2520texture%252C%2520adorable%2520puppy%2520model&width=80&height=80&seq=cart-item3&orientation=squarish"
-                                        alt="Waterproof Raincoat" class="w-16 h-16 object-cover rounded" />
-                                    <div class="flex-1">
-                                        <h4 class="text-sm font-medium">Waterproof Raincoat</h4>
-                                        <p class="text-gray-500 text-xs">Size: L</p>
-                                        <div class="flex items-center justify-between mt-1">
-                                            <span class="text-sm font-semibold">$27.99</span>
-                                            <div class="flex items-center gap-2">
-                                                <button class="text-gray-400 hover:text-primary">
-                                                    <i class="ri-subtract-line"></i>
-                                                </button>
-                                                <span class="text-sm">1</span>
-                                                <button class="text-gray-400 hover:text-primary">
-                                                    <i class="ri-add-line"></i>
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <button class="text-gray-400 hover:text-red-500">
-                                        <i class="ri-close-line"></i>
-                                    </button>
-                                </div> -->
                             </div>
                             <div class="border-t border-gray-100 mt-4 pt-4">
                                 <div class="flex items-center justify-between mb-4">
-                                    <span class="text-gray-600">Subtotal</span>
+                                    <span class="text-gray-600">Tổng</span>
                                     <span id="cart-subtotal" class="font-semibold"></span>
                                 </div>
                                 <a href="#" onclick="loadCheckoutPage()"
-                                    class="block w-full bg-primary text-white text-center py-2 rounded-button font-semibold hover:bg-pink-400 transition">Checkout</a>
+                                    class="block w-full bg-primary text-white text-center py-2 rounded-button font-semibold hover:bg-pink-400 transition">Mua
+                                    hàng</a>
                             </div>
                         </div>
                     </div>
@@ -256,35 +176,35 @@
                                 </div>
                                 <div>
                                     <h3 id="profile-icon-fullname" class="font-semibold">GuuPaws</h3>
-                                    <p id="profile-icon-icon-mail" class="text-gray-500 text-sm">Welcome you!</p>
+                                    <p id="profile-icon-icon-mail" class="text-gray-500 text-sm">Chào mừng bạn!</p>
                                 </div>
                             </div>
                             <div class="space-y-1">
                                 <a href="#" id="myProfileLink"
                                     class="flex items-center gap-2 p-2 hover:bg-gray-50 rounded-lg text-gray-700">
                                     <i class="ri-user-settings-line"></i>
-                                    <span>My Profile</span>
+                                    <span>Hồ sơ</span>
                                 </a>
                                 <a href="#" id="myOrdersLink"
                                     class="flex items-center gap-2 p-2 hover:bg-gray-50 rounded-lg text-gray-700">
                                     <i class="ri-file-list-3-line"></i>
-                                    <span>Order History</span>
+                                    <span>Lịch sử mua hàng</span>
                                 </a>
                                 <a href="#" id="signInLink"
                                     class="flex items-center gap-2 p-2 hover:bg-gray-50 rounded-lg text-gray-700">
                                     <i class="ri-login-circle-line"></i>
-                                    <span>Sign in</span>
+                                    <span>Đăng nhập</span>
                                 </a>
                                 <a href="#" id="signUpLink"
                                     class="flex items-center gap-2 p-2 hover:bg-gray-50 rounded-lg text-gray-700">
                                     <i class="ri-user-add-line"></i>
-                                    <span>Sign up</span>
+                                    <span>Đăng kí</span>
                                 </a>
                                 <div class="border-t border-gray-100 my-2"></div>
                                 <a href="#" id="LogoutLink"
                                     class="flex items-center gap-2 p-2 hover:bg-gray-50 rounded-lg text-red-600">
                                     <i class="ri-logout-box-r-line"></i>
-                                    <span>Logout</span>
+                                    <span>Đăng xuất</span>
                                 </a>
                             </div>
                         </div>
@@ -301,13 +221,16 @@
         <div class="absolute inset-0 bg-gradient-to-r from-pink-500/50 to-transparent"></div>
         <div class="container mx-auto px-4 py-20 md:py-32 relative z-10">
             <div class="max-w-lg">
-                <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">Stylish Fashion for Your Furry Friends</h1>
-                <p class="text-white text-lg mb-8">Discover our adorable collection of pet clothes and accessories that
-                    combine comfort with cuteness!</p>
+                <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">Thời Trang Mùa Hè Cho Boss – Mặc Là Mê, Sale
+                    Là Múc!</h1>
+                <p class="text-white text-lg mb-8">Đừng để nắng hè làm lu mờ phong cách của boss! Khám phá ngay bộ sưu
+                    tập quần áo và phụ
+                    kiện thú cưng mát mẻ, siêu dễ thương – với ưu đãi <strong style="font-size: 40px;">10% </strong>cho
+                    mọi đơn hàng.</p>
                 <div class="flex space-x-4">
                     <button onclick="location.href='shop.html'"
-                        class="bg-white text-primary px-6 py-3 rounded-button font-semibold hover:bg-gray-100 transition shadow-lg whitespace-nowrap">Shop
-                        Now</button>
+                        class="bg-white text-primary px-6 py-3 rounded-button font-semibold hover:bg-gray-100 transition shadow-lg whitespace-nowrap">
+                        Mua ngay</button>
                     <!-- <button
                         class="bg-transparent border-2 border-white text-white px-6 py-3 rounded-button font-semibold hover:bg-white/10 transition whitespace-nowrap">View
                         Collections</button> -->
@@ -316,9 +239,9 @@
         </div>
     </section>
     <!-- Category Navigation -->
-    <section class="py-12 bg-white">
+    <!-- <section class="py-12 bg-white">
         <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center mb-8">Shop by Category</h2>
+            <h2 class="text-3xl font-bold text-center mb-8">Khám phá cửa hàng</h2>
             <div class="flex overflow-x-auto pb-4 space-x-6 md:justify-center">
                 <div class="flex-shrink-0 w-36 text-center">
                     <div
@@ -362,12 +285,12 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
     <!-- Featured Products -->
     <section class="py-12 bg-gray-50">
         <div class="container mx-auto px-4">
             <div class="flex justify-between items-center mb-8">
-                <h2 class="text-3xl font-bold">Featured Products</h2>
+                <h2 class="text-3xl font-bold">Sản phẩm nổi bật</h2>
                 <div class="flex space-x-2">
                     <button id="scroll-left"
                         class="w-10 h-10 flex items-center justify-center rounded-full bg-white shadow hover:bg-gray-100">
@@ -479,24 +402,24 @@
             </div>
             <div class="text-center mt-8">
                 <button onclick="location.href='shop.html'"
-                    class="bg-white border border-primary text-primary px-6 py-3 rounded-button font-semibold hover:bg-primary hover:text-white transition whitespace-nowrap">View
-                    All Products</button>
+                    class="bg-white border border-primary text-primary px-6 py-3 rounded-button font-semibold hover:bg-primary hover:text-white transition whitespace-nowrap">
+                    Xem tất cả</button>
             </div>
         </div>
     </section>
     <!-- Special Offers -->
     <section class="py-12 bg-white">
         <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center mb-8">Special Offers</h2>
+            <h2 class="text-3xl font-bold text-center mb-8">Ưu Đãi Đặc Biệt</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <!-- Offer 1 -->
                 <div class=" animation-product bg-pink-100 rounded-lg overflow-hidden shadow-md relative">
                     <div class="p-6 md:p-8">
-                        <h3 class="text-2xl font-bold mb-2">Summer Collection</h3>
-                        <p class="mb-4">Get 25% off on all summer outfits for your pets!</p>
+                        <h3 class="text-2xl font-bold mb-2">Bộ sưu tập mùa hè</h3>
+                        <p class="mb-4">Giảm 10% cho toàn bộ BST hè dành riêng cho Boss!</p>
                         <button onclick="location.href='shop.html'"
-                            class="bg-white text-primary px-5 py-2 rounded-button font-medium hover:bg-gray-100 transition whitespace-nowrap">Shop
-                            Now</button>
+                            class="bg-white text-primary px-5 py-2 rounded-button font-medium hover:bg-gray-100 transition whitespace-nowrap">Mua
+                            ngay</button>
                     </div>
                     <img src="https://readdy.ai/api/search-image?query=cute%2520dog%2520wearing%2520summer%2520outfit%2C%2520sunglasses%2C%2520hat%2C%2520bright%2520colors%2C%2520product%2520photography%2C%2520studio%2520lighting%2C%2520clean%2520background%2C%2520high%2520quality%2C%2520detailed%2520fabric%2520texture%2C%2520adorable%2520puppy%2520model&width=300&height=300&seq=offer1&orientation=squarish"
                         alt="Summer Collection" class="absolute right-0 bottom-0 h-full w-auto object-cover object-top">
@@ -504,10 +427,11 @@
                 <!-- Offer 2 -->
                 <div class="animation-product bg-blue-100 rounded-lg overflow-hidden shadow-md relative">
                     <div class="p-6 md:p-8">
-                        <h3 class="text-2xl font-bold mb-2">New Arrivals</h3>
-                        <p class="mb-4">Discover our latest collection of pet accessories!</p>
-                        <button onclick="location.href='about.html'"
-                            class="bg-white text-blue-500 px-5 py-2 rounded-button font-medium hover:bg-gray-100 transition whitespace-nowrap">Explore</button>
+                        <h3 class="text-2xl font-bold mb-2">Sản phẩm mới</h3>
+                        <p class="mb-4">Khám phá ngay những outfit mới vừa cập bến tại GuuPawz!</p>
+                        <button onclick="location.href='shop.html'"
+                            class="bg-white text-blue-500 px-5 py-2 rounded-button font-medium hover:bg-gray-100 transition whitespace-nowrap">Xem
+                            bộ sưu tập</button>
                     </div>
                     <img src="https://readdy.ai/api/search-image?query=cute%2520cat%2520wearing%2520fashionable%2520accessories%2C%2520product%2520photography%2C%2520studio%2520lighting%2C%2520clean%2520background%2C%2520high%2520quality%2C%2520detailed%2520texture%2C%2520adorable%2520kitten%2520model&width=300&height=300&seq=offer2&orientation=squarish"
                         alt="New Arrivals" class="absolute right-0 bottom-0 h-full w-auto object-cover object-top">
@@ -518,7 +442,7 @@
     <!-- Testimonials -->
     <section class="py-12 bg-gray-50">
         <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center mb-8">What Pet Parents Say</h2>
+            <h2 class="text-3xl font-bold text-center mb-8">Chúng Tôi Nhận Được Gì</h2>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <!-- Testimonial 1 -->
                 <div class="animation-product bg-white p-6 rounded-lg shadow-md">
@@ -529,15 +453,15 @@
                         <i class="ri-star-fill"></i>
                         <i class="ri-star-fill"></i>
                     </div>
-                    <p class="text-gray-600 mb-4">"My Corgi absolutely loves his new sweater! The quality is amazing and
-                        it fits him perfectly. Will definitely be ordering more items!"</p>
+                    <p class="text-gray-600 mb-4">Áo có chất liệu vải mát và màu sắc đẹp. Áo mặc lên nhìn rất dễ thương
+                        và thoải mái. Ngoài ra áo còn có kích cỡ đa dạng để phù hợp với nhiều loại chó mèo.</p>
                     <div class="flex items-center">
                         <div class="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center mr-3">
                             <i class="ri-user-line text-gray-500"></i>
                         </div>
                         <div>
-                            <h4 class="font-semibold">Emily Johnson</h4>
-                            <p class="text-sm text-gray-500">Corgi Mom</p>
+                            <h4 class="font-semibold">Thuthao_0703</h4>
+                            <!-- <p class="text-sm text-gray-500">Corgi Mom</p> -->
                         </div>
                     </div>
                 </div>
@@ -550,15 +474,16 @@
                         <i class="ri-star-fill"></i>
                         <i class="ri-star-fill"></i>
                     </div>
-                    <p class="text-gray-600 mb-4">"The bow tie collar I ordered for my cat is just adorable! He looks so
-                        handsome in it and the quality is excellent. Fast shipping too!"</p>
+                    <p class="text-gray-600 mb-4">Sản phẩm có chất lượng tốt và kích thước vừa vặn, vải mỏng nhẹ mát.
+                        Sản phẩm mặc rất dễ thương và thoải mái cho thú cưng. Ngoài ra sản phẩm còn có giá cả hợp lí và
+                        giao hàng nhanh chóng.</p>
                     <div class="flex items-center">
                         <div class="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center mr-3">
                             <i class="ri-user-line text-gray-500"></i>
                         </div>
                         <div>
-                            <h4 class="font-semibold">Michael Thompson</h4>
-                            <p class="text-sm text-gray-500">Cat Dad</p>
+                            <h4 class="font-semibold">Khanhdo1507</h4>
+                            <!-- <p class="text-sm text-gray-500">Cat Dad</p> -->
                         </div>
                     </div>
                 </div>
@@ -571,15 +496,15 @@
                         <i class="ri-star-fill"></i>
                         <i class="ri-star-half-fill"></i>
                     </div>
-                    <p class="text-gray-600 mb-4">"I've ordered multiple outfits for my Pomeranian and they all fit
-                        perfectly! The customer service is amazing and the products are high quality."</p>
+                    <p class="text-gray-600 mb-4">Áo có thiết kế thoáng mát, chất liệu mềm mại, phù hợp cho thú cưng mặc
+                        vào mùa hè. Sản phẩm giúp thú cưng cảm thấy thoải mái và dễ chịu khi mặc.</p>
                     <div class="flex items-center">
                         <div class="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center mr-3">
                             <i class="ri-user-line text-gray-500"></i>
                         </div>
                         <div>
-                            <h4 class="font-semibold">Sophia Rodriguez</h4>
-                            <p class="text-sm text-gray-500">Pomeranian Mom</p>
+                            <h4 class="font-semibold">Abilene_98</h4>
+                            <!-- <p class="text-sm text-gray-500">Pomeranian Mom</p> -->
                         </div>
                     </div>
                 </div>
@@ -589,8 +514,13 @@
     <!-- Instagram Feed -->
     <section class="py-12 bg-white">
         <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center mb-2">Follow Us on Instagram</h2>
-            <p class="text-center text-gray-600 mb-8">@GuuPawz_official</p>
+            <h2 class="text-3xl font-bold text-center mb-2">Theo Dõi Chúng Tôi</h2>
+            <p class="text-center text-gray-600 mb-8 flex justify-center items-center space-x-4">
+                <span class="transition duration-300 hover:text-pink-400 hover:scale-105"><a
+                        href="https://www.facebook.com/profile.php?id=61576966434198">@GuuPawz_facebook</a></span>
+                <span class="transition duration-300 hover:text-pink-400 hover:scale-105"><a
+                        href="https://www.instagram.com/guupawz/">@GuuPawz_instagram</a></span>
+            </p>
             <div class="grid grid-cols-2 md:grid-cols-6 gap-2">
                 <img src="https://readdy.ai/api/search-image?query=cute%2520dog%2520wearing%2520fashionable%2520outfit%2C%2520instagram%2520style%2520photo%2C%2520square%2520format%2C%2520bright%2520colors%2C%2520lifestyle%2520photography&width=200&height=200&seq=insta1&orientation=squarish"
                     alt="Instagram Post" class="w-full h-40 object-cover rounded">
@@ -607,30 +537,6 @@
             </div>
         </div>
     </section>
-    <!-- Newsletter -->
-    <section class="newsletter-section py-12">
-        <div class="container mx-auto px-4">
-            <div class="max-w-2xl mx-auto bg-white/80 backdrop-blur-sm p-8 rounded-lg shadow-md">
-                <h2 class="text-2xl font-bold text-center mb-2">Join Our Newsletter</h2>
-                <p class="text-center text-gray-600 mb-6">Subscribe to get updates on new products and special offers!
-                </p>
-                <form class="flex flex-col md:flex-row gap-3">
-                    <input type="email" placeholder="Your email address"
-                        class="flex-grow px-4 py-3 rounded-button border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary">
-                    <button type="submit"
-                        class="bg-primary text-white px-6 py-3 rounded-button font-semibold hover:bg-pink-400 transition whitespace-nowrap">Subscribe</button>
-                </form>
-                <div class="mt-4 flex items-center">
-                    <label class="custom-checkbox flex items-center cursor-pointer">
-                        <input type="checkbox" class="hidden">
-                        <span class="checkmark"></span>
-                        <span class="ml-7 text-sm text-gray-600">I agree to receive marketing emails from
-                            GuuPawz</span>
-                    </label>
-                </div>
-            </div>
-        </div>
-    </section>
     <!-- Footer -->
     <footer class="bg-gray-100 pt-12 pb-6">
         <div class="container mx-auto px-4">
@@ -638,111 +544,74 @@
                 <!-- Company Info -->
                 <div>
                     <h3 class="text-xl font-['Pacifico'] text-primary mb-4">GuuPawz</h3>
-                    <p class="text-gray-600 mb-4">Making your pets look as fabulous as they feel since 2020.</p>
+                    <p class="text-gray-600 mb-4">Kết nối với GuuPawz Shop</p>
                     <div class="flex space-x-4">
-                        <a href="#"
+                        <a href=" https://www.facebook.com/profile.php?id=61576966434198"
                             class="w-10 h-10 flex items-center justify-center bg-primary text-white rounded-full hover:bg-pink-400 transition">
                             <i class="ri-facebook-fill"></i>
                         </a>
-                        <a href="#"
+                        <a href="https://www.instagram.com/guupawz/"
                             class="w-10 h-10 flex items-center justify-center bg-primary text-white rounded-full hover:bg-pink-400 transition">
                             <i class="ri-instagram-line"></i>
                         </a>
-                        <a href="#"
+                        <!-- <a href="#"
                             class="w-10 h-10 flex items-center justify-center bg-primary text-white rounded-full hover:bg-pink-400 transition">
                             <i class="ri-twitter-x-line"></i>
                         </a>
                         <a href="#"
                             class="w-10 h-10 flex items-center justify-center bg-primary text-white rounded-full hover:bg-pink-400 transition">
-                            <i class="ri-pinterest-line"></i>
+                            <i class="ri-pinterest-line"></i> -->
                         </a>
                     </div>
                 </div>
                 <!-- Shop -->
                 <div>
-                    <h4 class="font-semibold text-lg mb-4">Shop</h4>
+                    <h4 class="font-semibold text-lg mb-4">Cửa hàng</h4>
                     <ul class="space-y-2">
-                        <li><a href="#" class="text-gray-600 hover:text-primary">Dog Fashion</a></li>
-                        <li><a href="#" class="text-gray-600 hover:text-primary">Cat Fashion</a></li>
-                        <li><a href="#" class="text-gray-600 hover:text-primary">Accessories</a></li>
-                        <li><a href="#" class="text-gray-600 hover:text-primary">New Arrivals</a></li>
-                        <li><a href="#" class="text-gray-600 hover:text-primary">Sale</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-primary">Thời trang thú cưng</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-primary">Phụ kiện</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-primary">Hàng mới đến</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-primary">Hàng giảm giá</a></li>
                     </ul>
                 </div>
                 <!-- Customer Service -->
                 <div>
-                    <h4 class="font-semibold text-lg mb-4">Customer Service</h4>
+                    <h4 class="font-semibold text-lg mb-4">Dịch vụ khách hàng</h4>
                     <ul class="space-y-2">
-                        <li><a href="#" class="text-gray-600 hover:text-primary">Contact Us</a></li>
-                        <li><a href="#" class="text-gray-600 hover:text-primary">Shipping & Returns</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-primary">Liên hệ chúng tôi</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-primary">Vận chuyển & Trả hàng</a></li>
                         <li><a href="#" class="text-gray-600 hover:text-primary">FAQ</a></li>
-                        <li><a href="#" class="text-gray-600 hover:text-primary">Size Guide</a></li>
-                        <li><a href="#" class="text-gray-600 hover:text-primary">Track Order</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-primary">Hướng dẫn chọn kích thước</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-primary">Theo dõi đơn hàng</a></li>
                     </ul>
                 </div>
                 <!-- About -->
                 <div>
-                    <h4 class="font-semibold text-lg mb-4">About</h4>
+                    <h4 class="font-semibold text-lg mb-4">Về chúng tôi</h4>
                     <ul class="space-y-2">
-                        <li><a href="#" class="text-gray-600 hover:text-primary">Our Story</a></li>
-                        <li><a href="#" class="text-gray-600 hover:text-primary">Blog</a></li>
-                        <li><a href="#" class="text-gray-600 hover:text-primary">Testimonials</a></li>
-                        <li><a href="#" class="text-gray-600 hover:text-primary">Privacy Policy</a></li>
-                        <li><a href="#" class="text-gray-600 hover:text-primary">Terms of Service</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-primary">Câu chuyện của chúng tôi</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-primary">Lời chứng thực</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-primary">Chính sách bảo mật</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-primary">Điều khoản dịch vụ</a></li>
                     </ul>
                 </div>
             </div>
             <div class="border-t border-gray-200 pt-6">
                 <div class="flex flex-col md:flex-row justify-between items-center">
                     <p class="text-gray-500 text-sm mb-4 md:mb-0">© 2025 GuuPawz. All rights reserved.</p>
-                    <div class="flex items-center space-x-4">
-                        <span class="text-gray-500 text-sm">Payment Methods:</span>
+                    <!-- <div class="flex items-center space-x-4">
+                        <span class="text-gray-500 text-sm">Các:</span>
                         <div class="flex space-x-2">
                             <i class="ri-visa-fill ri-lg text-blue-700"></i>
                             <i class="ri-mastercard-fill ri-lg text-red-500"></i>
                             <i class="ri-paypal-fill ri-lg text-blue-500"></i>
                             <i class="ri-apple-fill ri-lg text-gray-700"></i>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>
     </footer>
-    <!-- Mobile Navigation (Fixed at bottom) -->
-    <div class="md:hidden fixed bottom-0 left-0 right-0 bg-white shadow-lg border-t border-gray-200 z-40">
-        <div class="flex justify-around">
-            <a href="#" class="flex flex-col items-center py-2 px-3 text-primary">
-                <div class="w-6 h-6 flex items-center justify-center">
-                    <i class="ri-home-5-line"></i>
-                </div>
-                <span class="text-xs mt-1">Home</span>
-            </a>
-            <a href="#" class="flex flex-col items-center py-2 px-3 text-gray-500">
-                <div class="w-6 h-6 flex items-center justify-center">
-                    <i class="ri-search-line"></i>
-                </div>
-                <span class="text-xs mt-1">Search</span>
-            </a>
-            <a href="#" class="flex flex-col items-center py-2 px-3 text-gray-500">
-                <div class="w-6 h-6 flex items-center justify-center">
-                    <i class="ri-shopping-cart-2-line"></i>
-                </div>
-                <span class="text-xs mt-1">Cart</span>
-            </a>
-            <a href="#" class="flex flex-col items-center py-2 px-3 text-gray-500">
-                <div class="w-6 h-6 flex items-center justify-center">
-                    <i class="ri-heart-line"></i>
-                </div>
-                <span class="text-xs mt-1">Wishlist</span>
-            </a>
-            <a href="#" class="flex flex-col items-center py-2 px-3 text-gray-500">
-                <div class="w-6 h-6 flex items-center justify-center">
-                    <i class="ri-user-line"></i>
-                </div>
-                <span class="text-xs mt-1">Account</span>
-            </a>
-        </div>
-    </div>
     <script src="navigation.js"></script>
 
     <script id="checkbox-script">
@@ -799,20 +668,30 @@
                             <i class="ri-star-fill"></i>
                             <i class="ri-star-fill"></i>
                             <i class="ri-star-half-fill"></i>
-                            <span class="text-gray-500 text-sm ml-2">(42)</span>
                         </div>
                         <h3 class="font-semibold text-lg mb-1">${product.name
                         }</h3>
+                        <p class="text-gray-500 text-sm mb-3">Kích cỡ: ${product.size.join(', ')
+                        }</p>
                         <p class="text-gray-500 text-sm mb-3">${product.description
                         }</p>
-                        <div class="flex justify-between items-center">
-                            <span class="font-bold text-lg">${formatCurrencyVND(
-                            product.price
-                        )}</span>
-                            <button onclick="addToCart(${product.id})"
-                                class="bg-primary text-white px-4 py-2 rounded-button hover:bg-pink-400 transition whitespace-nowrap">Add
-                                to Cart</button>
-                        </div>
+                        ${product.price > 0 ?
+                            `<div class="flex justify-between items-center">
+                                <span class="font-bold text-lg">${formatCurrencyVND(
+                                product.price
+                            )}</span>
+                                <button onclick="addToCart(${product.id})"
+                                    class="bg-primary text-white px-4 py-2 rounded-button hover:bg-pink-400 transition whitespace-nowrap">Thêm vào giỏ hàng
+                                </button>
+                            </div>`
+                            :
+                            `<div class="flex justify-between items-center">
+                                <span class="font-bold text-sm text-amber-700">Giá cả thương lượng</span>
+                                <button onclick="displayPopupContact()"
+                                    class="bg-primary text-white px-4 py-2 rounded-button hover:bg-pink-400 transition whitespace-nowrap">Liên hệ GuuPawz
+                                </button>
+                            </div>`
+                        }
                     </div>
                 </div>
                 `

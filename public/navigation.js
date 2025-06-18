@@ -15,6 +15,7 @@ document.addEventListener("DOMContentLoaded", async function () {
   const signUpLink = document.getElementById("signUpLink");
   const myProfileLink = document.getElementById("myProfileLink");
   const LogoutLink = document.getElementById("LogoutLink");
+  const forgotLink = document.getElementById("forgotLink");
   // Modal
   const signInModal = document.getElementById("signInModal");
   const myOrdersModal = document.getElementById("myOrdersModal");
@@ -24,6 +25,7 @@ document.addEventListener("DOMContentLoaded", async function () {
   const modals = [signInModal, myOrdersModal, signUpModal, myProfileModal];
   const switchToSignIn = document.getElementById("switchToSignIn");
   const switchToSignUp = document.getElementById("switchToSignUp");
+  const forgotModal = document.getElementById("forgotModal");
   function openModal(modal) {
     modal.classList.remove("hidden");
     setTimeout(() => {
@@ -58,6 +60,11 @@ document.addEventListener("DOMContentLoaded", async function () {
     setProfile();
     openModal(myProfileModal);
   });
+  forgotLink.addEventListener("click", (e) => {
+    e.preventDefault();
+    closeModal(signInModal);
+    openModal(forgotModal);
+  });
   switchToSignIn.addEventListener("click", (e) => {
     e.preventDefault();
     closeModal(signUpModal);
@@ -74,7 +81,37 @@ document.addEventListener("DOMContentLoaded", async function () {
     openModal(signUpModal);
   });
   const createAccountForm = document.getElementById("createAccountForm");
-  createAccountForm.addEventListener("submit", (e) => {
+  const forgotForm = document.getElementById("forgotPassForm");
+
+  forgotForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const email = document.getElementById("forgot-email").value;
+    const response = await fetch(`/api/user/password`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email: email }),
+    });
+
+    const message = document.getElementById("message-forgot");
+    console.log(JSON.stringify(response));
+    if (response.status == 204) {
+      message.classList.remove("hidden");
+      message.textContent =
+        "Tài khoản này không tồn tại. Vui lòng đăng kí tài khoản!";
+      return;
+    }
+    const submitBtn = forgotForm.querySelector('button[type="submit"]');
+    submitBtn.disabled = true;
+    setTimeout(() => {
+      submitBtn.disabled = false;
+    }, 30000);
+
+    message.classList.remove("hidden");
+    message.textContent =
+      "📩 Vui lòng kiểm tra email của bạn để lấy mật khẩu mới! Có thể gửi lại sau 30s!";
+  });
+
+  createAccountForm.addEventListener("submit", async (e) => {
     e.preventDefault();
     const firstName = document.getElementById("firstName").value;
     const lastName = document.getElementById("lastName").value;
@@ -91,8 +128,8 @@ document.addEventListener("DOMContentLoaded", async function () {
             <i class="ri-error-warning-line text-red-500"></i>
             </div>
             <div>
-            <p class="font-medium text-gray-800">Passwords do not match</p>
-            <p class="text-sm text-gray-600">Please try again</p>
+            <p class="font-medium text-gray-800">Mật khẩu không khớp</p>
+            <p class="text-sm text-gray-600">Vui lòng thử lại</p>
             </div>
             </div>
             `;
@@ -109,7 +146,12 @@ document.addEventListener("DOMContentLoaded", async function () {
       return;
     }
     if (firstName && lastName && email && password) {
-      register(firstName, lastName, email, password);
+      if (!(await register(firstName, lastName, email, password))) {
+        document.getElementById("signup-message").textContent =
+          "Email đã tồn tại!";
+        return;
+      }
+      showLogin();
       const notification = document.createElement("div");
       notification.className =
         "fixed top-20 right-4 bg-white shadow-lg rounded-lg p-4 z-50 transform translate-x-full opacity-0 transition-all duration-500";
@@ -119,8 +161,8 @@ document.addEventListener("DOMContentLoaded", async function () {
                 <i class="ri-check-line text-primary"></i>
                 </div>
                 <div>
-                <p class="font-medium text-gray-800">Welcome to GuuPawz!</p>
-                <p class="text-sm text-gray-600">Account created successfully</p>
+                <p class="font-medium text-gray-800">Chào mừng đến với GuuPawz!</p>
+                <p class="text-sm text-gray-600">Tạo tài khoản thành công</p>
                 </div>
                 </div>
                 `;
@@ -146,6 +188,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     const phone = document.getElementById("profile-phone").value;
     const formattedDate = document.getElementById("profile-dateOfBirth").value;
     const description = document.getElementById("profile-description").value;
+    const password = document.getElementById("profile-password").value;
 
     const isUpdated = updateProfile(
       firstName,
@@ -153,7 +196,8 @@ document.addEventListener("DOMContentLoaded", async function () {
       email,
       phone,
       formattedDate,
-      description
+      description,
+      password
     );
     if (!isUpdated) return;
     closeModal(myProfileModal);
@@ -167,8 +211,8 @@ document.addEventListener("DOMContentLoaded", async function () {
                     <i class="ri-check-line text-primary"></i>
                     </div>
                     <div>
-                    <p class="font-medium text-gray-800">Profile Updated</p>
-                    <p class="text-sm text-gray-600">Your changes have been saved</p>
+                    <p class="font-medium text-gray-800">Cập nhật hồ sơ cá nhân</p>
+                    <p class="text-sm text-gray-600">Sửa đổi của bạn đã được cập nhật!</p>
                     </div>
                     </div>
                     `;
@@ -200,12 +244,12 @@ document.addEventListener("DOMContentLoaded", async function () {
   });
 
   const signInForm = document.getElementById("signInForm");
-  signInForm.addEventListener("submit", (e) => {
+  signInForm.addEventListener("submit", async (e) => {
     e.preventDefault();
     const email = document.getElementById("login-email").value;
     const password = document.getElementById("password").value;
     if (email && password) {
-      login(email, password);
+      if (!(await login(email, password))) return;
       const notification = document.createElement("div");
       notification.className =
         "fixed top-20 right-4 bg-white shadow-lg rounded-lg p-4 z-50 transform translate-x-full opacity-0 transition-all duration-500";
@@ -215,8 +259,8 @@ document.addEventListener("DOMContentLoaded", async function () {
             <i class="ri-check-line text-primary"></i>
             </div>
             <div>
-            <p class="font-medium text-gray-800">Welcome back!</p>
-            <p class="text-sm text-gray-600">Successfully signed in</p>
+            <p class="font-medium text-gray-800">Chào mừng bạn đến với GuuPawz!</p>
+            <p class="text-sm text-gray-600">Đăng nhập thành công</p>
             </div>
             </div>
             `;
@@ -265,14 +309,16 @@ async function loadOrders() {
   const orders = await response.json();
   const ordersDiv = document.getElementById("orders");
   if (!ordersDiv || orders.length == 0) return;
-  const itemOrders = orders.flatMap((aa) =>
-    JSON.parse(aa.items)?.map((n) => ({
-      id: aa.id,
-      item: n,
-      date: aa.date,
-      status: aa.status,
-    }))
-  ).sort((a, b) => b.id - a.id);;
+  const itemOrders = orders
+    .flatMap((aa) =>
+      JSON.parse(aa.items)?.map((n) => ({
+        id: aa.id,
+        item: n,
+        date: aa.date,
+        status: aa.status,
+      }))
+    )
+    .sort((a, b) => b.id - a.id);
   ordersDiv.innerHTML = itemOrders
     ?.map(
       (order) => `
@@ -280,17 +326,17 @@ async function loadOrders() {
                                 <div class="flex justify-between items-start mb-4">
                                     <div>
                                         <div class="flex items-center gap-3 mb-2">
-                                            <span class="text-sm font-medium text-gray-500">Order #${
+                                            <span class="text-sm font-medium text-gray-500">Đơn hàng #${
                                               order.id
                                             }</span>
                                             <span
                                                 class="px-2 py-1 text-xs font-medium ${getHtmlStatus(
                                                   order?.status
-                                                )} rounded-full">${
+                                                )} rounded-full">${getValueStatus(
         order?.status
-      }</span>
+      )}</span>
                                         </div>
-                                        <p class="text-sm text-gray-500">Placed on ${
+                                        <p class="text-sm text-gray-500">Đặt hàng lúc ${
                                           order.date
                                         }</p>
                                     </div>                                   
@@ -318,24 +364,35 @@ async function loadOrders() {
 
 function getHtmlStatus(status) {
   const statusValue = {
-    Delivered: "text-green-700 bg-green-100",
-    Pending: "text-blue-700 bg-blue-100",
-    Cancel: "text-gray-700 bg-gray-100",
+    delivered: "text-green-700 bg-green-100",
+    pending: "text-blue-700 bg-blue-100",
+    return: "text-gray-700 bg-red-100",
+    cancel: "text-gray-700 bg-gray-100",
   };
   return statusValue[status];
 }
 
-        async function getProducts() {
-            const response = await fetch(`/api/products`, {
-                method: "GET",
-                headers: { "Content-Type": "application/json" },
-            });
-            const result = await response.json();
-            if (response.ok) {
-                return result;
-            }
-            return null;
-        }
+function getValueStatus(status) {
+  const statusValue = {
+    delivered: "Đã giao",
+    pending: "Đang giao",
+    return: "Trả hàng",
+    cancel: "Đã hủy",
+  };
+  return statusValue[status];
+}
+
+async function getProducts() {
+  const response = await fetch(`/api/products`, {
+    method: "GET",
+    headers: { "Content-Type": "application/json" },
+  });
+  const result = await response.json();
+  if (response.ok) {
+    return result;
+  }
+  return null;
+}
 
 function loadCheckoutPage() {
   const carts = getCookieObject("cart_items");
@@ -377,7 +434,7 @@ async function loadCart() {
                                           item.name
                                         }</h4>
                                         <div class="text-gray-500 text-xs mt-1">
-                                            Size:
+                                            Kích cỡ:
                                             <select  onchange="setSize(this, ${
                                               item.id
                                             })" class="text-xs bg-transparent focus:outline-none ml-1">
@@ -437,11 +494,11 @@ async function register(firstName, lastName, email, password) {
   const response = await fetch(`${apiUrl}/register`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ firstName, lastName, emaetil, password }),
+    body: JSON.stringify({ firstName, lastName, email, password }),
   });
-  const result = await response.json();
-  alert(result.message || result.error);
-  if (response.ok) showLogin();
+  //const result = await response.json();
+  if (response.ok) return true;
+  return false;
 }
 
 // Login
@@ -460,9 +517,12 @@ async function login(email, password) {
 
     loadCart();
     loadOrders();
-  } else {
-    alert(result.error);
+    return true;
   }
+
+  document.getElementById("login-message").textContent =
+    "Tài khoản hoặc mặt khẩu không đúng!";
+  return false;
 }
 
 async function setProfile() {
@@ -484,7 +544,8 @@ async function setProfile() {
   const rawDate = new Date(user.dateOfBirth);
   const formattedDate = rawDate.toISOString().split("T")[0]; // "2025-06-10"
 
-  document.getElementById("profile-fullname").textContent = user?.firstName+" " + user?.lastName;
+  document.getElementById("profile-fullname").textContent =
+    user?.firstName + " " + user?.lastName;
   document.getElementById("profile-icon-mail").textContent = user.email;
   document.getElementById(
     "profile-icon-fullname"
@@ -496,6 +557,7 @@ async function setProfile() {
   document.getElementById("profile-phone").value = user.phone;
   document.getElementById("profile-dateOfBirth").value = formattedDate;
   document.getElementById("profile-description").value = user.description;
+  document.getElementById("profile-password").value = user.password;
 }
 
 async function updateProfile(
@@ -504,7 +566,8 @@ async function updateProfile(
   email,
   phone,
   formattedDate,
-  description
+  description,
+  password
 ) {
   const response = await fetch(`${apiUrl}/update_profile`, {
     method: "POST",
@@ -517,6 +580,7 @@ async function updateProfile(
       phone,
       formattedDate,
       description,
+      password,
     }),
   });
   const result = await response.json();
@@ -576,7 +640,7 @@ async function addToCart(productId) {
       selectedSize: result.size[0],
     });
   }
-  notification("Goto cart🎉", "Add product successfully!");
+  notification("Sản phẩm đã nằm trong giỏ hàng🎉", "Hãy mở giỏ hàng để xem!");
   setCookieObject("cart_items", cartItems, 7);
 
   loadCart();
@@ -584,10 +648,39 @@ async function addToCart(productId) {
 
 // Remove from cart
 async function removeFromCart(id) {
-  cartItems = getCookieObject("cart_items");
-  cartItems = cartItems.filter((item) => item.id != id);
-  setCookieObject("cart_items", cartItems, 7);
-  loadCart();
+  Swal.fire({
+    title: "🐾 Bạn chắc chắn muốn xoá?",
+    text: "Hành động này không thể hoàn tác đâu đó nha!",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonText: "Vâng, xoá đi! 🗑️",
+    cancelButtonText: "Huỷ nè 💞",
+    background: "#fff0f5",
+    customClass: {
+      popup: "cute-popup",
+      confirmButton: "cute-confirm-button",
+      cancelButton: "cute-cancel-button",
+    },
+  }).then((result) => {
+    if (result.isConfirmed) {
+      // Hành động xoá thật sự ở đây
+      // Swal.fire({
+      //   title: 'Đã xoá!',
+      //   text: 'Dữ liệu đã bay màu 🐶💨',
+      //   icon: 'success',
+      //   background: '#fff0f5',
+      //   confirmButtonText: 'OK 💖',
+      //   customClass: {
+      //     popup: 'cute-popup',
+      //     confirmButton: 'cute-confirm-button'
+      //   }
+      // });
+      cartItems = getCookieObject("cart_items");
+      cartItems = cartItems.filter((item) => item.id != id);
+      setCookieObject("cart_items", cartItems, 7);
+      loadCart();
+    }
+  });
 }
 
 function setActionLogin() {
@@ -706,6 +799,27 @@ async function addOrder(data) {
     body: JSON.stringify(data),
   });
   return response.ok;
+}
+
+function displayPopupContact() {
+  Swal.fire({
+    title: "🐾 Liên hệ với chúng mình!",
+    html: `
+      <div style="font-size: 16px; line-height: 1.8; color: #444;">
+        <p>📞 <strong>SĐT:</strong> <a href="tel:0367382521">0367382521</a></p>
+        <p>📘 <strong>Facebook:</strong> <a href="https://www.facebook.com/profile.php?id=61576966434198" target="_blank">facebook.com/guupawz</a></p>
+        <p>📸 <strong>Instagram:</strong> <a href="https://www.instagram.com/guupawz/" target="_blank">@pet.guupawz</a></p>
+        <p>📧 <strong>Email:</strong> <a href="mailto:guupawz@gmail.com">contact@guupawz.vn</a></p>
+      </div>
+    `,
+    icon: "info",
+    confirmButtonText: "Đã rõ nè 💕",
+    background: "#fff0f5",
+    customClass: {
+      popup: "cute-popup",
+      confirmButton: "cute-confirm-button",
+    },
+  });
 }
 
 // Initialize

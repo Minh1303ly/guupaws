@@ -4,9 +4,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Shop by Pet - GuuPawz</title>
-  <link rel="icon" type="image/png" href="././icon-pet1.PNG">
+  <title>Cửa hàng thú cưng - GuuPawz</title>
+  <link rel="icon" type="image/png" href="././icon-shop.jpg">
   <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script>
     tailwind.config = {
       theme: {
@@ -138,17 +139,15 @@
 </head>
 
 <body class="bg-gray-50">
-    <!-- Header -->
-    <header class="bg-primary shadow-sm sticky top-0 z-50">
-        <div class="container mx-auto px-4 py-3 flex items-center justify-between">
-            <a href="#" class="text-3xl font-['Pacifico'] text-white">GuuPawz</a>
-            <nav class="hidden md:flex items-center space-x-6">
-                <a href="./" data-readdy="true"
-                    class="text-white font-medium hover:text-pink-100 transition">Home</a>
-                <a href="shop.html"
-                    class="text-white font-bold hover:text-pink-100 transition border-b-2">Shop</a>
-                <a href="about.html" class="text-white font-medium hover:text-pink-100 transition">About Us</a>
-                <!-- <a
+  <!-- Header -->
+  <header class="bg-primary shadow-sm sticky top-0 z-50">
+    <div class="container mx-auto px-4 py-3 flex items-center justify-between">
+      <a href="#" class="text-3xl font-['Pacifico'] text-white">GuuPawz</a>
+      <nav class="hidden md:flex items-center space-x-6">
+        <a href="./" data-readdy="true" class="text-white font-medium hover:text-pink-100 transition ">Trang chủ</a>
+        <a href="shop.html" class="text-white font-bold hover:text-pink-100 transition border-b-2">Cửa hàng</a>
+        <a href="about.html" class="text-white font-medium hover:text-pink-100 transition ">Chúng tôi</a>
+        <!-- <a
             href="#"
             class="text-white font-medium hover:text-pink-100 transition"
             >New Arrivals</a
@@ -158,111 +157,112 @@
             class="text-white font-medium hover:text-pink-100 transition"
             >Sale</a
           > -->
-            </nav>
-            <div class="flex items-center space-x-4">
-                <form id="search-form">
-                    <div class="relative">
-                        <input id="search-input" type="text" placeholder="Search..."
-                            class="py-2 pl-10 pr-4 rounded-full text-sm border-none focus:outline-none focus:ring-2 focus:ring-pink-300 w-40 md:w-64" />
-                        
-                        <div id="search-icon"
-                            class="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 flex items-center justify-center text-gray-400 transition-all duration-300">
-                            <i class="ri-search-line"></i>
-                            <input type="hidden" name="submit" value="submit">
-                        </div>
-                    </div>
-                </form>
+      </nav>
+      <div class="flex items-center space-x-4">
+        <form id="search-form">
+          <div class="relative">
+            <input id="search-input" type="text" placeholder="Tìm kiếm..."
+              class="py-2 pl-10 pr-4 rounded-full text-sm border-none focus:outline-none focus:ring-2 focus:ring-pink-300 w-40 md:w-64" />
 
-                <!-- Cart Dropdown -->
-                <div id="cart-wrapper" class="relative group">
-                    <button class="w-10 h-10 flex items-center justify-center text-white relative">
-                        <i class="ri-shopping-cart-2-line ri-lg"></i>
-                        <span id="cart-size"
-                            class="absolute -top-1 -right-1 bg-secondary text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">0</span>
-                    </button>
-                    <div id="cart-popup"
-                        class="absolute right-0 top-full mt-2 w-80 bg-white rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
-                        <div class="p-4">
-                            <div class="flex items-center justify-between mb-4">
-                                <h3 class="font-semibold">Shopping Cart</h3>
-                                <a href="#cart" class="text-primary hover:text-pink-600 text-sm"></a>
-                            </div>
-                            <div id="cart-item" class="space-y-3 max-h-60 overflow-y-auto">
-                                
-                            </div>
-                            <div class="border-t border-gray-100 mt-4 pt-4">
-                                <div class="flex items-center justify-between mb-4">
-                                    <span class="text-gray-600">Subtotal</span>
-                                    <span id="cart-subtotal" class="font-semibold"></span>
-                                </div>
-                                <a href="#" onclick="loadCheckoutPage()"
-                                    class="block w-full bg-primary text-white text-center py-2 rounded-button font-semibold hover:bg-pink-400 transition">Checkout</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Profile Dropdown -->
-                <div class="relative group">
-                    <button class="w-10 h-10 flex items-center justify-center text-white">
-                        <i class="ri-user-line ri-lg"></i>
-                    </button>
-                    <div
-                        class="absolute right-0 top-full mt-2 w-60 bg-white rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
-                        <div class="p-4">
-                            <div class="flex items-center gap-3 mb-4">
-                                <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
-                                    <i class="ri-user-smile-line text-primary ri-xl"></i>
-                                </div>
-                                <div>
-                                    <h3 id="profile-icon-fullname" class="font-semibold">GuuPaws</h3>
-                                    <p id="profile-icon-icon-mail" class="text-gray-500 text-sm">Welcome you!</p>
-                                </div>
-                            </div>
-                            <div class="space-y-1">
-                                <a href="#" id="myProfileLink"
-                                    class="flex items-center gap-2 p-2 hover:bg-gray-50 rounded-lg text-gray-700">
-                                    <i class="ri-user-settings-line"></i>
-                                    <span>My Profile</span>
-                                </a>
-                                <a href="#" id="myOrdersLink"
-                                    class="flex items-center gap-2 p-2 hover:bg-gray-50 rounded-lg text-gray-700">
-                                    <i class="ri-file-list-3-line"></i>
-                                    <span>Order History</span>
-                                </a>
-                                <a href="#" id="signInLink"
-                                    class="flex items-center gap-2 p-2 hover:bg-gray-50 rounded-lg text-gray-700">
-                                    <i class="ri-login-circle-line"></i>
-                                    <span>Sign in</span>
-                                </a>
-                                <a href="#" id="signUpLink"
-                                    class="flex items-center gap-2 p-2 hover:bg-gray-50 rounded-lg text-gray-700">
-                                    <i class="ri-user-add-line"></i>
-                                    <span>Sign up</span>
-                                </a>
-                                <div class="border-t border-gray-100 my-2"></div>
-                                <a href="#" id="LogoutLink"
-                                    class="flex items-center gap-2 p-2 hover:bg-gray-50 rounded-lg text-red-600">
-                                    <i class="ri-logout-box-r-line"></i>
-                                    <span>Logout</span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="md:hidden w-10 h-10 flex items-center justify-center text-white">
-                    <i class="ri-menu-line ri-lg"></i>
-                </div>
+            <div id="search-icon"
+              class="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 flex items-center justify-center text-gray-400 transition-all duration-300">
+              <i class="ri-search-line"></i>
+              <input type="hidden" name="submit" value="submit">
             </div>
+          </div>
+        </form>
+
+        <!-- Cart Dropdown -->
+        <div id="cart-wrapper" class="relative group">
+          <button class="w-10 h-10 flex items-center justify-center text-white relative">
+            <i class="ri-shopping-cart-2-line ri-lg"></i>
+            <span id="cart-size"
+              class="absolute -top-1 -right-1 bg-secondary text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">0</span>
+          </button>
+          <div id="cart-popup"
+            class="absolute right-0 top-full mt-2 w-80 bg-white rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
+            <div class="p-4">
+              <div class="flex items-center justify-between mb-4">
+                <h3 class="font-semibold">Giỏ hàng</h3>
+                <a href="#cart" class="text-primary hover:text-pink-600 text-sm"></a>
+              </div>
+              <div id="cart-item" class="space-y-3 max-h-60 overflow-y-auto">
+
+              </div>
+              <div class="border-t border-gray-100 mt-4 pt-4">
+                <div class="flex items-center justify-between mb-4">
+                  <span class="text-gray-600">Tổng</span>
+                  <span id="cart-subtotal" class="font-semibold"></span>
+                </div>
+                <a href="#" onclick="loadCheckoutPage()"
+                  class="block w-full bg-primary text-white text-center py-2 rounded-button font-semibold hover:bg-pink-400 transition">Mua
+                  hàng</a>
+              </div>
+            </div>
+          </div>
         </div>
-    </header>
+        <!-- Profile Dropdown -->
+        <div class="relative group">
+          <button class="w-10 h-10 flex items-center justify-center text-white">
+            <i class="ri-user-line ri-lg"></i>
+          </button>
+          <div
+            class="absolute right-0 top-full mt-2 w-60 bg-white rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
+            <div class="p-4">
+              <div class="flex items-center gap-3 mb-4">
+                <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
+                  <i class="ri-user-smile-line text-primary ri-xl"></i>
+                </div>
+                <div>
+                  <h3 id="profile-icon-fullname" class="font-semibold">GuuPaws</h3>
+                  <p id="profile-icon-icon-mail" class="text-gray-500 text-sm">Chào mừng bạn!</p>
+                </div>
+              </div>
+              <div class="space-y-1">
+                <a href="#" id="myProfileLink"
+                  class="flex items-center gap-2 p-2 hover:bg-gray-50 rounded-lg text-gray-700">
+                  <i class="ri-user-settings-line"></i>
+                  <span>Hồ sơ</span>
+                </a>
+                <a href="#" id="myOrdersLink"
+                  class="flex items-center gap-2 p-2 hover:bg-gray-50 rounded-lg text-gray-700">
+                  <i class="ri-file-list-3-line"></i>
+                  <span>Lịch sử mua hàng</span>
+                </a>
+                <a href="#" id="signInLink"
+                  class="flex items-center gap-2 p-2 hover:bg-gray-50 rounded-lg text-gray-700">
+                  <i class="ri-login-circle-line"></i>
+                  <span>Đăng nhập</span>
+                </a>
+                <a href="#" id="signUpLink"
+                  class="flex items-center gap-2 p-2 hover:bg-gray-50 rounded-lg text-gray-700">
+                  <i class="ri-user-add-line"></i>
+                  <span>Đăng kí</span>
+                </a>
+                <div class="border-t border-gray-100 my-2"></div>
+                <a href="#" id="LogoutLink"
+                  class="flex items-center gap-2 p-2 hover:bg-gray-50 rounded-lg text-red-600">
+                  <i class="ri-logout-box-r-line"></i>
+                  <span>Đăng xuất</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="md:hidden w-10 h-10 flex items-center justify-center text-white">
+          <i class="ri-menu-line ri-lg"></i>
+        </div>
+      </div>
+    </div>
+  </header>
   <!-- Breadcrumb -->
   <div class="bg-white py-3 shadow-sm">
     <div class="container mx-auto px-4">
       <div class="flex items-center text-sm text-gray-500">
         <a href="https://readdy.ai/home/bea70049-b456-4a9c-a36d-ad8a94fcf29b/d04e78b6-bc70-4f5f-bc6c-c989f614f672"
-          data-readdy="true" class="hover:text-primary transition">Home</a>
+          data-readdy="true" class="hover:text-primary transition">Trang chủ</a>
         <span class="mx-2">/</span>
-        <span class="text-primary font-medium">Shop by GuuPawz</span>
+        <span class="text-primary font-medium">Cửa hàng GuuPawz</span>
       </div>
     </div>
   </div>
@@ -270,260 +270,26 @@
   <div class="bg-white sticky top-16 z-40 shadow-sm">
     <div class="container mx-auto px-4 py-3">
       <div class="flex flex-wrap items-center justify-between gap-4">
-        <h1 class="text-2xl font-bold">Shop by GuuPawz</h1>
+        <h1 class="text-2xl font-bold">Cửa hàng GuuPawz</h1>
         <div class="flex flex-wrap items-center gap-3">
 
-        <!--Size guide-->
-        <div class="flex items-center justify-between">
-          <label for="size-guide-toggle" class="flex items-center cursor-pointer">
-            <span class="mr-2 text-sm font-medium text-gray-600">Show size guide</span>
-            <div class="relative">
-              <input type="checkbox" id="size-guide-toggle" class="size-guide-toggle sr-only" />
-              <div class="block bg-gray-300 w-12 h-6 rounded-full"></div>
-              <div class="dot absolute left-1 top-1 bg-white w-4 h-4 rounded-full transition">
-                
-              </div>
-            </div>
-          </label>
-        </div>
-          <!-- Pet Type Filter -->
-          <!-- <div class="relative" id="pet-type-filter">
-            <button
-              class="flex items-center bg-white border border-gray-300 rounded-button px-4 py-2 text-sm font-medium hover:border-primary focus:outline-none focus:ring-2 focus:ring-primary whitespace-nowrap">
-              <span>Pet Type</span>
-              <div class="w-5 h-5 flex items-center justify-center ml-2">
-                <i class="ri-arrow-down-s-line"></i>
-              </div>
-            </button>
-            <div
-              class="pet-filter-dropdown absolute left-0 top-full mt-1 w-48 bg-white rounded shadow-lg border border-gray-200 z-10">
-              <div class="p-2">
-                <div class="mb-2">
-                  <label class="custom-checkbox flex items-center cursor-pointer mb-2">
-                    <input type="checkbox" class="hidden" checked />
-                    <span class="checkmark"></span>
-                    <span class="ml-7 text-sm">Dogs</span>
-                  </label>
-                  <label class="custom-checkbox flex items-center cursor-pointer mb-2">
-                    <input type="checkbox" class="hidden" checked />
-                    <span class="checkmark"></span>
-                    <span class="ml-7 text-sm">Cats</span>
-                  </label>
-                  <label class="custom-checkbox flex items-center cursor-pointer mb-2">
-                    <input type="checkbox" class="hidden" />
-                    <span class="checkmark"></span>
-                    <span class="ml-7 text-sm">Small Pets</span>
-                  </label>
-                  <label class="custom-checkbox flex items-center cursor-pointer mb-2">
-                    <input type="checkbox" class="hidden" />
-                    <span class="checkmark"></span>
-                    <span class="ml-7 text-sm">Birds</span>
-                  </label>
-                  <label class="custom-checkbox flex items-center cursor-pointer">
-                    <input type="checkbox" class="hidden" />
-                    <span class="checkmark"></span>
-                    <span class="ml-7 text-sm">Fish</span>
-                  </label>
+          <!--Size guide-->
+          <div class="flex items-center justify-between">
+            <label for="size-guide-toggle" class="flex items-center cursor-pointer">
+              <span class="mr-2 text-sm font-medium text-gray-600">Hướng dẫn size</span>
+              <div class="relative">
+                <input type="checkbox" id="size-guide-toggle" class="size-guide-toggle sr-only" />
+                <div class="block bg-gray-300 w-12 h-6 rounded-full"></div>
+                <div class="dot absolute left-1 top-1 bg-white w-4 h-4 rounded-full transition">
+
                 </div>
-                <button
-                  class="w-full bg-primary text-white rounded-button py-1.5 text-sm hover:bg-pink-400 transition whitespace-nowrap">
-                  Apply
-                </button>
               </div>
-            </div>
-          </div> -->
-          <!-- Size Filter -->
-          <!-- <div class="relative" id="size-filter">
-            <button
-              class="flex items-center bg-white border border-gray-300 rounded-button px-4 py-2 text-sm font-medium hover:border-primary focus:outline-none focus:ring-2 focus:ring-primary whitespace-nowrap">
-              <span>Size</span>
-              <div class="w-5 h-5 flex items-center justify-center ml-2">
-                <i class="ri-arrow-down-s-line"></i>
-              </div>
-            </button>
-            <div
-              class="pet-filter-dropdown absolute left-0 top-full mt-1 w-48 bg-white rounded shadow-lg border border-gray-200 z-10">
-              <div class="p-2">
-                <div class="mb-2">
-                  <label class="custom-checkbox flex items-center cursor-pointer mb-2">
-                    <input type="checkbox" class="hidden" />
-                    <span class="checkmark"></span>
-                    <span class="ml-7 text-sm">XS (0-5 lbs)</span>
-                  </label>
-                  <label class="custom-checkbox flex items-center cursor-pointer mb-2">
-                    <input type="checkbox" class="hidden" />
-                    <span class="checkmark"></span>
-                    <span class="ml-7 text-sm">S (5-15 lbs)</span>
-                  </label>
-                  <label class="custom-checkbox flex items-center cursor-pointer mb-2">
-                    <input type="checkbox" class="hidden" checked />
-                    <span class="checkmark"></span>
-                    <span class="ml-7 text-sm">M (15-30 lbs)</span>
-                  </label>
-                  <label class="custom-checkbox flex items-center cursor-pointer mb-2">
-                    <input type="checkbox" class="hidden" />
-                    <span class="checkmark"></span>
-                    <span class="ml-7 text-sm">L (30-50 lbs)</span>
-                  </label>
-                  <label class="custom-checkbox flex items-center cursor-pointer">
-                    <input type="checkbox" class="hidden" />
-                    <span class="checkmark"></span>
-                    <span class="ml-7 text-sm">XL (50+ lbs)</span>
-                  </label>
-                </div>
-                <button
-                  class="w-full bg-primary text-white rounded-button py-1.5 text-sm hover:bg-pink-400 transition whitespace-nowrap">
-                  Apply
-                </button>
-              </div>
-            </div>
-          </div> -->
-          <!-- Age Filter -->
-          <!-- <div class="relative" id="age-filter">
-            <button
-              class="flex items-center bg-white border border-gray-300 rounded-button px-4 py-2 text-sm font-medium hover:border-primary focus:outline-none focus:ring-2 focus:ring-primary whitespace-nowrap">
-              <span>Age</span>
-              <div class="w-5 h-5 flex items-center justify-center ml-2">
-                <i class="ri-arrow-down-s-line"></i>
-              </div>
-            </button>
-            <div
-              class="pet-filter-dropdown absolute left-0 top-full mt-1 w-48 bg-white rounded shadow-lg border border-gray-200 z-10">
-              <div class="p-2">
-                <div class="mb-2">
-                  <label class="custom-checkbox flex items-center cursor-pointer mb-2">
-                    <input type="checkbox" class="hidden" />
-                    <span class="checkmark"></span>
-                    <span class="ml-7 text-sm">Puppy/Kitten</span>
-                  </label>
-                  <label class="custom-checkbox flex items-center cursor-pointer mb-2">
-                    <input type="checkbox" class="hidden" checked />
-                    <span class="checkmark"></span>
-                    <span class="ml-7 text-sm">Adult</span>
-                  </label>
-                  <label class="custom-checkbox flex items-center cursor-pointer">
-                    <input type="checkbox" class="hidden" />
-                    <span class="checkmark"></span>
-                    <span class="ml-7 text-sm">Senior</span>
-                  </label>
-                </div>
-                <button
-                  class="w-full bg-primary text-white rounded-button py-1.5 text-sm hover:bg-pink-400 transition whitespace-nowrap">
-                  Apply
-                </button>
-              </div>
-            </div>
-          </div> -->
-          <!-- Breed Filter -->
-          <!-- <div class="relative" id="breed-filter">
-            <button
-              class="flex items-center bg-white border border-gray-300 rounded-button px-4 py-2 text-sm font-medium hover:border-primary focus:outline-none focus:ring-2 focus:ring-primary whitespace-nowrap">
-              <span>Breed</span>
-              <div class="w-5 h-5 flex items-center justify-center ml-2">
-                <i class="ri-arrow-down-s-line"></i>
-              </div>
-            </button>
-            <div
-              class="pet-filter-dropdown absolute left-0 top-full mt-1 w-48 bg-white rounded shadow-lg border border-gray-200 z-10">
-              <div class="p-2">
-                <div class="mb-2">
-                  <div class="mb-2 pb-2 border-b border-gray-100">
-                    <p class="text-xs font-semibold text-gray-500 mb-1">
-                      Dogs
-                    </p>
-                    <label class="custom-checkbox flex items-center cursor-pointer mb-2">
-                      <input type="checkbox" class="hidden" />
-                      <span class="checkmark"></span>
-                      <span class="ml-7 text-sm">Labrador</span>
-                    </label>
-                    <label class="custom-checkbox flex items-center cursor-pointer mb-2">
-                      <input type="checkbox" class="hidden" checked />
-                      <span class="checkmark"></span>
-                      <span class="ml-7 text-sm">French Bulldog</span>
-                    </label>
-                    <label class="custom-checkbox flex items-center cursor-pointer">
-                      <input type="checkbox" class="hidden" />
-                      <span class="checkmark"></span>
-                      <span class="ml-7 text-sm">Pomeranian</span>
-                    </label>
-                  </div>
-                  <div>
-                    <p class="text-xs font-semibold text-gray-500 mb-1">
-                      Cats
-                    </p>
-                    <label class="custom-checkbox flex items-center cursor-pointer mb-2">
-                      <input type="checkbox" class="hidden" />
-                      <span class="checkmark"></span>
-                      <span class="ml-7 text-sm">Persian</span>
-                    </label>
-                    <label class="custom-checkbox flex items-center cursor-pointer">
-                      <input type="checkbox" class="hidden" />
-                      <span class="checkmark"></span>
-                      <span class="ml-7 text-sm">Siamese</span>
-                    </label>
-                  </div>
-                </div>
-                <button
-                  class="w-full bg-primary text-white rounded-button py-1.5 text-sm hover:bg-pink-400 transition whitespace-nowrap">
-                  Apply
-                </button>
-              </div>
-            </div>
-          </div> -->
-          <!-- Clear Filters -->
-          <!-- <button class="flex items-center text-sm text-gray-500 hover:text-primary transition whitespace-nowrap">
-            <div class="w-5 h-5 flex items-center justify-center mr-1">
-              <i class="ri-close-circle-line"></i>
-            </div>
-            <span>Clear all</span>
-          </button> -->
+            </label>
+          </div>
         </div>
       </div>
-      <!-- Active Filters -->
-      <!-- <div class="flex flex-wrap items-center gap-2 mt-3">
-        <span class="text-sm text-gray-500">Active filters:</span>
-        <div class="flex items-center bg-pink-100 rounded-full px-3 py-1 text-sm">
-          <span class="text-pink-700">Dogs</span>
-          <button class="ml-2 text-pink-700 hover:text-pink-900">
-            <div class="w-4 h-4 flex items-center justify-center">
-              <i class="ri-close-line"></i>
-            </div>
-          </button>
-        </div>
-        <div class="flex items-center bg-pink-100 rounded-full px-3 py-1 text-sm">
-          <span class="text-pink-700">Cats</span>
-          <button class="ml-2 text-pink-700 hover:text-pink-900">
-            <div class="w-4 h-4 flex items-center justify-center">
-              <i class="ri-close-line"></i>
-            </div>
-          </button>
-        </div>
-        <div class="flex items-center bg-pink-100 rounded-full px-3 py-1 text-sm">
-          <span class="text-pink-700">Medium (15-30 lbs)</span>
-          <button class="ml-2 text-pink-700 hover:text-pink-900">
-            <div class="w-4 h-4 flex items-center justify-center">
-              <i class="ri-close-line"></i>
-            </div>
-          </button>
-        </div>
-        <div class="flex items-center bg-pink-100 rounded-full px-3 py-1 text-sm">
-          <span class="text-pink-700">Adult</span>
-          <button class="ml-2 text-pink-700 hover:text-pink-900">
-            <div class="w-4 h-4 flex items-center justify-center">
-              <i class="ri-close-line"></i>
-            </div>
-          </button>
-        </div>
-        <div class="flex items-center bg-pink-100 rounded-full px-3 py-1 text-sm">
-          <span class="text-pink-700">French Bulldog</span>
-          <button class="ml-2 text-pink-700 hover:text-pink-900">
-            <div class="w-4 h-4 flex items-center justify-center">
-              <i class="ri-close-line"></i>
-            </div>
-          </button>
-        </div>
-      </div> -->
     </div>
+  </div>
   </div>
   <!-- Dog Category Section -->
   <section class="py-12">
@@ -536,28 +302,26 @@
           <div class="absolute inset-0 bg-gradient-to-r from-black/60 to-transparent flex items-center">
             <div class="p-8 md:p-12 max-w-lg">
               <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">
-                Dog Fashion
+                Thời trang thú cưng
               </h2>
               <p class="text-white text-lg mb-6">
-                Stylish, comfortable clothing and accessories designed
-                specifically for your canine companion.
+                Giảm <strong style="font-size: 40px;">10%</strong> toàn bộ đơn hàng
               </p>
               <div class="flex flex-wrap gap-2 mb-6">
-                <span class="bg-white/20 backdrop-blur-sm text-white px-3 py-1 rounded-full text-sm">Sweaters</span>
+                <!-- <span class="bg-white/20 backdrop-blur-sm text-white px-3 py-1 rounded-full text-sm">Sweaters</span>
                 <span class="bg-white/20 backdrop-blur-sm text-white px-3 py-1 rounded-full text-sm">Jackets</span>
                 <span class="bg-white/20 backdrop-blur-sm text-white px-3 py-1 rounded-full text-sm">T-Shirts</span>
                 <span class="bg-white/20 backdrop-blur-sm text-white px-3 py-1 rounded-full text-sm">Collars</span>
-                <span class="bg-white/20 backdrop-blur-sm text-white px-3 py-1 rounded-full text-sm">Bandanas</span>
+                <span class="bg-white/20 backdrop-blur-sm text-white px-3 py-1 rounded-full text-sm">Bandanas</span> -->
               </div>
-              <a href="https://readdy.ai/home/bea70049-b456-4a9c-a36d-ad8a94fcf29b/d04e78b6-bc70-4f5f-bc6c-c989f614f672"
-                data-readdy="true"
-                class="inline-block bg-primary text-white px-6 py-3 rounded-button font-semibold hover:bg-pink-400 transition shadow-lg whitespace-nowrap">Shop
-                Dog Fashion</a>
+              <a href="./about.html" data-readdy="true"
+                class="inline-block bg-primary text-white px-6 py-3 rounded-button font-semibold hover:bg-pink-400 transition shadow-lg whitespace-nowrap">
+                Về chúng tôi</a>
             </div>
           </div>
         </div>
       </div>
-      <h3 class="text-2xl font-bold mb-6">Featured Dog Collections</h3>
+      <!-- <h3 class="text-2xl font-bold mb-6">Featured Dog Collections</h3> -->
       <div id="dogs-products" class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
         <!-- Dog Product 1 -->
         <!-- <div class="bg-white rounded-lg shadow-md overflow-hidden group">
@@ -708,194 +472,7 @@
       </div> -->
     </div>
   </section>
-  <!-- Cat Category Section -->
-  <section class="py-12 bg-gray-50">
-    <div class="container mx-auto px-4">
-      <div class="bg-white rounded-lg shadow-md overflow-hidden mb-12">
-        <div class="relative h-64 md:h-80">
-          <img
-            src="https://readdy.ai/api/search-image?query=adorable%2520cats%2520of%2520different%2520breeds%2520wearing%2520stylish%2520outfits%2520and%2520accessories%252C%2520high-quality%2520professional%2520photography%2520with%2520soft%2520lighting%252C%2520cats%2520arranged%2520in%2520a%2520playful%2520composition%252C%2520clean%2520light%2520background%2520with%2520subtle%2520pastel%2520blue%2520accents%252C%2520modern%2520pet%2520fashion%2520showcase%252C%2520premium%2520quality%2520image&width=1200&height=400&seq=cat-banner&orientation=landscape"
-            alt="Cat Fashion Collection" class="w-full h-full object-cover object-top" />
-          <div class="absolute inset-0 bg-gradient-to-r from-black/60 to-transparent flex items-center">
-            <div class="p-8 md:p-12 max-w-lg">
-              <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">
-                Cat Fashion
-              </h2>
-              <p class="text-white text-lg mb-6">
-                Elegant, comfortable accessories designed for your feline
-                friend's comfort and style.
-              </p>
-              <div class="flex flex-wrap gap-2 mb-6">
-                <span class="bg-white/20 backdrop-blur-sm text-white px-3 py-1 rounded-full text-sm">Collars</span>
-                <span class="bg-white/20 backdrop-blur-sm text-white px-3 py-1 rounded-full text-sm">Bow Ties</span>
-                <span class="bg-white/20 backdrop-blur-sm text-white px-3 py-1 rounded-full text-sm">Bandanas</span>
-                <span class="bg-white/20 backdrop-blur-sm text-white px-3 py-1 rounded-full text-sm">Sweaters</span>
-                <span class="bg-white/20 backdrop-blur-sm text-white px-3 py-1 rounded-full text-sm">Hats</span>
-              </div>
-              <a href="https://readdy.ai/home/bea70049-b456-4a9c-a36d-ad8a94fcf29b/d04e78b6-bc70-4f5f-bc6c-c989f614f672"
-                data-readdy="true"
-                class="inline-block bg-primary text-white px-6 py-3 rounded-button font-semibold hover:bg-pink-400 transition shadow-lg whitespace-nowrap">Shop
-                Cat Fashion</a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <h3 class="text-2xl font-bold mb-6">Featured Cat Collections</h3>
-      <div id="cats-products" class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
-        <!-- Cat Product 1 -->
-        <!-- <div class="bg-white rounded-lg shadow-md overflow-hidden group">
-          <div class="relative">
-            <img
-              src="https://readdy.ai/api/search-image?query=cat%2520wearing%2520elegant%2520blue%2520bow%2520tie%2520collar%252C%2520product%2520photography%252C%2520studio%2520lighting%252C%2520clean%2520white%2520background%252C%2520high%2520quality%252C%2520detailed%2520fabric%2520texture%252C%2520adorable%2520kitten%2520model&width=300&height=300&seq=cat-prod1&orientation=squarish"
-              alt="Elegant Bow Tie Collar" class="w-full h-64 object-cover object-top" />
-            <button
-              class="absolute top-3 right-3 w-10 h-10 flex items-center justify-center bg-white rounded-full shadow-md opacity-0 group-hover:opacity-100 transition">
-              <i class="ri-heart-line text-pink-500 ri-lg"></i>
-            </button>
-          </div>
-          <div class="p-4">
-            <div class="flex text-yellow-400 mb-2">
-              <i class="ri-star-fill"></i>
-              <i class="ri-star-fill"></i>
-              <i class="ri-star-fill"></i>
-              <i class="ri-star-fill"></i>
-              <i class="ri-star-line"></i>
-              <span class="text-gray-500 text-sm ml-2">(42)</span>
-            </div>
-            <h4 class="font-semibold text-lg mb-1">Elegant Bow Tie Collar</h4>
-            <p class="text-gray-500 text-sm mb-3">
-              Sophisticated collar for special occasions.
-            </p>
-            <div class="flex justify-between items-center">
-              <span class="font-bold text-lg">$18.99</span>
-              <button
-                class="bg-primary text-white px-4 py-2 rounded-button hover:bg-pink-400 transition whitespace-nowrap">
-                Add to Cart
-              </button>
-            </div>
-          </div>
-        </div> -->
-        <!-- Cat Product 2 -->
-        <!-- <div class="bg-white rounded-lg shadow-md overflow-hidden group">
-          <div class="relative">
-            <img
-              src="https://readdy.ai/api/search-image?query=cat%2520wearing%2520light%2520knit%2520sweater%2520in%2520pastel%2520pink%252C%2520product%2520photography%252C%2520studio%2520lighting%252C%2520clean%2520white%2520background%252C%2520high%2520quality%252C%2520detailed%2520fabric%2520texture%252C%2520adorable%2520kitten%2520model&width=300&height=300&seq=cat-prod2&orientation=squarish"
-              alt="Soft Knit Sweater" class="w-full h-64 object-cover object-top" />
-            <div class="absolute top-3 left-3 bg-green-500 text-white text-xs font-bold px-2 py-1 rounded">
-              NEW
-            </div>
-            <button
-              class="absolute top-3 right-3 w-10 h-10 flex items-center justify-center bg-white rounded-full shadow-md opacity-0 group-hover:opacity-100 transition">
-              <i class="ri-heart-line text-pink-500 ri-lg"></i>
-            </button>
-          </div>
-          <div class="p-4">
-            <div class="flex text-yellow-400 mb-2">
-              <i class="ri-star-fill"></i>
-              <i class="ri-star-fill"></i>
-              <i class="ri-star-fill"></i>
-              <i class="ri-star-fill"></i>
-              <i class="ri-star-half-fill"></i>
-              <span class="text-gray-500 text-sm ml-2">(19)</span>
-            </div>
-            <h4 class="font-semibold text-lg mb-1">Soft Knit Sweater</h4>
-            <p class="text-gray-500 text-sm mb-3">
-              Lightweight sweater for indoor comfort.
-            </p>
-            <div class="flex justify-between items-center">
-              <span class="font-bold text-lg">$23.99</span>
-              <button
-                class="bg-primary text-white px-4 py-2 rounded-button hover:bg-pink-400 transition whitespace-nowrap">
-                Add to Cart
-              </button>
-            </div>
-          </div>
-        </div> -->
-        <!-- Cat Product 3 -->
-        <!-- <div class="bg-white rounded-lg shadow-md overflow-hidden group">
-          <div class="relative">
-            <img
-              src="https://readdy.ai/api/search-image?query=cat%2520wearing%2520floral%2520pattern%2520bandana%252C%2520product%2520photography%252C%2520studio%2520lighting%252C%2520clean%2520white%2520background%252C%2520high%2520quality%252C%2520detailed%2520fabric%2520texture%252C%2520adorable%2520kitten%2520model&width=300&height=300&seq=cat-prod3&orientation=squarish"
-              alt="Floral Bandana" class="w-full h-64 object-cover object-top" />
-            <button
-              class="absolute top-3 right-3 w-10 h-10 flex items-center justify-center bg-white rounded-full shadow-md opacity-0 group-hover:opacity-100 transition">
-              <i class="ri-heart-line text-pink-500 ri-lg"></i>
-            </button>
-          </div>
-          <div class="p-4">
-            <div class="flex text-yellow-400 mb-2">
-              <i class="ri-star-fill"></i>
-              <i class="ri-star-fill"></i>
-              <i class="ri-star-fill"></i>
-              <i class="ri-star-fill"></i>
-              <i class="ri-star-fill"></i>
-              <span class="text-gray-500 text-sm ml-2">(36)</span>
-            </div>
-            <h4 class="font-semibold text-lg mb-1">Floral Bandana</h4>
-            <p class="text-gray-500 text-sm mb-3">
-              Stylish accessory for fashion-forward felines.
-            </p>
-            <div class="flex justify-between items-center">
-              <span class="font-bold text-lg">$12.99</span>
-              <button
-                class="bg-primary text-white px-4 py-2 rounded-button hover:bg-pink-400 transition whitespace-nowrap">
-                Add to Cart
-              </button>
-            </div>
-          </div>
-        </div> -->
-        <!-- Cat Product 4 -->
-        <!-- <div class="bg-white rounded-lg shadow-md overflow-hidden group">
-          <div class="relative">
-            <img
-              src="https://readdy.ai/api/search-image?query=cat%2520wearing%2520small%2520cute%2520hat%2520or%2520beret%252C%2520product%2520photography%252C%2520studio%2520lighting%252C%2520clean%2520white%2520background%252C%2520high%2520quality%252C%2520detailed%2520fabric%2520texture%252C%2520adorable%2520kitten%2520model&width=300&height=300&seq=cat-prod4&orientation=squarish"
-              alt="Fashionable Cat Beret" class="w-full h-64 object-cover object-top" />
-            <div class="absolute top-3 left-3 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded">
-              SALE
-            </div>
-            <button
-              class="absolute top-3 right-3 w-10 h-10 flex items-center justify-center bg-white rounded-full shadow-md opacity-0 group-hover:opacity-100 transition">
-              <i class="ri-heart-line text-pink-500 ri-lg"></i>
-            </button>
-          </div>
-          <div class="p-4">
-            <div class="flex text-yellow-400 mb-2">
-              <i class="ri-star-fill"></i>
-              <i class="ri-star-fill"></i>
-              <i class="ri-star-fill"></i>
-              <i class="ri-star-half-fill"></i>
-              <i class="ri-star-line"></i>
-              <span class="text-gray-500 text-sm ml-2">(24)</span>
-            </div>
-            <h4 class="font-semibold text-lg mb-1">Fashionable Cat Beret</h4>
-            <p class="text-gray-500 text-sm mb-3">
-              Adorable hat for photo-worthy moments.
-            </p>
-            <div class="flex justify-between items-center">
-              <div>
-                <span class="font-bold text-lg">$14.99</span>
-                <span class="text-gray-400 line-through ml-2">$19.99</span>
-              </div>
-              <button
-                class="bg-primary text-white px-4 py-2 rounded-button hover:bg-pink-400 transition whitespace-nowrap">
-                Add to Cart
-              </button>
-            </div>
-          </div>
-        </div> -->
-      </div>
-      <!-- <div class="text-center mb-12">
-        <a href="https://readdy.ai/home/bea70049-b456-4a9c-a36d-ad8a94fcf29b/d04e78b6-bc70-4f5f-bc6c-c989f614f672"
-          data-readdy="true"
-          class="inline-block bg-white border border-primary text-primary px-6 py-3 rounded-button font-semibold hover:bg-primary hover:text-white transition whitespace-nowrap">View
-          All Cat Products</a>
-      </div> -->
-    </div>
-  </section>
-  <!-- Small Pets Category Section -->
-  <!-- Newsletter -->
-  <section class="py-12 bg-white">
-    <div class="container mx-auto px-4">
+  <!-- <div class="container mx-auto px-4">
       <div class="max-w-2xl mx-auto bg-pink-50 p-8 rounded-lg shadow-md">
         <h2 class="text-2xl font-bold text-center mb-2">
           Join Our Newsletter
@@ -920,120 +497,80 @@
           </label>
         </div>
       </div>
-    </div>
+    </div> -->
   </section>
+
   <!-- Footer -->
   <footer class="bg-gray-100 pt-12 pb-6">
     <div class="container mx-auto px-4">
       <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
         <!-- Company Info -->
         <div>
-          <h3 class="text-xl font-['Pacifico'] text-primary mb-4">
-            GuuPawz
-          </h3>
-          <p class="text-gray-600 mb-4">
-            Making your pets look as fabulous as they feel since 2020.
-          </p>
+          <h3 class="text-xl font-['Pacifico'] text-primary mb-4">GuuPawz</h3>
+          <p class="text-gray-600 mb-4">Kết nối với GuuPawz Shop</p>
           <div class="flex space-x-4">
-            <a href="#"
+            <a href=" https://www.facebook.com/profile.php?id=61576966434198"
               class="w-10 h-10 flex items-center justify-center bg-primary text-white rounded-full hover:bg-pink-400 transition">
               <i class="ri-facebook-fill"></i>
             </a>
-            <a href="#"
+            <a href="https://www.instagram.com/guupawz/"
               class="w-10 h-10 flex items-center justify-center bg-primary text-white rounded-full hover:bg-pink-400 transition">
               <i class="ri-instagram-line"></i>
             </a>
-            <a href="#"
-              class="w-10 h-10 flex items-center justify-center bg-primary text-white rounded-full hover:bg-pink-400 transition">
-              <i class="ri-twitter-x-line"></i>
-            </a>
-            <a href="#"
-              class="w-10 h-10 flex items-center justify-center bg-primary text-white rounded-full hover:bg-pink-400 transition">
-              <i class="ri-pinterest-line"></i>
+            <!-- <a href="#"
+                            class="w-10 h-10 flex items-center justify-center bg-primary text-white rounded-full hover:bg-pink-400 transition">
+                            <i class="ri-twitter-x-line"></i>
+                        </a>
+                        <a href="#"
+                            class="w-10 h-10 flex items-center justify-center bg-primary text-white rounded-full hover:bg-pink-400 transition">
+                            <i class="ri-pinterest-line"></i> -->
             </a>
           </div>
         </div>
         <!-- Shop -->
         <div>
-          <h4 class="font-semibold text-lg mb-4">Shop</h4>
+          <h4 class="font-semibold text-lg mb-4">Cửa hàng</h4>
           <ul class="space-y-2">
-            <li>
-              <a href="#" class="text-gray-600 hover:text-primary">Dog Fashion</a>
-            </li>
-            <li>
-              <a href="#" class="text-gray-600 hover:text-primary">Cat Fashion</a>
-            </li>
-            <li>
-              <a href="#" class="text-gray-600 hover:text-primary">Small Pets</a>
-            </li>
-            <li>
-              <a href="#" class="text-gray-600 hover:text-primary">Accessories</a>
-            </li>
-            <li>
-              <a href="#" class="text-gray-600 hover:text-primary">New Arrivals</a>
-            </li>
-            <li>
-              <a href="#" class="text-gray-600 hover:text-primary">Sale</a>
-            </li>
+            <li><a href="#" class="text-gray-600 hover:text-primary">Thời trang thú cưng</a></li>
+            <li><a href="#" class="text-gray-600 hover:text-primary">Phụ kiện</a></li>
+            <li><a href="#" class="text-gray-600 hover:text-primary">Hàng mới đến</a></li>
+            <li><a href="#" class="text-gray-600 hover:text-primary">Hàng giảm giá</a></li>
           </ul>
         </div>
         <!-- Customer Service -->
         <div>
-          <h4 class="font-semibold text-lg mb-4">Customer Service</h4>
+          <h4 class="font-semibold text-lg mb-4">Dịch vụ khách hàng</h4>
           <ul class="space-y-2">
-            <li>
-              <a href="#" class="text-gray-600 hover:text-primary">Contact Us</a>
-            </li>
-            <li>
-              <a href="#" class="text-gray-600 hover:text-primary">Shipping & Returns</a>
-            </li>
-            <li>
-              <a href="#" class="text-gray-600 hover:text-primary">FAQ</a>
-            </li>
-            <li>
-              <a href="#" class="text-gray-600 hover:text-primary">Size Guide</a>
-            </li>
-            <li>
-              <a href="#" class="text-gray-600 hover:text-primary">Track Order</a>
-            </li>
+            <li><a href="#" class="text-gray-600 hover:text-primary">Liên hệ chúng tôi</a></li>
+            <li><a href="#" class="text-gray-600 hover:text-primary">Vận chuyển & Trả hàng</a></li>
+            <li><a href="#" class="text-gray-600 hover:text-primary">FAQ</a></li>
+            <li><a href="#" class="text-gray-600 hover:text-primary">Hướng dẫn chọn kích thước</a></li>
+            <li><a href="#" class="text-gray-600 hover:text-primary">Theo dõi đơn hàng</a></li>
           </ul>
         </div>
         <!-- About -->
         <div>
-          <h4 class="font-semibold text-lg mb-4">About</h4>
+          <h4 class="font-semibold text-lg mb-4">Về chúng tôi</h4>
           <ul class="space-y-2">
-            <li>
-              <a href="#" class="text-gray-600 hover:text-primary">Our Story</a>
-            </li>
-            <li>
-              <a href="#" class="text-gray-600 hover:text-primary">Blog</a>
-            </li>
-            <li>
-              <a href="#" class="text-gray-600 hover:text-primary">Testimonials</a>
-            </li>
-            <li>
-              <a href="#" class="text-gray-600 hover:text-primary">Privacy Policy</a>
-            </li>
-            <li>
-              <a href="#" class="text-gray-600 hover:text-primary">Terms of Service</a>
-            </li>
+            <li><a href="#" class="text-gray-600 hover:text-primary">Câu chuyện của chúng tôi</a></li>
+            <li><a href="#" class="text-gray-600 hover:text-primary">Lời chứng thực</a></li>
+            <li><a href="#" class="text-gray-600 hover:text-primary">Chính sách bảo mật</a></li>
+            <li><a href="#" class="text-gray-600 hover:text-primary">Điều khoản dịch vụ</a></li>
           </ul>
         </div>
       </div>
       <div class="border-t border-gray-200 pt-6">
         <div class="flex flex-col md:flex-row justify-between items-center">
-          <p class="text-gray-500 text-sm mb-4 md:mb-0">
-            © 2025 GuuPawz. All rights reserved.
-          </p>
-          <div class="flex items-center space-x-4">
-            <span class="text-gray-500 text-sm">Payment Methods:</span>
-            <div class="flex space-x-2">
-              <i class="ri-visa-fill ri-lg text-blue-700"></i>
-              <i class="ri-mastercard-fill ri-lg text-red-500"></i>
-              <i class="ri-paypal-fill ri-lg text-blue-500"></i>
-              <i class="ri-apple-fill ri-lg text-gray-700"></i>
-            </div>
-          </div>
+          <p class="text-gray-500 text-sm mb-4 md:mb-0">© 2025 GuuPawz. All rights reserved.</p>
+          <!-- <div class="flex items-center space-x-4">
+                        <span class="text-gray-500 text-sm">Các:</span>
+                        <div class="flex space-x-2">
+                            <i class="ri-visa-fill ri-lg text-blue-700"></i>
+                            <i class="ri-mastercard-fill ri-lg text-red-500"></i>
+                            <i class="ri-paypal-fill ri-lg text-blue-500"></i>
+                            <i class="ri-apple-fill ri-lg text-gray-700"></i>
+                        </div>
+                    </div> -->
         </div>
       </div>
     </div>
@@ -1046,12 +583,16 @@
       overflow-y: auto;
       z-index: 20;
     }
+
     dialog::backdrop {
-      display: none; /* Use custom backdrop for better control */
+      display: none;
+      /* Use custom backdrop for better control */
     }
+
     .modal-open {
       overflow: hidden;
     }
+
     /* Style for checkbox toggle */
     .sr-only {
       position: absolute;
@@ -1064,11 +605,13 @@
       border: 0;
     }
 
-    input[type="checkbox"]:checked + .block .dot {
+    input[type="checkbox"]:checked+.block .dot {
       transform: translateX(24px);
     }
-    input[type="checkbox"]:checked + .block {
-      background-color: #ec4899; /* pink-500 */
+
+    input[type="checkbox"]:checked+.block {
+      background-color: #ec4899;
+      /* pink-500 */
     }
   </style>
 
@@ -1076,7 +619,7 @@
   <!-- Size Guide Modal -->
   <dialog id="size-guide-modal" class="bg-white rounded-lg shadow-md p-6 md:p-8 w-full max-w-4xl mx-auto">
     <div class="flex items-center justify-between mb-6">
-      <h2 class="text-2xl font-bold">Pet Size Guide</h2>
+      <h2 class="text-2xl font-bold">Hướng dẫn chọn kích cỡ</h2>
       <button id="close-modal" class="text-gray-600 hover:text-gray-800">
         <i class="ri-close-line text-2xl"></i>
       </button>
@@ -1084,154 +627,107 @@
     <div class="size-guide-content">
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
         <div>
-          <h3 class="text-lg font-semibold mb-4">Dog Size Chart</h3>
           <div class="overflow-x-auto">
             <table class="min-w-full border-collapse">
               <thead>
                 <tr class="bg-pink-50">
                   <th class="py-2 px-4 border border-gray-200 text-left">Size</th>
-                  <th class="py-2 px-4 border border-gray-200 text-left">Weight (lbs)</th>
-                  <th class="py-2 px-4 border border-gray-200 text-left">Neck (in)</th>
-                  <th class="py-2 px-4 border border-gray-200 text-left">Chest (in)</th>
-                  <th class="py-2 px-4 border border-gray-200 text-left">Length (in)</th>
+                  <th class="py-2 px-4 border border-gray-200 text-left">Cổ (CM)</th>
+                  <th class="py-2 px-4 border border-gray-200 text-left">Ngực (CM)</th>
+                  <th class="py-2 px-4 border border-gray-200 text-left">Lưng (CM)</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
                   <td class="py-2 px-4 border border-gray-200">XS</td>
-                  <td class="py-2 px-4 border border-gray-200">2-5</td>
-                  <td class="py-2 px-4 border border-gray-200">6-8</td>
-                  <td class="py-2 px-4 border border-gray-200">10-12</td>
-                  <td class="py-2 px-4 border border-gray-200">8-10</td>
+                  <td class="py-2 px-4 border border-gray-200">20</td>
+                  <td class="py-2 px-4 border border-gray-200">30</td>
+                  <td class="py-2 px-4 border border-gray-200">20</td>
                 </tr>
                 <tr class="bg-gray-50">
                   <td class="py-2 px-4 border border-gray-200">S</td>
-                  <td class="py-2 px-4 border border-gray-200">5-15</td>
-                  <td class="py-2 px-4 border border-gray-200">8-12</td>
-                  <td class="py-2 px-4 border border-gray-200">12-16</td>
-                  <td class="py-2 px-4 border border-gray-200">10-14</td>
+                  <td class="py-2 px-4 border border-gray-200">24</td>
+                  <td class="py-2 px-4 border border-gray-200">35</td>
+                  <td class="py-2 px-4 border border-gray-200">25</td>
                 </tr>
                 <tr>
                   <td class="py-2 px-4 border border-gray-200">M</td>
-                  <td class="py-2 px-4 border border-gray-200">15-30</td>
-                  <td class="py-2 px-4 border border-gray-200">12-16</td>
-                  <td class="py-2 px-4 border border-gray-200">16-22</td>
-                  <td class="py-2 px-4 border border-gray-200">14-18</td>
+                  <td class="py-2 px-4 border border-gray-200">28</td>
+                  <td class="py-2 px-4 border border-gray-200">40</td>
+                  <td class="py-2 px-4 border border-gray-200">30</td>
                 </tr>
                 <tr class="bg-gray-50">
                   <td class="py-2 px-4 border border-gray-200">L</td>
-                  <td class="py-2 px-4 border border-gray-200">30-50</td>
-                  <td class="py-2 px-4 border border-gray-200">16-20</td>
-                  <td class="py-2 px-4 border border-gray-200">22-28</td>
-                  <td class="py-2 px-4 border border-gray-200">18-24</td>
+                  <td class="py-2 px-4 border border-gray-200">32</td>
+                  <td class="py-2 px-4 border border-gray-200">45</td>
+                  <td class="py-2 px-4 border border-gray-200">35</td>
                 </tr>
-                <tr>
+                <tr class="bg-gray-50">
                   <td class="py-2 px-4 border border-gray-200">XL</td>
-                  <td class="py-2 px-4 border border-gray-200">50+</td>
-                  <td class="py-2 px-4 border border-gray-200">20-24</td>
-                  <td class="py-2 px-4 border border-gray-200">28-34</td>
-                  <td class="py-2 px-4 border border-gray-200">24-30</td>
+                  <td class="py-2 px-4 border border-gray-200">35</td>
+                  <td class="py-2 px-4 border border-gray-200">53</td>
+                  <td class="py-2 px-4 border border-gray-200">40</td>
+                </tr>
+                <tr class="bg-gray-50">
+                  <td class="py-2 px-4 border border-gray-200">XL</td>
+                  <td class="py-2 px-4 border border-gray-200">40</td>
+                  <td class="py-2 px-4 border border-gray-200">65</td>
+                  <td class="py-2 px-4 border border-gray-200">45</td>
                 </tr>
               </tbody>
             </table>
-          </div>
-          <h3 class="text-lg font-semibold mt-8 mb-4">Cat Size Chart</h3>
-          <div class="overflow-x-auto">
-            <table class="min-w-full border-collapse">
-              <thead>
-                <tr class="bg-blue-50">
-                  <th class="py-2 px-4 border border-gray-200 text-left">Size</th>
-                  <th class="py-2 px-4 border border-gray-200 text-left">Weight (lbs)</th>
-                  <th class="py-2 px-4 border border-gray-200 text-left">Neck (in)</th>
-                  <th class="py-2 px-4 border border-gray-200 text-left">Chest (in)</th>
-                  <th class="py-2 px-4 border border-gray-200 text-left">Length (in)</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td class="py-2 px-4 border border-gray-200">XS</td>
-                  <td class="py-2 px-4 border border-gray-200">2-5</td>
-                  <td class="py-2 px-4 border border-gray-200">5-7</td>
-                  <td class="py-2 px-4 border border-gray-200">8-10</td>
-                  <td class="py-2 px-4 border border-gray-200">7-9</td>
-                </tr>
-                <tr class="bg-gray-50">
-                  <td class="py-2 px-4 border border-gray-200">S</td>
-                  <td class="py-2 px-4 border border-gray-200">5-8</td>
-                  <td class="py-2 px-4 border border-gray-200">7-9</td>
-                  <td class="py-2 px-4 border border-gray-200">10-12</td>
-                  <td class="py-2 px-4 border border-gray-200">9-11</td>
-                </tr>
-                <tr>
-                  <td class="py-2 px-4 border border-gray-200">M</td>
-                  <td class="py-2 px-4 border border-gray-200">8-12</td>
-                  <td class="py-2 px-4 border border-gray-200">9-11</td>
-                  <td class="py-2 px-4 border border-gray-200">12-14</td>
-                  <td class="py-2 px-4 border border-gray-200">11-13</td>
-                </tr>
-                <tr class="bg-gray-50">
-                  <td class="py-2 px-4 border border-gray-200">L</td>
-                  <td class="py-2 px-4 border border-gray-200">12-16</td>
-                  <td class="py-2 px-4 border border-gray-200">11-13</td>
-                  <td class="py-2 px-4 border border-gray-200">14-16</td>
-                  <td class="py-2 px-4 border border-gray-200">13-15</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-        <div>
-          <h3 class="text-lg font-semibold mb-4">How to Measure Your Pet</h3>
-          <div class="mb-6">
-            <!-- Placeholder image; replace with local asset in public/images/ -->
-            <img src="https://readdy.ai/api/search-image?query=infographic%2520showing%2520how%2520to%2520measure%2520a%2520dog%2520or%2520cat%2520for%2520clothing%252C%2520clean%2520simple%2520diagram%2520with%2520measurement%2520points%2520for%2520neck%252C%2520chest%252C%2520and%2520length%252C%2520educational%2520illustration%2520with%2520clear%2520labels%252C%2520light%2520background%252C%2520professional%2520quality&width=500&height=400&seq=measure-guide&orientation=landscape" alt="Pet Measurement Guide" class="w-full h-auto rounded-lg mb-4" />
-            <div class="space-y-4">
-              <div>
-                <h4 class="font-medium text-pink-600">Neck</h4>
-                <p class="text-gray-600">Measure around the base of your pet's neck where a collar would naturally sit.</p>
-              </div>
-              <div>
-                <h4 class="font-medium text-pink-600">Chest/Girth</h4>
-                <p class="text-gray-600">Measure the widest part of your pet's chest, usually just behind the front legs.</p>
-              </div>
-              <div>
-                <h4 class="font-medium text-pink-600">Length</h4>
-                <p class="text-gray-600">Measure from the base of the neck to the base of the tail along your pet's back.</p>
-              </div>
-              <div>
-                <h4 class="font-medium text-pink-600">Weight</h4>
-                <p class="text-gray-600">Weigh your pet to help determine the appropriate size range.</p>
-              </div>
-            </div>
+            <h5 class="text-lg font-semibold mb-4">*Sai số cho phép 1-3cm do đo bằng phương pháp thủ công</h5>
           </div>
           <div class="bg-pink-50 rounded-lg p-4">
-            <h4 class="font-semibold text-pink-700 mb-2">Breed-Specific Sizing Tips</h4>
+            <h4 class="font-semibold text-pink-700 mb-2">Mẹo chọn kích thước theo từng giống chó</h4>
             <ul class="space-y-2 text-gray-600">
               <li class="flex items-start">
                 <div class="w-5 h-5 flex-shrink-0 text-pink-500 mr-2">
                   <i class="ri-checkbox-circle-fill"></i>
                 </div>
-                <p>French Bulldogs and Pugs typically need wider chest measurements.</p>
+                <p>Chó Bulldog Pháp và chó Pug thường cần số đo vòng ngực rộng hơn.</p>
               </li>
               <li class="flex items-start">
                 <div class="w-5 h-5 flex-shrink-0 text-pink-500 mr-2">
                   <i class="ri-checkbox-circle-fill"></i>
                 </div>
-                <p>Dachshunds need longer length but smaller chest measurements.</p>
+                <p>Chó Dachshund cần có chiều dài lớn hơn nhưng số đo vòng ngực nhỏ hơn.</p>
               </li>
               <li class="flex items-start">
                 <div class="w-5 h-5 flex-shrink-0 text-pink-500 mr-2">
                   <i class="ri-checkbox-circle-fill"></i>
                 </div>
-                <p>Maine Coon cats often need larger sizes than their weight suggests.</p>
+                <p>Mèo Maine Coon thường cần kích thước lớn hơn so với cân nặng của chúng.</p>
               </li>
               <li class="flex items-start">
                 <div class="w-5 h-5 flex-shrink-0 text-pink-500 mr-2">
                   <i class="ri-checkbox-circle-fill"></i>
                 </div>
-                <p>Greyhounds and Whippets need narrower chest but longer length measurements.</p>
+                <p>Chó săn thỏ và chó Whippet cần có ngực hẹp hơn nhưng chiều dài dài hơn.</p>
               </li>
             </ul>
+          </div>
+        </div>
+        <div>
+          <h3 class="text-lg font-semibold mb-4">Cách bạn đo kích cỡ cho thú cưng</h3>
+          <div class="mb-6">
+            <!-- Placeholder image; replace with local asset in public/images/ -->
+            <img src="https://pos.nvncdn.com/19b837-49111/art/artCT/20191216_cWa2JqXYo6R5ht0Pfu2YMZOw.jpg"
+              alt="Hướng dẫn chọn size" class="w-full h-auto rounded-lg mb-4" />
+            <div class="space-y-4">
+              <div>
+                <h4 class="font-medium text-pink-600">Cổ</h4>
+                <p class="text-gray-600">Đo quanh cổ thú cưng của bạn, nơi vòng cổ thường nằm.</p>
+              </div>
+              <div>
+                <h4 class="font-medium text-pink-600">Ngực</h4>
+                <p class="text-gray-600">Đo phần rộng nhất của ngực thú cưng, thường là ngay sau chân trước.</p>
+              </div>
+              <div>
+                <h4 class="font-medium text-pink-600">Chiều dài lưng</h4>
+                <p class="text-gray-600">Đo từ gốc cổ đến gốc đuôi dọc theo lưng thú cưng của bạn.</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -1243,43 +739,7 @@
     class="fixed bottom-20 right-6 w-12 h-12 bg-primary text-white rounded-full shadow-lg flex items-center justify-center opacity-0 invisible transition-all duration-300 z-50">
     <i class="ri-arrow-up-line ri-lg"></i>
   </button> -->
-  <!-- Mobile Navigation (Fixed at bottom) -->
-  <div class="md:hidden fixed bottom-0 left-0 right-0 bg-white shadow-lg border-t border-gray-200 z-40">
-    <div class="flex justify-around">
-      <a href="https://readdy.ai/home/bea70049-b456-4a9c-a36d-ad8a94fcf29b/d04e78b6-bc70-4f5f-bc6c-c989f614f672"
-        data-readdy="true" class="flex flex-col items-center py-2 px-3 text-gray-500">
-        <div class="w-6 h-6 flex items-center justify-center">
-          <i class="ri-home-5-line"></i>
-        </div>
-        <span class="text-xs mt-1">Home</span>
-      </a>
-      <a href="#" class="flex flex-col items-center py-2 px-3 text-primary">
-        <div class="w-6 h-6 flex items-center justify-center">
-          <i class="ri-apps-line"></i>
-        </div>
-        <span class="text-xs mt-1">Shop by Pet</span>
-      </a>
-      <a href="#" class="flex flex-col items-center py-2 px-3 text-gray-500">
-        <div class="w-6 h-6 flex items-center justify-center">
-          <i class="ri-search-line"></i>
-        </div>
-        <span class="text-xs mt-1">Search</span>
-      </a>
-      <a href="#" class="flex flex-col items-center py-2 px-3 text-gray-500">
-        <div class="w-6 h-6 flex items-center justify-center">
-          <i class="ri-shopping-cart-2-line"></i>
-        </div>
-        <span class="text-xs mt-1">Cart</span>
-      </a>
-      <a href="#" class="flex flex-col items-center py-2 px-3 text-gray-500">
-        <div class="w-6 h-6 flex items-center justify-center">
-          <i class="ri-user-line"></i>
-        </div>
-        <span class="text-xs mt-1">Account</span>
-      </a>
-    </div>
-  </div>
-    <script src="navigation.js"></script>
+  <script src="navigation.js"></script>
 
 
   <script id="checkbox-script">
@@ -1302,29 +762,23 @@
       const divCats = document.getElementById("cats-products");
       const divSmallPets = document.getElementById("small-pets-products");
       const products = await getProducts();
-      const dogProducts = products.filter( item => item.pet_type === "chó");
-      const catProducts = products.filter( item => item.pet_type === "mèo");
-      const smallPetProducts = products.filter( item => item.pet_type === "thỏ");
-      loadShopProduct(dogProducts, divDogs);
-      loadShopProduct(catProducts, divCats);
-      loadShopProduct(smallPetProducts, divSmallPets);
+      loadShopProduct(products, divDogs);
 
     });
 
     // Load products
-async function loadShopProduct(products, divContainer) {
-  if (!products || !divContainer) return;
-  divContainer.innerHTML = products
-    .map(
-      (
-        product
-      ) => `<div class="animation-product bg-white rounded-lg shadow-md overflow-hidden group">
+    async function loadShopProduct(products, divContainer) {
+      if (!products || !divContainer) return;
+      divContainer.innerHTML = products
+        .map(
+          (
+            product
+          ) => `<div class="animation-product bg-white rounded-lg shadow-md overflow-hidden group">
           <div class="relative">
             <img
               src="${product.imgUrl}"
-              alt="${
-                product.name
-              }" class="w-full h-64 object-cover object-top" />
+              alt="${product.name
+            }" class="w-full h-64 object-cover object-top" />
             <button
               class="absolute top-3 right-3 w-10 h-10 flex items-center justify-center bg-white rounded-full shadow-md opacity-0 group-hover:opacity-100 transition">
               <i class="ri-heart-line text-pink-500 ri-lg"></i>
@@ -1337,25 +791,33 @@ async function loadShopProduct(products, divContainer) {
               <i class="ri-star-fill"></i>
               <i class="ri-star-fill"></i>
               <i class="ri-star-fill"></i>
-              <span class="text-gray-500 text-sm ml-2">(28)</span>
             </div>
             <h4 class="font-semibold text-lg mb-1">${product.name}</h4>
             <p class="text-gray-500 text-sm mb-3">
               ${product.description}
             </p>
-            <div class="flex justify-between items-center">
-              <span class="font-bold text-lg">${formatCurrencyVND(
+${product.price > 0 ?
+              `<div class="flex justify-between items-center">
+                                <span class="font-bold text-lg">${formatCurrencyVND(
                 product.price
               )}</span>
-                            <button onclick="addToCart(${product.id})"
-                                class="bg-primary text-white px-4 py-2 rounded-button hover:bg-pink-400 transition whitespace-nowrap">Add
-                                to Cart</button>
-            </div>
+                                <button onclick="addToCart(${product.id})"
+                                    class="bg-primary text-white px-4 py-2 rounded-button hover:bg-pink-400 transition whitespace-nowrap">Thêm vào giỏ hàng
+                                </button>
+                            </div>`
+              :
+              `<div class="flex justify-between items-center">
+                                <span class="font-bold text-sm text-amber-700">Giá cả thương lượng</span>
+                                <button onclick="displayPopupContact()"
+                                    class="bg-primary text-white px-4 py-2 rounded-button hover:bg-pink-400 transition whitespace-nowrap">Liên hệ GuuPawz
+                                </button>
+                            </div>`
+            }
           </div>
         </div>`
-    )
-    .join("");
-}
+        )
+        .join("");
+    }
   </script>
   <script id="filter-dropdown-script">
     document.addEventListener("DOMContentLoaded", function () {
@@ -1446,7 +908,7 @@ async function loadShopProduct(products, divContainer) {
   </script>
 
   <script>
-    (function(){if(!window.chatbase||window.chatbase("getState")!=="initialized"){window.chatbase=(...arguments)=>{if(!window.chatbase.q){window.chatbase.q=[]}window.chatbase.q.push(arguments)};window.chatbase=new Proxy(window.chatbase,{get(target,prop){if(prop==="q"){return target.q}return(...args)=>target(prop,...args)}})}const onLoad=function(){const script=document.createElement("script");script.src="https://www.chatbase.co/embed.min.js";script.id="hrUO4CP17SdTN0LWq62A0";script.domain="www.chatbase.co";document.body.appendChild(script)};if(document.readyState==="complete"){onLoad()}else{window.addEventListener("load",onLoad)}})();
+    (function () { if (!window.chatbase || window.chatbase("getState") !== "initialized") { window.chatbase = (...arguments) => { if (!window.chatbase.q) { window.chatbase.q = [] } window.chatbase.q.push(arguments) }; window.chatbase = new Proxy(window.chatbase, { get(target, prop) { if (prop === "q") { return target.q } return (...args) => target(prop, ...args) } }) } const onLoad = function () { const script = document.createElement("script"); script.src = "https://www.chatbase.co/embed.min.js"; script.id = "hrUO4CP17SdTN0LWq62A0"; script.domain = "www.chatbase.co"; document.body.appendChild(script) }; if (document.readyState === "complete") { onLoad() } else { window.addEventListener("load", onLoad) } })();
   </script>
 </body>
 

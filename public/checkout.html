@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>GuuPawz - Checkout</title>
-    <link rel="icon" type="image/png" href="././icon-pet1.PNG" sizes="320x320">
+    <title>GuuPawz - Mua hàng</title>
+    <link rel="icon" type="image/png" href="././icon-shop.jpg" sizes="320x320">
     <script src="https://cdn.tailwindcss.com/3.4.16"></script>
     <script>
         tailwind.config = {
@@ -131,10 +131,10 @@
         <div class="container mx-auto px-4 py-3 flex items-center justify-between">
             <a href="#" class="text-3xl font-['Pacifico'] text-white">GuuPawz</a>
             <nav class="hidden md:flex items-center space-x-6">
-                <a href="./" data-readdy="true"
-                    class="text-white font-medium hover:text-pink-100 transition border-white">Home</a>
-                <a href="shop.html" class="text-white font-medium hover:text-pink-100 transition border-white">Shop</a>
-                <a href="about.html" class="text-white font-medium hover:text-pink-100 transition">About Us</a>
+                <a href="./" data-readdy="true" class="text-white font-medium hover:text-pink-100 transition ">Trang
+                    chủ</a>
+                <a href="shop.html" class="text-white font-medium hover:text-pink-100 transition">Cửa hàng</a>
+                <a href="about.html" class="text-white font-medium hover:text-pink-100 transition ">Chúng tôi</a>
                 <!-- <a
             href="#"
             class="text-white font-medium hover:text-pink-100 transition"
@@ -149,7 +149,7 @@
             <div class="flex items-center space-x-4">
                 <form id="search-form">
                     <div class="relative">
-                        <input id="search-input" type="text" placeholder="Search..."
+                        <input id="search-input" type="text" placeholder="Tìm kiếm..."
                             class="py-2 pl-10 pr-4 rounded-full text-sm border-none focus:outline-none focus:ring-2 focus:ring-pink-300 w-40 md:w-64" />
 
                         <div id="search-icon"
@@ -171,101 +171,20 @@
                         class="absolute right-0 top-full mt-2 w-80 bg-white rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
                         <div class="p-4">
                             <div class="flex items-center justify-between mb-4">
-                                <h3 class="font-semibold">Shopping Cart</h3>
+                                <h3 class="font-semibold">Giỏ hàng</h3>
                                 <a href="#cart" class="text-primary hover:text-pink-600 text-sm"></a>
                             </div>
                             <div id="cart-item" class="space-y-3 max-h-60 overflow-y-auto">
-                                <!-- Cart Item -->
-                                <!-- <div class="flex items-center gap-3">
-                                    <img src="https://readdy.ai/api/search-image?query=small%2520dog%2520wearing%2520stylish%2520blue%2520winter%2520sweater%252C%2520product%2520photography%252C%2520studio%2520lighting%252C%2520clean%2520white%2520background%252C%2520high%2520quality%252C%2520detailed%2520fabric%2520texture%252C%2520adorable%2520puppy%2520model&width=80&height=80&seq=cart-item1&orientation=squarish"
-                                        alt="Blue Winter Sweater" class="w-16 h-16 object-cover rounded" />
-                                    <div class="flex-1">
-                                        <h4 class="text-sm font-medium">Blue Winter Sweater</h4>
-                                        <div class="text-gray-500 text-xs mt-1">
-                                            Size:
-                                            <select class="text-xs bg-transparent focus:outline-none ml-1">
-                                                <option value="S">S</option>
-                                                <option value="M" selected>M</option>
-                                                <option value="L">L</option>
-                                                <option value="XL">XL</option>
-                                            </select>
-                                        </div>
-                                        <div class="flex items-center justify-between mt-1">
-                                            <span class="text-sm font-semibold">$22.99</span>
-                                            <div class="flex items-center gap-2">
-                                                <button class="text-gray-400 hover:text-primary">
-                                                    <i class="ri-subtract-line"></i>
-                                                </button>
-                                                <span class="text-sm">1</span>
-                                                <button class="text-gray-400 hover:text-primary">
-                                                    <i class="ri-add-line"></i>
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <button class="text-gray-400 hover:text-red-500">
-                                        <i class="ri-close-line"></i>
-                                    </button>
-                                </div> -->
 
-                                <!-- Cart Item -->
-                                <!-- <div class="flex items-center gap-3">
-                                    <img src="https://readdy.ai/api/search-image?query=cat%2520wearing%2520elegant%2520blue%2520bow%2520tie%2520collar%252C%2520product%2520photography%252C%2520studio%2520lighting%252C%2520clean%2520white%2520background%252C%2520high%2520quality%252C%2520detailed%2520fabric%2520texture%252C%2520adorable%2520kitten%2520model&width=80&height=80&seq=cart-item2&orientation=squarish"
-                                        alt="Elegant Bow Tie Collar" class="w-16 h-16 object-cover rounded" />
-                                    <div class="flex-1">
-                                        <h4 class="text-sm font-medium">
-                                            Elegant Bow Tie Collar
-                                        </h4>
-                                        <p class="text-gray-500 text-xs">Size: S</p>
-                                        <div class="flex items-center justify-between mt-1">
-                                            <span class="text-sm font-semibold">$18.99</span>
-                                            <div class="flex items-center gap-2">
-                                                <button class="text-gray-400 hover:text-primary">
-                                                    <i class="ri-subtract-line"></i>
-                                                </button>
-                                                <span class="text-sm">1</span>
-                                                <button class="text-gray-400 hover:text-primary">
-                                                    <i class="ri-add-line"></i>
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <button class="text-gray-400 hover:text-red-500">
-                                        <i class="ri-close-line"></i>
-                                    </button>
-                                </div> -->
-                                <!-- Cart Item -->
-                                <!-- <div class="flex items-center gap-3">
-                                    <img src="https://readdy.ai/api/search-image?query=small%2520dog%2520wearing%2520raincoat%2520with%2520hood%252C%2520yellow%2520color%252C%2520product%2520photography%252C%2520studio%2520lighting%252C%2520clean%2520white%2520background%252C%2520high%2520quality%252C%2520detailed%2520fabric%2520texture%252C%2520adorable%2520puppy%2520model&width=80&height=80&seq=cart-item3&orientation=squarish"
-                                        alt="Waterproof Raincoat" class="w-16 h-16 object-cover rounded" />
-                                    <div class="flex-1">
-                                        <h4 class="text-sm font-medium">Waterproof Raincoat</h4>
-                                        <p class="text-gray-500 text-xs">Size: L</p>
-                                        <div class="flex items-center justify-between mt-1">
-                                            <span class="text-sm font-semibold">$27.99</span>
-                                            <div class="flex items-center gap-2">
-                                                <button class="text-gray-400 hover:text-primary">
-                                                    <i class="ri-subtract-line"></i>
-                                                </button>
-                                                <span class="text-sm">1</span>
-                                                <button class="text-gray-400 hover:text-primary">
-                                                    <i class="ri-add-line"></i>
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <button class="text-gray-400 hover:text-red-500">
-                                        <i class="ri-close-line"></i>
-                                    </button>
-                                </div> -->
                             </div>
                             <div class="border-t border-gray-100 mt-4 pt-4">
                                 <div class="flex items-center justify-between mb-4">
-                                    <span class="text-gray-600">Subtotal</span>
+                                    <span class="text-gray-600">Tổng</span>
                                     <span id="cart-subtotal" class="font-semibold"></span>
                                 </div>
                                 <a href="#" onclick="loadCheckoutPage()"
-                                    class="block w-full bg-primary text-white text-center py-2 rounded-button font-semibold hover:bg-pink-400 transition">Checkout</a>
+                                    class="block w-full bg-primary text-white text-center py-2 rounded-button font-semibold hover:bg-pink-400 transition">Mua
+                                    hàng</a>
                             </div>
                         </div>
                     </div>
@@ -284,35 +203,35 @@
                                 </div>
                                 <div>
                                     <h3 id="profile-icon-fullname" class="font-semibold">GuuPaws</h3>
-                                    <p id="profile-icon-icon-mail" class="text-gray-500 text-sm">Welcome you!</p>
+                                    <p id="profile-icon-icon-mail" class="text-gray-500 text-sm">Chào mừng bạn!</p>
                                 </div>
                             </div>
                             <div class="space-y-1">
                                 <a href="#" id="myProfileLink"
                                     class="flex items-center gap-2 p-2 hover:bg-gray-50 rounded-lg text-gray-700">
                                     <i class="ri-user-settings-line"></i>
-                                    <span>My Profile</span>
+                                    <span>Hồ sơ</span>
                                 </a>
                                 <a href="#" id="myOrdersLink"
                                     class="flex items-center gap-2 p-2 hover:bg-gray-50 rounded-lg text-gray-700">
                                     <i class="ri-file-list-3-line"></i>
-                                    <span>Order History</span>
+                                    <span>Lịch sử mua hàng</span>
                                 </a>
                                 <a href="#" id="signInLink"
                                     class="flex items-center gap-2 p-2 hover:bg-gray-50 rounded-lg text-gray-700">
                                     <i class="ri-login-circle-line"></i>
-                                    <span>Sign in</span>
+                                    <span>Đăng nhập</span>
                                 </a>
                                 <a href="#" id="signUpLink"
                                     class="flex items-center gap-2 p-2 hover:bg-gray-50 rounded-lg text-gray-700">
                                     <i class="ri-user-add-line"></i>
-                                    <span>Sign up</span>
+                                    <span>Đăng kí</span>
                                 </a>
                                 <div class="border-t border-gray-100 my-2"></div>
                                 <a href="#" id="LogoutLink"
                                     class="flex items-center gap-2 p-2 hover:bg-gray-50 rounded-lg text-red-600">
                                     <i class="ri-logout-box-r-line"></i>
-                                    <span>Logout</span>
+                                    <span>Đăng xuất</span>
                                 </a>
                             </div>
                         </div>
@@ -334,7 +253,7 @@
                         <div class="w-5 h-5 flex items-center justify-center mr-1">
                             <i class="ri-arrow-left-line"></i>
                         </div>
-                        <span>Back to Home</span>
+                        <span>Trở về</span>
                     </a>
                     <div class="hidden md:flex items-center">
                         <div class="flex items-center">
@@ -342,7 +261,7 @@
                                 class="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center font-medium">
                                 1
                             </div>
-                            <span class="ml-2 font-medium text-primary">Cart</span>
+                            <span class="ml-2 font-medium text-primary">Giỏ hàng</span>
                         </div>
                         <div class="w-12 h-1 bg-primary mx-2"></div>
                         <div class="flex items-center">
@@ -350,7 +269,7 @@
                                 class="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center font-medium">
                                 2
                             </div>
-                            <span class="ml-2 font-medium text-primary">Checkout</span>
+                            <span class="ml-2 font-medium text-primary">Mua hàng</span>
                         </div>
                         <div class="w-12 h-1 bg-gray-300 mx-2"></div>
                         <div class="flex items-center">
@@ -358,10 +277,10 @@
                                 class="w-8 h-8 rounded-full bg-gray-200 text-gray-500 flex items-center justify-center font-medium">
                                 3
                             </div>
-                            <span class="ml-2 font-medium text-gray-500">Confirmation</span>
+                            <span class="ml-2 font-medium text-gray-500">Xác nhận</span>
                         </div>
                     </div>
-                    <a href="./shop.html" class="text-primary hover:underline">Continue Shopping</a>
+                    <a href="./shop.html" class="text-primary hover:underline">Tiếp tục mua hàng</a>
                 </div>
             </div>
         </div>
@@ -373,42 +292,46 @@
                 <!-- Left Column - Checkout Form -->
                 <div class="lg:w-2/3">
                     <h1 id="titleProgress" class="text-2xl md:text-3xl font-bold text-gray-800 mb-6">
-                        Checkout
+                        Thông tin đơn hàng
                     </h1>
 
                     <!-- Shipping Information -->
                     <div class="bg-white rounded-xl shadow-md p-6 mb-6">
                         <h2 class="text-xl font-bold text-gray-800 mb-4">
-                            Shipping Information
+                            Thông tin giao hàng
                         </h2>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <div class="md:col-span-2">
-                                <label for="full-name" class="block text-sm font-medium text-gray-700 mb-1">Full Name
+                                <label for="full-name" class="block text-sm font-medium text-gray-700 mb-1">Họ và Tên
                                     *</label>
                                 <input type="text" id="full-name" name="full-name" required
                                     class="w-full px-4 py-2 border border-gray-300 rounded-lg text-gray-800 text-sm"
-                                    placeholder="Enter your full name" />
+                                    placeholder="Nhập họ và tên của bạn" />
                             </div>
                             <div>
-                                <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email Address
+                                <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email
                                     *</label>
                                 <input type="email" id="email" required
+                                    oninvalid="this.setCustomValidity('Vui lòng nhập email của bạn')"
                                     class="w-full px-4 py-2 border border-gray-300 rounded-lg text-gray-800 text-sm"
-                                    placeholder="Enter your email" />
+                                    placeholder="Nhập email của bạn" />
                             </div>
                             <div>
-                                <label for="phone" class="block text-sm font-medium text-gray-700 mb-1">Phone Number
+                                <label for="phone" class="block text-sm font-medium text-gray-700 mb-1">Số điện thoại
                                     *</label>
                                 <input type="tel" id="phone" name="phone" required
+                                    oninvalid="this.setCustomValidity('Vui lòng nhập sđt của bạn')"
                                     class="w-full px-4 py-2 border border-gray-300 rounded-lg text-gray-800 text-sm"
-                                    placeholder="Enter your phone number" />
+                                    placeholder="Nhập số điện thoại của bạn" />
                             </div>
                             <div class="flex flex-row gap-4 md:col-span-2">
                                 <div class="basis-1/3">
-                                    <label for="city" class="block text-sm font-medium text-gray-700 mb-1">City
+                                    <label for="city" class="block text-sm font-medium text-gray-700 mb-1">Tỉnh / Thành
+                                        phố
                                         *</label>
                                     <div class="relative">
                                         <select id="city" name="city" required
+                                            oninvalid="this.setCustomValidity('Vui lòng chọn Tỉnh / Thành phố của bạn')"
                                             class="w-full px-4 py-2 border border-gray-300 rounded-lg text-gray-800 text-sm appearance-none pr-8">
 
                                         </select>
@@ -419,10 +342,12 @@
                                     </div>
                                 </div>
                                 <div class="basis-1/3">
-                                    <label for="district" class="block text-sm font-medium text-gray-700 mb-1">District
+                                    <label for="district" class="block text-sm font-medium text-gray-700 mb-1">Quận /
+                                        Huyện
                                         *</label>
                                     <div class="relative">
                                         <select id="district" name="district" required
+                                            oninvalid="this.setCustomValidity('Vui lòng chọn Quận / Huyện phố của bạn')"
                                             class="w-full px-4 py-2 border border-gray-300 rounded-lg text-gray-800 text-sm appearance-none pr-8">
 
                                         </select>
@@ -433,7 +358,8 @@
                                     </div>
                                 </div>
                                 <div class="basis-1/3">
-                                    <label for="ward" class="block text-sm font-medium text-gray-700 mb-1">Ward</label>
+                                    <label for="ward" class="block text-sm font-medium text-gray-700 mb-1">Xã /
+                                        Phường</label>
                                     <div class="relative">
                                         <select id="ward" name="ward"
                                             class="w-full px-4 py-2 border border-gray-300 rounded-lg text-gray-800 text-sm appearance-none pr-8">
@@ -448,18 +374,18 @@
                             </div>
 
                             <div class="md:col-span-2">
-                                <label for="address" class="block text-sm font-medium text-gray-700 mb-1">Street Address
-                                    (optional)</label>
+                                <label for="address" class="block text-sm font-medium text-gray-700 mb-1">Địa chỉ cụ thể
+                                    (không bắt buộc)</label>
                                 <input type="text" id="address" name="address"
                                     class="w-full px-4 py-2 border border-gray-300 rounded-lg text-gray-800 text-sm"
-                                    placeholder="Enter your street address" />
+                                    placeholder="Nhập địa chỉ cụ thể của bạn" />
                             </div>
                             <div class="md:col-span-2">
-                                <label for="notes" class="block text-sm font-medium text-gray-700 mb-1">Order Notes
-                                    (optional)</label>
+                                <label for="notes" class="block text-sm font-medium text-gray-700 mb-1">Ghi chú
+                                    (không bắt buộc)</label>
                                 <textarea id="notes" name="notes" rows="3"
                                     class="w-full px-4 py-2 border border-gray-300 rounded-lg text-gray-800 text-sm"
-                                    placeholder="Special instructions for delivery or any other notes"></textarea>
+                                    placeholder="Hướng dẫn đặc biệt về giao hàng hoặc bất kỳ ghi chú nào khác"></textarea>
                             </div>
                         </div>
                     </div>
@@ -467,7 +393,7 @@
                     <!-- Shipping Method -->
                     <div class="bg-white rounded-xl shadow-md p-6 mb-6">
                         <h2 class="text-xl font-bold text-gray-800 mb-4">
-                            Shipping Method
+                            Phương thức giao hàng
                         </h2>
                         <div class="space-y-3">
                             <label
@@ -476,10 +402,10 @@
                                     checked />
                                 <div class="ml-3">
                                     <div class="flex items-center justify-between w-full">
-                                        <span class="font-medium text-gray-800">Standard Shipping</span>
-                                        <span class="font-medium text-green-600">Free</span>
+                                        <span class="font-medium text-gray-800">Giao hàng tiêu chuẩn
+                                            <span class="font-medium text-green-600 ml-2">Miễn phí</span>
                                     </div>
-                                    <p class="text-sm text-gray-500">5-7 business days</p>
+                                    <p class="text-sm text-gray-500">2-7 ngày làm việc</p>
                                 </div>
                             </label>
                             <label
@@ -487,10 +413,10 @@
                                 <input type="radio" name="shippingMethod" value="express" class="custom-radio mt-1" />
                                 <div class="ml-3">
                                     <div class="flex items-center justify-between w-full">
-                                        <span class="font-medium text-gray-800">Express Shipping</span>
-                                        <span class="font-medium text-gray-800">$9.99</span>
+                                        <span class="font-medium text-gray-800">Giao hàng nâng cao</span>
+                                        <span class="font-medium text-red-400 ml-2 text-sm">Đang triển khai</span>
                                     </div>
-                                    <p class="text-sm text-gray-500">2-3 business days</p>
+                                    <p class="text-sm text-gray-500">2-3 ngày làm việc</p>
                                 </div>
                             </label>
                             <label
@@ -498,10 +424,10 @@
                                 <input type="radio" name="shippingMethod" value="nextDay" class="custom-radio mt-1" />
                                 <div class="ml-3">
                                     <div class="flex items-center justify-between w-full">
-                                        <span class="font-medium text-gray-800">Next Day Delivery</span>
-                                        <span class="font-medium text-gray-800">$19.99</span>
+                                        <span class="font-medium text-gray-800">Giao hỏa tốc</span>
+                                        <span class="font-medium text-red-400 ml-2 text-sm">Đang triển khai</span>
                                     </div>
-                                    <p class="text-sm text-gray-500">1 business day</p>
+                                    <p class="text-sm text-gray-500">Ngay ngày hôm sau</p>
                                 </div>
                             </label>
                         </div>
@@ -509,7 +435,7 @@
 
                     <!-- Payment Method -->
                     <div class="bg-white rounded-xl shadow-md p-6 mb-6">
-                        <h2 class="text-xl font-bold text-gray-800 mb-4">Payment Method</h2>
+                        <h2 class="text-xl font-bold text-gray-800 mb-4">Phương thức thanh toán</h2>
                         <div class="space-y-4">
 
                             <label
@@ -517,10 +443,9 @@
                                 <input type="radio" name="paymentMethod" value="cashDelivered" class="custom-radio"
                                     checked />
                                 <div class="ml-3 flex items-center justify-between w-full">
-                                    <span class="font-medium text-gray-800">Cash when delivered</span>
-                                    <div class="w-8 h-5 flex items-center justify-center">
-                                        <i class="ri-apple-fill text-gray-800"></i>
-                                    </div>
+                                    <span class="font-medium text-gray-800">Thanh toán khi nhận hàng
+                                        <div class="w-8 h-5 flex items-center justify-center">
+                                        </div>
                                 </div>
                             </label>
 
@@ -531,7 +456,11 @@
                                         class="custom-radio mt-1" />
                                     <div class="ml-3 w-full">
                                         <div class="flex items-center justify-between">
-                                            <span class="font-medium text-gray-800">Credit/Debit Card</span>
+                                            <span class="font-medium text-gray-800">Thẻ Credit/Debit
+                                                <span class="font-medium text-red-400 text-sm ml-2">Đang triển
+                                                    khai</span>
+                                            </span>
+
                                             <div class="flex space-x-2">
                                                 <div class="w-8 h-5 flex items-center justify-center">
                                                     <i class="ri-visa-fill text-blue-700"></i>
@@ -547,8 +476,8 @@
                                         <div class="mt-3 space-y-3 hidden" id="cardDetails">
                                             <div>
                                                 <label for="cardNumber"
-                                                    class="block text-sm font-medium text-gray-700 mb-1">Card
-                                                    Number</label>
+                                                    class="block text-sm font-medium text-gray-700 mb-1">Thẻ tín dụng
+                                                </label>
                                                 <input type="text" id="cardNumber"
                                                     class="w-full px-4 py-2 border border-gray-300 rounded-lg text-gray-800 text-sm"
                                                     placeholder="1234 5678 9012 3456" />
@@ -587,7 +516,9 @@
                                 class="flex items-center p-3 border border-gray-200 rounded-lg cursor-pointer hover:border-primary transition-colors">
                                 <input type="radio" name="paymentMethod" value="paypal" class="custom-radio" />
                                 <div class="ml-3 flex items-center justify-between w-full">
-                                    <span class="font-medium text-gray-800">PayPal</span>
+                                    <span class="font-medium text-gray-800">PayPal
+                                        <span class="font-medium text-red-400 text-sm ml-2">Đang triển khai</span>
+                                    </span>
                                     <div class="w-8 h-5 flex items-center justify-center">
                                         <i class="ri-paypal-fill text-blue-600"></i>
                                     </div>
@@ -598,7 +529,9 @@
                                 class="flex items-center p-3 border border-gray-200 rounded-lg cursor-pointer hover:border-primary transition-colors">
                                 <input type="radio" name="paymentMethod" value="applePay" class="custom-radio" />
                                 <div class="ml-3 flex items-center justify-between w-full">
-                                    <span class="font-medium text-gray-800">Apple Pay</span>
+                                    <span class="font-medium text-gray-800">Apple Pay
+                                        <span class="font-medium text-red-400 text-sm ml-2">Đang triển khai</span>
+                                    </span>
                                     <div class="w-8 h-5 flex items-center justify-center">
                                         <i class="ri-apple-fill text-gray-800"></i>
                                     </div>
@@ -609,7 +542,7 @@
                                 <div class="w-5 h-5 flex items-center justify-center mr-2 text-primary">
                                     <i class="ri-lock-line"></i>
                                 </div>
-                                <span>Your payment information is secure and encrypted</span>
+                                <span>Thông tin thanh toán của bạn được bảo mật và mã hóa</span>
                             </div>
                         </div>
                     </div>
@@ -618,7 +551,7 @@
                 <!-- Right Column - Order Summary -->
                 <div class="lg:w-1/3">
                     <div class="bg-white rounded-xl shadow-md p-6 sticky top-24">
-                        <h2 class="text-xl font-bold text-gray-800 mb-4">Order Summary</h2>
+                        <h2 class="text-xl font-bold text-gray-800 mb-4">Chi tiết đơn hàng</h2>
 
                         <!-- Order Items -->
                         <div id="order-items" class="space-y-4 mb-6">
@@ -657,7 +590,7 @@
                                     class="flex-grow px-4 py-2 border border-gray-300 rounded-lg text-gray-800 text-sm" />
                                 <button
                                     class="bg-gray-100 text-gray-800 px-4 py-2 rounded-button font-medium hover:bg-gray-200 transition-colors whitespace-nowrap">
-                                    Apply
+                                    Áp dụng
                                 </button>
                             </div>
                         </div>
@@ -665,24 +598,24 @@
                         <!-- Price Summary -->
                         <div class="space-y-2 border-t border-b py-4 mb-6">
                             <div class="flex justify-between">
-                                <span class="text-gray-600">Subtotal</span>
+                                <span class="text-gray-600">Tổng cộng</span>
                                 <span id="subtotal-order" class="font-medium text-gray-800"></span>
                             </div>
                             <div class="flex justify-between">
-                                <span class="text-gray-600">Shipping</span>
-                                <span class="font-medium text-green-600">Free</span>
+                                <span class="text-gray-600">Giao hàng</span>
+                                <span class="font-medium text-green-600">Miễn phí</span>
                             </div>
                         </div>
 
                         <div class="flex justify-between items-center mb-6">
-                            <span class="text-lg font-bold text-gray-800">Total</span>
+                            <span class="text-lg font-bold text-gray-800">Tổng đơn</span>
                             <span id="total-order" class="text-xl font-bold text-gray-800"></span>
                         </div>
 
                         <!-- Place Order Button -->
                         <button id="btnSumitForm" type="submit" value="checkout"
                             class="w-full bg-primary text-white py-3 rounded-button font-medium shadow-md hover:shadow-lg transition-all mb-4 whitespace-nowrap">
-                            Place Order
+                            Mua hàng
                         </button>
 
                         <!-- Security Badges -->
@@ -698,7 +631,7 @@
                             </div>
                         </div>
                         <p class="text-xs text-center text-gray-500 mt-2">
-                            All transactions are secure and encrypted
+                            Tất cả các giao dịch đều an toàn và được mã hóa
                         </p>
                     </div>
                 </div>
@@ -712,31 +645,31 @@
     <section class="bg-gray-50 py-10">
         <div class="container mx-auto px-4">
             <div class="max-w-3xl mx-auto text-center">
-                <h2 class="text-xl font-bold text-gray-800 mb-2">Need Help?</h2>
+                <h2 class="text-xl font-bold text-gray-800 mb-2">Bạn cần giúp đỡ?</h2>
                 <p class="text-gray-600 mb-4">
-                    Our customer support team is here to assist you
+                    Đội ngũ hỗ trợ khách hàng của chúng tôi luôn sẵn sàng hỗ trợ bạn
                 </p>
                 <div class="flex flex-wrap justify-center gap-4">
-                    <a href="#"
+                    <a href="#" onclick="displayPopupContact()"
                         class="flex items-center px-4 py-2 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow">
                         <div class="w-5 h-5 flex items-center justify-center mr-2 text-primary">
                             <i class="ri-customer-service-2-line"></i>
                         </div>
-                        <span class="text-gray-800">Live Chat</span>
+                        <span class="text-gray-800">Nhắn tin</span>
                     </a>
-                    <a href="#"
+                    <a href="#" onclick="displayPopupContact()"
                         class="flex items-center px-4 py-2 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow">
                         <div class="w-5 h-5 flex items-center justify-center mr-2 text-primary">
                             <i class="ri-mail-line"></i>
                         </div>
-                        <span class="text-gray-800">Email Support</span>
+                        <span class="text-gray-800">Hỗ trợ qua email</span>
                     </a>
-                    <a href="#"
+                    <a href="#" onclick="displayPopupContact()"
                         class="flex items-center px-4 py-2 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow">
                         <div class="w-5 h-5 flex items-center justify-center mr-2 text-primary">
                             <i class="ri-phone-line"></i>
                         </div>
-                        <span class="text-gray-800">Call Us</span>
+                        <span class="text-gray-800">Gọi trực tiếp</span>
                     </a>
                 </div>
             </div>
@@ -744,124 +677,76 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-white pt-16 pb-8 border-t border-gray-100">
+    <footer class="bg-gray-100 pt-12 pb-6">
         <div class="container mx-auto px-4">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                <!-- Company Info -->
                 <div>
-                    <a href="#" class="inline-block mb-4">
-                        <span class="text-3xl font-['Pacifico'] text-primary">GuuPawz</span>
-                    </a>
-                    <p class="text-gray-600 mb-4">
-                        Stylish, comfortable, and adorable fashion for your beloved pets.
-                    </p>
+                    <h3 class="text-xl font-['Pacifico'] text-primary mb-4">GuuPawz</h3>
+                    <p class="text-gray-600 mb-4">Kết nối với GuuPawz Shop</p>
                     <div class="flex space-x-4">
-                        <a href="#"
-                            class="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center text-gray-600 hover:bg-primary hover:text-white transition-colors">
+                        <a href=" https://www.facebook.com/profile.php?id=61576966434198"
+                            class="w-10 h-10 flex items-center justify-center bg-primary text-white rounded-full hover:bg-pink-400 transition">
                             <i class="ri-facebook-fill"></i>
                         </a>
-                        <a href="#"
-                            class="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center text-gray-600 hover:bg-primary hover:text-white transition-colors">
+                        <a href="https://www.instagram.com/guupawz/"
+                            class="w-10 h-10 flex items-center justify-center bg-primary text-white rounded-full hover:bg-pink-400 transition">
                             <i class="ri-instagram-line"></i>
                         </a>
-                        <a href="#"
-                            class="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center text-gray-600 hover:bg-primary hover:text-white transition-colors">
+                        <!-- <a href="#"
+                            class="w-10 h-10 flex items-center justify-center bg-primary text-white rounded-full hover:bg-pink-400 transition">
                             <i class="ri-twitter-x-line"></i>
                         </a>
                         <a href="#"
-                            class="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center text-gray-600 hover:bg-primary hover:text-white transition-colors">
-                            <i class="ri-pinterest-line"></i>
+                            class="w-10 h-10 flex items-center justify-center bg-primary text-white rounded-full hover:bg-pink-400 transition">
+                            <i class="ri-pinterest-line"></i> -->
                         </a>
                     </div>
                 </div>
+                <!-- Shop -->
                 <div>
-                    <h4 class="text-lg font-bold text-gray-800 mb-4">Shop</h4>
+                    <h4 class="font-semibold text-lg mb-4">Cửa hàng</h4>
                     <ul class="space-y-2">
-                        <li>
-                            <a href="#" class="text-gray-600 hover:text-primary">Dogs</a>
-                        </li>
-                        <li>
-                            <a href="#" class="text-gray-600 hover:text-primary">Cats</a>
-                        </li>
-                        <li>
-                            <a href="#" class="text-gray-600 hover:text-primary">Clothing</a>
-                        </li>
-                        <li>
-                            <a href="#" class="text-gray-600 hover:text-primary">Accessories</a>
-                        </li>
-                        <li>
-                            <a href="#" class="text-gray-600 hover:text-primary">New Arrivals</a>
-                        </li>
-                        <li>
-                            <a href="#" class="text-gray-600 hover:text-primary">Sale</a>
-                        </li>
+                        <li><a href="#" class="text-gray-600 hover:text-primary">Thời trang thú cưng</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-primary">Phụ kiện</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-primary">Hàng mới đến</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-primary">Hàng giảm giá</a></li>
                     </ul>
                 </div>
+                <!-- Customer Service -->
                 <div>
-                    <h4 class="text-lg font-bold text-gray-800 mb-4">Help</h4>
+                    <h4 class="font-semibold text-lg mb-4">Dịch vụ khách hàng</h4>
                     <ul class="space-y-2">
-                        <li>
-                            <a href="#" class="text-gray-600 hover:text-primary">Size Guide</a>
-                        </li>
-                        <li>
-                            <a href="#" class="text-gray-600 hover:text-primary">Shipping & Returns</a>
-                        </li>
-                        <li>
-                            <a href="#" class="text-gray-600 hover:text-primary">FAQs</a>
-                        </li>
-                        <li>
-                            <a href="#" class="text-gray-600 hover:text-primary">Contact Us</a>
-                        </li>
-                        <li>
-                            <a href="#" class="text-gray-600 hover:text-primary">Privacy Policy</a>
-                        </li>
-                        <li>
-                            <a href="#" class="text-gray-600 hover:text-primary">Terms of Service</a>
-                        </li>
+                        <li><a href="#" class="text-gray-600 hover:text-primary">Liên hệ chúng tôi</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-primary">Vận chuyển & Trả hàng</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-primary">FAQ</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-primary">Hướng dẫn chọn kích thước</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-primary">Theo dõi đơn hàng</a></li>
                     </ul>
                 </div>
+                <!-- About -->
                 <div>
-                    <h4 class="text-lg font-bold text-gray-800 mb-4">Contact</h4>
+                    <h4 class="font-semibold text-lg mb-4">Về chúng tôi</h4>
                     <ul class="space-y-2">
-                        <li class="flex items-start">
-                            <div class="w-5 h-5 flex items-center justify-center mt-1 mr-2 text-primary">
-                                <i class="ri-map-pin-line"></i>
-                            </div>
-                            <span class="text-gray-600">123 Pet Street, Fashion Avenue, NY 10001, USA</span>
-                        </li>
-                        <li class="flex items-center">
-                            <div class="w-5 h-5 flex items-center justify-center mr-2 text-primary">
-                                <i class="ri-phone-line"></i>
-                            </div>
-                            <span class="text-gray-600">+1 (555) 123-4567</span>
-                        </li>
-                        <li class="flex items-center">
-                            <div class="w-5 h-5 flex items-center justify-center mr-2 text-primary">
-                                <i class="ri-mail-line"></i>
-                            </div>
-                            <span class="text-gray-600">hello@GuuPawz.com</span>
-                        </li>
+                        <li><a href="#" class="text-gray-600 hover:text-primary">Câu chuyện của chúng tôi</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-primary">Lời chứng thực</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-primary">Chính sách bảo mật</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-primary">Điều khoản dịch vụ</a></li>
                     </ul>
                 </div>
             </div>
-            <div class="pt-8 border-t border-gray-100">
+            <div class="border-t border-gray-200 pt-6">
                 <div class="flex flex-col md:flex-row justify-between items-center">
-                    <p class="text-sm text-gray-500 mb-4 md:mb-0">
-                        © 2025 GuuPawz. All rights reserved.
-                    </p>
-                    <div class="flex items-center space-x-4">
-                        <div class="w-8 h-5 flex items-center justify-center">
-                            <i class="ri-visa-fill text-gray-600"></i>
+                    <p class="text-gray-500 text-sm mb-4 md:mb-0">© 2025 GuuPawz. All rights reserved.</p>
+                    <!-- <div class="flex items-center space-x-4">
+                        <span class="text-gray-500 text-sm">Các:</span>
+                        <div class="flex space-x-2">
+                            <i class="ri-visa-fill ri-lg text-blue-700"></i>
+                            <i class="ri-mastercard-fill ri-lg text-red-500"></i>
+                            <i class="ri-paypal-fill ri-lg text-blue-500"></i>
+                            <i class="ri-apple-fill ri-lg text-gray-700"></i>
                         </div>
-                        <div class="w-8 h-5 flex items-center justify-center">
-                            <i class="ri-mastercard-fill text-gray-600"></i>
-                        </div>
-                        <div class="w-8 h-5 flex items-center justify-center">
-                            <i class="ri-paypal-fill text-gray-600"></i>
-                        </div>
-                        <div class="w-8 h-5 flex items-center justify-center">
-                            <i class="ri-apple-fill text-gray-600"></i>
-                        </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>
@@ -990,7 +875,7 @@
                                     alt="${product.name}" class="w-16 h-16 object-cover rounded-md" />
                                 <div class="ml-4 flex-grow">
                                     <h3 class="font-medium text-gray-800">${product.name}</h3>
-                                    <p class="text-sm text-gray-500">Size: ${product.selectedSize}</p>
+                                    <p class="text-sm text-gray-500">Kích cỡ: ${product.selectedSize}</p>
                                     <div class="flex justify-between mt-1">
                                         <span class="text-sm text-gray-600">${product.quantity} × ${formatCurrencyVND(product.price)}</span>
                                         <span class="font-medium text-gray-800">${formatCurrencyVND(product.quantity * product.price)}</span>
@@ -1010,19 +895,22 @@
 
         async function loadConfirmLayout() {
             makeFormReadOnly("checkout-form", true);
-            document.getElementById("titleProgress").textContent = "Confirmation";
+            document.getElementById("titleProgress").textContent = "Xác nhận";
             const btnSubmit = document.getElementById("btnSumitForm");
-            btnSubmit.innerText = "Confirmation";
+            btnSubmit.innerText = "Xác nhận";
             btnSubmit.value = "confirm";
 
         }
 
         async function backToOrder() {
             makeFormReadOnly("checkout-form", false);
-            document.getElementById("titleProgress").textContent = "Checkout";
+            document.getElementById("titleProgress").textContent = "Thông tin đơn hàng";
             const btnSubmit = document.getElementById("btnSumitForm");
-            btnSubmit.innerText = "Place Order";
+            btnSubmit.innerText = "Mua hàng";
             btnSubmit.value = "checkout";
+            const buyerProgress = document.getElementById("buyer-progress");
+            loadCheckoutProgress(buyerProgress);
+
         }
 
         function makeFormReadOnly(idForm, isReadOnly) {
@@ -1048,7 +936,7 @@
                     <div class="w-5 h-5 flex items-center justify-center mr-1">
                         <i class="ri-arrow-left-line"></i>
                     </div>
-                    <span>Back to Home</span>
+                    <span>Trở về</span>
                 </a>
                 <div class="hidden md:flex items-center">
                     <div class="flex items-center">
@@ -1056,7 +944,7 @@
                             class="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center font-medium">
                             1
                         </div>
-                        <span class="ml-2 font-medium text-primary">Cart</span>
+                        <span class="ml-2 font-medium text-primary">Giở hàng</span>
                     </div>
                     <div class="w-12 h-1 bg-primary mx-2"></div>
                     <div class="flex items-center">
@@ -1064,7 +952,7 @@
                             class="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center font-medium">
                             2
                         </div>
-                        <span class="ml-2 font-medium text-primary">Checkout</span>
+                        <span class="ml-2 font-medium text-primary">Mua hàng</span>
                     </div>
                     <div class="w-12 h-1 bg-gray-300 mx-2"></div>
                     <div class="flex items-center">
@@ -1072,10 +960,10 @@
                             class="w-8 h-8 rounded-full bg-gray-200 text-gray-500 flex items-center justify-center font-medium">
                             3
                         </div>
-                        <span class="ml-2 font-medium text-gray-500">Confirmation</span>
+                        <span class="ml-2 font-medium text-gray-500">Xác nhận</span>
                     </div>
                 </div>
-                <a href="./shop.html" class="text-primary hover:underline">Continue Shopping</a>
+                <a href="./shop.html" class="text-primary hover:underline">Tiếp tục mua hàng</a>
             </div>
         </div>
     </div>`;
@@ -1090,7 +978,7 @@
                     <div class="w-5 h-5 flex items-center justify-center mr-1">
                         <i class="ri-arrow-left-line"></i>
                     </div>
-                    <span>Back to Order</span>
+                    <span>Trở về</span>
                 </a>
                 <div class="hidden md:flex items-center">
                     <div class="flex items-center">
@@ -1098,7 +986,7 @@
                             class="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center font-medium">
                             1
                         </div>
-                        <span class="ml-2 font-medium text-primary">Cart</span>
+                        <span class="ml-2 font-medium text-primary">Giỏ hàng</span>
                     </div>
                     <div class="w-12 h-1 bg-primary mx-2"></div>
                     <div class="flex items-center">
@@ -1106,7 +994,7 @@
                             class="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center font-medium">
                             2
                         </div>
-                        <span class="ml-2 font-medium text-primary">Checkout</span>
+                        <span class="ml-2 font-medium text-primary">Mua hàng</span>
                     </div>
                     <div class="w-12 h-1 bg-primary mx-2"></div>
                     <div class="flex items-center">
@@ -1114,10 +1002,10 @@
                             class="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center font-medium">
                             3
                         </div>
-                        <span class="ml-2 font-medium text-primary">Confirmation</span>
+                        <span class="ml-2 font-medium text-primary">Xác nhận</span>
                     </div>
                 </div>
-                <a href="./shop.html" class="text-primary hover:underline">Continue Shopping</a>
+                <a href="./shop.html" class="text-primary hover:underline">Tiếp tục mua hàng</a>
             </div>
         </div>
     </div>`;
@@ -1227,7 +1115,7 @@
 
 
     <!-- Âm thanh "ping" dễ thương -->
-    <audio id="pingSound" src="https://assets.mixkit.co/active_storage/sfx/4242/4242-preview.mp3"
+    <audio id="pingSound" src="https://tiengdong.com/wp-content/uploads/Am-thanh-ta-da-www_tiengdong_com.mp3"
         preload="auto"></audio>
 
     <script>

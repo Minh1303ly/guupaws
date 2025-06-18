@@ -1,98 +1,100 @@
-    <!-- Load modal of header -->
-    <!-- Create Account Modal -->
-    <div id="signUpModal" class="fixed inset-0 bg-black/50 z-50 hidden">
-        <div class="fixed inset-0 flex items-center justify-center p-4">
-            <div
-                class="bg-white rounded-xl shadow-xl max-w-md w-full transform transition-all duration-300 scale-95 opacity-0">
-                <div class="p-6">
-                    <div class="flex justify-between items-center mb-6">
-                        <h2 class="text-2xl font-bold text-gray-800">Create Account</h2>
-                        <button
-                            class="closeModal w-10 h-10 flex items-center justify-center text-gray-500 hover:text-gray-700">
-                            <i class="ri-close-line text-2xl"></i>
-                        </button>
+<!-- Load modal of header -->
+<!-- Create Account Modal -->
+<div id="signUpModal" class="fixed inset-0 bg-black/50 z-50 hidden">
+    <div class="fixed inset-0 flex items-center justify-center p-4">
+        <div
+            class="bg-white rounded-xl shadow-xl max-w-md w-full transform transition-all duration-300 scale-95 opacity-0">
+            <div class="p-6">
+                <div class="flex justify-between items-center mb-6">
+                    <h2 class="text-2xl font-bold text-gray-800">Tạo tài khoản</h2>
+                    <button
+                        class="closeModal w-10 h-10 flex items-center justify-center text-gray-500 hover:text-gray-700">
+                        <i class="ri-close-line text-2xl"></i>
+                    </button>
+                </div>
+                <p id="signup-message" class="text-red-700"></p>
+                <form id="createAccountForm" class="space-y-4">
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <label for="firstName" class="block text-sm font-medium text-gray-700 mb-1">Họ:</label>
+                            <input type="text" id="firstName" name="firstName" required
+                                oninvalid="this.setCustomValidity('Vui lòng nhập họ của bạn')"
+                                class="w-full px-4 py-2 rounded-lg border-gray-200 focus:ring-2 focus:ring-primary text-sm"
+                                placeholder="Nhập họ của bạn">
+                        </div>
+                        <div>
+                            <label for="lastName" class="block text-sm font-medium text-gray-700 mb-1">Tên:</label>
+                            <input type="text" id="lastName" name="lastName" required
+                                oninvalid="this.setCustomValidity('Vui lòng nhập tên của bạn')"
+                                class="w-full px-4 py-2 rounded-lg border-gray-200 focus:ring-2 focus:ring-primary text-sm"
+                                placeholder="Nhập tên của bạn">
+                        </div>
                     </div>
-                    <form id="createAccountForm" class="space-y-4">
-                        <div class="grid grid-cols-2 gap-4">
-                            <div>
-                                <label for="firstName" class="block text-sm font-medium text-gray-700 mb-1">First
-                                    Name</label>
-                                <input type="text" id="firstName" name="firstName" required
-                                    class="w-full px-4 py-2 rounded-lg border-gray-200 focus:ring-2 focus:ring-primary text-sm"
-                                    placeholder="Enter first name">
-                            </div>
-                            <div>
-                                <label for="lastName" class="block text-sm font-medium text-gray-700 mb-1">Last
-                                    Name</label>
-                                <input type="text" id="lastName" name="lastName" required
-                                    class="w-full px-4 py-2 rounded-lg border-gray-200 focus:ring-2 focus:ring-primary text-sm"
-                                    placeholder="Enter last name">
-                            </div>
-                        </div>
-                        <div>
-                            <label for="newEmail" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
-                            <input type="email" id="newEmail" name="newEmail" required
-                                class="w-full px-4 py-2 rounded-lg border-gray-200 focus:ring-2 focus:ring-primary text-sm"
-                                placeholder="Enter your email">
-                        </div>
-                        <div>
-                            <label for="newPassword"
-                                class="block text-sm font-medium text-gray-700 mb-1">Password</label>
-                            <input type="password" id="newPassword" name="password" required
-                                class="w-full px-4 py-2 rounded-lg border-gray-200 focus:ring-2 focus:ring-primary text-sm"
-                                placeholder="Create password">
-                        </div>
-                        <div>
-                            <label for="confirmPassword" class="block text-sm font-medium text-gray-700 mb-1">Confirm
-                                Password</label>
-                            <input type="password" id="confirmPassword" name="confirmPassword" required
-                                class="w-full px-4 py-2 rounded-lg border-gray-200 focus:ring-2 focus:ring-primary text-sm"
-                                placeholder="Confirm password">
-                        </div>
-                        <div class="flex items-center">
-                            <input type="checkbox" id="terms" required class="custom-checkbox">
-                            <label for="terms" class="ml-2 text-sm text-gray-600">I agree to the <a href="#"
-                                    class="text-primary hover:underline">Terms of Service</a> and <a href="#"
-                                    class="text-primary hover:underline">Privacy Policy</a></label>
-                        </div>
-                        <button type="submit"
-                            class="w-full bg-primary text-white py-2 rounded-button font-medium shadow-md hover:shadow-lg transition-all whitespace-nowrap">Create
-                            Account</button>
-                    </form>
-                    <div class="mt-6 text-center">
-                        <p class="text-sm text-gray-600">Already have an account? <a href="#"
-                                class="text-primary hover:underline" id="switchToSignIn">Sign In</a></p>
+                    <div>
+                        <label for="newEmail" class="block text-sm font-medium text-gray-700 mb-1">Email:</label>
+                        <input type="email" id="newEmail" name="newEmail" required
+                            oninvalid="this.setCustomValidity('Vui lòng nhập email của bạn')"
+                            class="w-full px-4 py-2 rounded-lg border-gray-200 focus:ring-2 focus:ring-primary text-sm"
+                            placeholder="Nhập email của bạn">
                     </div>
+                    <div>
+                        <label for="newPassword" class="block text-sm font-medium text-gray-700 mb-1">Mật khẩu</label>
+                        <input type="password" id="newPassword" name="password" required
+                            oninvalid="this.setCustomValidity('Vui lòng nhập mật khẩu của bạn')"
+                            class="w-full px-4 py-2 rounded-lg border-gray-200 focus:ring-2 focus:ring-primary text-sm"
+                            placeholder="Nhập mật khẩu của bạn">
+                    </div>
+                    <div>
+                        <label for="confirmPassword" class="block text-sm font-medium text-gray-700 mb-1">Nhập lại mật
+                            khẩu:</label>
+                        <input type="password" id="confirmPassword" name="confirmPassword" required
+                            oninvalid="this.setCustomValidity('Vui lòng nhập lại mật khẩu của bạn')"
+                            class="w-full px-4 py-2 rounded-lg border-gray-200 focus:ring-2 focus:ring-primary text-sm"
+                            placeholder="Nhập lại mật khẩu của bạn">
+                    </div>
+                    <div class="flex items-center">
+                        <input type="checkbox" id="terms" required class="custom-checkbox">
+                        <label for="terms" class="ml-2 text-sm text-gray-600">Tôi đồng ý với <a href="#"
+                                class="text-primary hover:underline">Điều khoản dịch vụ</a> và <a href="#"
+                                class="text-primary hover:underline">Chính sách bảo mật</a></label>
+                    </div>
+                    <button type="submit"
+                        class="w-full bg-primary text-white py-2 rounded-button font-medium shadow-md hover:shadow-lg transition-all whitespace-nowrap">Đăng
+                        kí</button>
+                </form>
+                <div class="mt-6 text-center">
+                    <p class="text-sm text-gray-600">Đã có tài khoản? <a href="#" class="text-primary hover:underline"
+                            id="switchToSignIn">Đăng nhập</a></p>
                 </div>
             </div>
         </div>
     </div>
-    <!-- My Profile Modal -->
-    <div id="myProfileModal" class="fixed inset-0 bg-black/50 z-50 hidden">
-        <div class="fixed inset-0 flex items-center justify-center p-4">
-            <div
-                class="bg-white rounded-xl shadow-xl max-w-4xl w-full h-[80vh] transform transition-all duration-300 scale-95 opacity-0">
-                <div class="flex flex-col h-full">
-                    <div class="flex justify-between items-center p-6 border-b">
-                        <h2 class="text-2xl font-bold text-gray-800">My Profile</h2>
-                        <button
-                            class="closeModal w-10 h-10 flex items-center justify-center text-gray-500 hover:text-gray-700">
-                            <i class="ri-close-line text-2xl"></i>
-                        </button>
-                    </div>
-                    <div class="flex-grow overflow-y-auto">
-                        <div class="grid grid-cols-1 md:grid-cols-3 h-full">
-                            <div class="p-6 border-r">
-                                <div class="flex flex-col items-center text-center">
-                                    <div
-                                        class="w-24 h-24 bg-primary/20 rounded-full flex items-center justify-center mb-4">
-                                        <span class="text-2xl font-bold text-primary">JD</span>
-                                    </div>
-                                    <h3 id="profile-fullname" class="text-xl font-bold text-gray-800 mb-1">John Doe</h3>
-                                    <p id="profile-icon-mail" class="text-gray-500 mb-4">john.doe@example.com</p>
-                                    <!-- <button class="text-sm text-primary hover:underline">Change Profile Picture</button> -->
+</div>
+<!-- My Profile Modal -->
+<div id="myProfileModal" class="fixed inset-0 bg-black/50 z-50 hidden">
+    <div class="fixed inset-0 flex items-center justify-center p-4">
+        <div
+            class="bg-white rounded-xl shadow-xl max-w-4xl w-full h-[80vh] transform transition-all duration-300 scale-95 opacity-0">
+            <div class="flex flex-col h-full">
+                <div class="flex justify-between items-center p-6 border-b">
+                    <h2 class="text-2xl font-bold text-gray-800">Hồ sơ cá nhân</h2>
+                    <button
+                        class="closeModal w-10 h-10 flex items-center justify-center text-gray-500 hover:text-gray-700">
+                        <i class="ri-close-line text-2xl"></i>
+                    </button>
+                </div>
+                <div class="flex-grow overflow-y-auto">
+                    <div class="grid grid-cols-1 md:grid-cols-3 h-full">
+                        <div class="p-6 border-r">
+                            <div class="flex flex-col items-center text-center">
+                                <div class="w-24 h-24 bg-primary/20 rounded-full flex items-center justify-center mb-4">
+                                    <span class="text-2xl font-bold text-primary">JD</span>
                                 </div>
-                                <!-- <nav class="mt-8">
+                                <h3 id="profile-fullname" class="text-xl font-bold text-gray-800 mb-1"></h3>
+                                <p id="profile-icon-mail" class="text-gray-500 mb-4"></p>
+                                <!-- <button class="text-sm text-primary hover:underline">Change Profile Picture</button> -->
+                            </div>
+                            <!-- <nav class="mt-8">
                   <button
                     class="w-full text-left px-4 py-2 rounded-lg bg-primary/10 text-primary font-medium mb-2">Profile
                     Information</button>
@@ -107,79 +109,211 @@
                   <button
                     class="w-full text-left px-4 py-2 rounded-lg text-gray-600 hover:bg-gray-50 font-medium">Security</button>
                 </nav> -->
+                        </div>
+                        <div class="md:col-span-2 p-6">
+                            <div class="max-w-lg">
+                                <h3 class="text-lg font-bold text-gray-800 mb-4">Thông tin cá nhân</h3>
+                                <form id="profileForm" class="space-y-4">
+                                    <div class="grid grid-cols-2 gap-4">
+                                        <div>
+                                            <label for="profile-firstName"
+                                                class="block text-sm font-medium text-gray-700 mb-1">Họ:</label>
+                                            <input type="text" id="profile-firstName" name="profile-firstName" required
+                                                placeholder="Nhập họ của bạn ở đây"
+                                                oninvalid="this.setCustomValidity('Vui lòng nhập họ của bạn')"
+                                                class="w-full px-4 py-2 rounded-lg border-gray-200 focus:ring-2 focus:ring-primary text-sm">
+                                        </div>
+                                        <div>
+                                            <label for="profile-lastName"
+                                                class="block text-sm font-medium text-gray-700 mb-1">Tên:</label>
+                                            <input type="text" id="profile-lastName" name="profile-lastName" required
+                                                oninvalid="this.setCustomValidity('Vui lòng nhập tên của bạn')"
+                                                placeholder="Nhập tên của bạn ở đây"
+                                                class="w-full px-4 py-2 rounded-lg border-gray-200 focus:ring-2 focus:ring-primary text-sm">
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <label for="profile-email"
+                                            class="block text-sm font-medium text-gray-700 mb-1">Email:</label>
+                                        <input type="email" id="profile-email" name="profile-email" required
+                                            oninvalid="this.setCustomValidity('Vui lòng nhập email của bạn')"
+                                            value="john.doe@example.com" placeholder="Nhập email của bạn ở đây"
+                                            class="w-full px-4 py-2 rounded-lg border-gray-200 focus:ring-2 focus:ring-primary text-sm">
+                                    </div>
+                                    <div>
+                                        <label for="profile-phone"
+                                            class="block text-sm font-medium text-gray-700 mb-1">Số điện thoại:
+                                        </label>
+                                        <input type="tel" id="profile-phone" name="profile-phone"
+                                            oninvalid="this.setCustomValidity('Vui lòng nhập số điện thoại của bạn')"
+                                            placeholder="+1 (555) 123-4567"
+                                            class="w-full px-4 py-2 rounded-lg border-gray-200 focus:ring-2 focus:ring-primary text-sm">
+                                    </div>
+                                    <div>
+                                        <label for="profile-dateOfBirth"
+                                            class="block text-sm font-medium text-gray-700 mb-1">Ngày sinh:</label>
+                                        <input type="date" id="profile-dateOfBirth" name="profile-dateOfBirth"
+                                            placeholder="Chọn ngày sinh của bạn ở đây"
+                                            class="w-full px-4 py-2 rounded-lg border-gray-200 focus:ring-2 focus:ring-primary text-sm">
+                                    </div>
+                                    <div>
+                                        <label for="profile-description"
+                                            class="block text-sm font-medium text-gray-700 mb-1">Thông tin thêm</label>
+                                        <textarea id="profile-description" name="profile-description"
+                                            placeholder="Nhập thông tin miêu tả của bạn ở đây"
+                                            class="w-full px-4 py-2 rounded-lg border-gray-200 focus:ring-2 focus:ring-primary text-sm"
+                                            rows="4">Người yêu thích GuuPawz và đam mê thời trang. Luôn tìm kiếm những phong cách đẹp nhất cho những người bạn đồng hành của mình.</textarea>
+                                    </div>
+                                    <div>
+                                        <label for="profile-password"
+                                            class="block text-sm font-medium text-gray-700 mb-1">Password:</label>
+                                        <input type="password" id="profile-password" name="profile-password" required
+                                            oninvalid="this.setCustomValidity('Vui lòng nhập password của bạn')"
+                                            class="w-full px-4 py-2 rounded-lg border-gray-200 focus:ring-2 focus:ring-primary text-sm">
+                                    </div>
+                                    <div class="flex items-center justify-between pt-4">
+                                        <button type="hidden" class="text-gray-600 hover:text-gray-800"></button>
+                                        <button type="submit"
+                                            class="bg-primary text-white px-6 py-2 rounded-button font-medium shadow-md hover:shadow-lg transition-all whitespace-nowrap">Lưu</button>
+                                    </div>
+                                </form>
                             </div>
-                            <div class="md:col-span-2 p-6">
-                                <div class="max-w-lg">
-                                    <h3 class="text-lg font-bold text-gray-800 mb-4">Profile Information</h3>
-                                    <form id="profileForm" class="space-y-4">
-                                        <div class="grid grid-cols-2 gap-4">
-                                            <div>
-                                                <label for="profile-firstName"
-                                                    class="block text-sm font-medium text-gray-700 mb-1">First
-                                                    Name</label>
-                                                <input type="text" id="profile-firstName" name="profile-firstName"
-                                                    required
-                                                    placeholder="Enter first name"
-                                                    class="w-full px-4 py-2 rounded-lg border-gray-200 focus:ring-2 focus:ring-primary text-sm">
-                                            </div>
-                                            <div>
-                                                <label for="profile-lastName" 
-                                                    class="block text-sm font-medium text-gray-700 mb-1">Last
-                                                    Name</label>
-                                                <input type="text"
-                                                    id="profile-lastName" 
-                                                    name="profile-lastName" required
-                                                    placeholder="Enter last name"
-                                                    class="w-full px-4 py-2 rounded-lg border-gray-200 focus:ring-2 focus:ring-primary text-sm">
-                                            </div>
-                                        </div>
-                                        <div>
-                                            <label for="profile-email"
-                                                class="block text-sm font-medium text-gray-700 mb-1">Email</label>
-                                            <input type="email" 
-                                                id="profile-email" 
-                                                name="profile-email" required
-                                                value="john.doe@example.com"
-                                                placeholder="Enter mail here"
-                                                class="w-full px-4 py-2 rounded-lg border-gray-200 focus:ring-2 focus:ring-primary text-sm">
-                                        </div>
-                                        <div>
-                                            <label for="profile-phone" 
-                                                class="block text-sm font-medium text-gray-700 mb-1">Phone
-                                                Number</label>
-                                            <input type="tel" 
-                                                id="profile-phone" 
-                                                name="profile-phone"
-                                                placeholder="+1 (555) 123-4567"
-                                                class="w-full px-4 py-2 rounded-lg border-gray-200 focus:ring-2 focus:ring-primary text-sm">
-                                        </div>
-                                        <div>
-                                            <label for="profile-dateOfBirth" 
-                                                class="block text-sm font-medium text-gray-700 mb-1">Date of
-                                                Birth</label>
-                                            <input type="date" 
-                                                id="profile-dateOfBirth"
-                                                name="profile-dateOfBirth"
-                                                placeholder="Pick date of birth"
-                                                class="w-full px-4 py-2 rounded-lg border-gray-200 focus:ring-2 focus:ring-primary text-sm">
-                                        </div>
-                                        <div>
-                                            <label  for="profile-description" 
-                                                class="block text-sm font-medium text-gray-700 mb-1">Description</label>
-                                            <textarea
-                                                id="profile-description"
-                                                name="profile-description"
-                                                placeholder="GuuPawz lover and fashion enthusiast. Always looking for the best styles for my furry friends"
-                                                class="w-full px-4 py-2 rounded-lg border-gray-200 focus:ring-2 focus:ring-primary text-sm"
-                                                rows="4">GuuPawz lover and fashion enthusiast. Always looking for the best styles for my furry friends.</textarea>
-                                        </div>
-                                        <div class="flex items-center justify-between pt-4">
-                                            <button type="hidden" class="text-gray-600 hover:text-gray-800"></button>
-                                            <button type="submit"
-                                                class="bg-primary text-white px-6 py-2 rounded-button font-medium shadow-md hover:shadow-lg transition-all whitespace-nowrap">Save
-                                                Changes</button>
-                                        </div>
-                                    </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Sign In Modal -->
+<div id="signInModal" class="fixed inset-0 bg-black/50 z-50 hidden">
+    <div class="fixed inset-0 flex items-center justify-center p-4">
+        <div
+            class="bg-white rounded-xl shadow-xl max-w-md w-full transform transition-all duration-300 scale-95 opacity-0">
+            <div class="p-6">
+                <div class="flex justify-between items-center mb-6">
+                    <h2 class="text-2xl font-bold text-gray-800">Đăng nhập</h2>
+                    <button
+                        class="closeModal w-10 h-10 flex items-center justify-center text-gray-500 hover:text-gray-700">
+                        <i class="ri-close-line text-2xl"></i>
+                    </button>
+                </div>
+                <p id="login-message" class="text-red-700"></p>
+                <form id="signInForm" class="space-y-4">
+                    <div>
+                        <label for="login-email" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                        <input type="email" id="login-email" name="login-email" required
+                            class="w-full px-4 py-2 rounded-lg border-gray-200 focus:ring-2 focus:ring-primary text-sm"
+                            placeholder="Nhập email của bạn">
+                    </div>
+                    <div>
+                        <label for="password" class="block text-sm font-medium text-gray-700 mb-1">Mật khẩu</label>
+                        <input type="password" id="password" name="password" required
+                            oninvalid="this.setCustomValidity('Vui lòng nhập mật khẩu của bạn')"
+                            class="w-full px-4 py-2 rounded-lg border-gray-200 focus:ring-2 focus:ring-primary text-sm"
+                            placeholder="Nhập mật khẩu của bạn">
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center">
+                            <input type="checkbox" id="remember" class="custom-checkbox">
+                            <label for="remember" class="ml-2 text-sm text-gray-600">Nhớ lần sau!</label>
+                        </div>
+                        <a href="#" id="forgotLink" class="text-sm text-primary hover:underline">Quên mật khẩu?</a>
+                    </div>
+                    <button type="submit"
+                        class="w-full bg-primary text-white py-2 rounded-button font-medium shadow-md hover:shadow-lg transition-all whitespace-nowrap">Đăng
+                        nhập</button>
+                </form>
+                <div class="mt-6 text-center">
+                    <p class="text-sm text-gray-600">Bạn không có tài khoản? <button href="#" id="switchToSignUp"
+                            class="text-primary hover:underline">Đăng kí</button></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- My Orders Modal -->
+<div id="myOrdersModal" class="fixed inset-0 bg-black/50 z-50 hidden">
+    <div class="fixed inset-0 flex items-center justify-center p-4">
+        <div
+            class="bg-white rounded-xl shadow-xl max-w-4xl w-full h-[80vh] transform transition-all duration-300 scale-95 opacity-0">
+            <div class="flex flex-col h-full">
+                <div class="flex justify-between items-center p-6 border-b">
+                    <h2 class="text-2xl font-bold text-gray-800">Lịch sử mua hàng</h2>
+                    <button
+                        class="closeModal w-10 h-10 flex items-center justify-center text-gray-500 hover:text-gray-700">
+                        <i class="ri-close-line text-2xl"></i>
+                    </button>
+                </div>
+                <div class="flex-grow overflow-y-auto p-6">
+                    <div class="space-y-6" id="orders">
+                        <!-- Order Item -->
+                        <div class="bg-white rounded-lg border p-6">
+                            <div class="flex justify-between items-start mb-4">
+                                <div>
+                                    <div class="flex items-center gap-3 mb-2">
+                                        <span class="text-sm font-medium text-gray-500">Order #12345</span>
+                                        <span
+                                            class="px-2 py-1 text-xs font-medium text-green-700 bg-green-100 rounded-full">Delivered</span>
+                                    </div>
+                                    <p class="text-sm text-gray-500">Placed on June 5, 2025</p>
+                                </div>
+                                <button class="text-primary hover:underline text-sm">View Details</button>
+                            </div>
+                            <div class="flex items-center gap-4">
+                                <img src="https://readdy.ai/api/search-image?query=cute%20pink%20sweater%20for%20small%20dog%2C%20professional%20product%20photography%20on%20white%20background%2C%20high%20quality%2C%20studio%20lighting%2C%20adorable%20pet%20fashion%2C%20clear%20details&width=100&height=100&seq=order1&orientation=squarish"
+                                    alt="Product" class="w-20 h-20 object-cover rounded-lg">
+                                <div>
+                                    <h3 class="font-medium text-gray-800">Cozy Pink Sweater</h3>
+                                    <p class="text-sm text-gray-500">Size: Small</p>
+                                    <p class="text-sm font-medium text-gray-800 mt-1">$24.99</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Order Item -->
+                        <div class="bg-white rounded-lg border p-6">
+                            <div class="flex justify-between items-start mb-4">
+                                <div>
+                                    <div class="flex items-center gap-3 mb-2">
+                                        <span class="text-sm font-medium text-gray-500">Order #12344</span>
+                                        <span
+                                            class="px-2 py-1 text-xs font-medium text-blue-700 bg-blue-100 rounded-full">In
+                                            Transit</span>
+                                    </div>
+                                    <p class="text-sm text-gray-500">Placed on June 3, 2025</p>
+                                </div>
+                                <button class="text-primary hover:underline text-sm">View Details</button>
+                            </div>
+                            <div class="flex items-center gap-4">
+                                <img src="https://readdy.ai/api/search-image?query=elegant%20bowtie%20collar%20for%20cat%2C%20professional%20product%20photography%20on%20white%20background%2C%20high%20quality%2C%20studio%20lighting%2C%20adorable%20pet%20fashion%2C%20clear%20details&width=100&height=100&seq=order2&orientation=squarish"
+                                    alt="Product" class="w-20 h-20 object-cover rounded-lg">
+                                <div>
+                                    <h3 class="font-medium text-gray-800">Elegant Bowtie Collar</h3>
+                                    <p class="text-sm text-gray-500">Size: Universal</p>
+                                    <p class="text-sm font-medium text-gray-800 mt-1">$14.99</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Order Item -->
+                        <div class="bg-white rounded-lg border p-6">
+                            <div class="flex justify-between items-start mb-4">
+                                <div>
+                                    <div class="flex items-center gap-3 mb-2">
+                                        <span class="text-sm font-medium text-gray-500">Order #12343</span>
+                                        <span
+                                            class="px-2 py-1 text-xs font-medium text-gray-700 bg-gray-100 rounded-full">Cancelled</span>
+                                    </div>
+                                    <p class="text-sm text-gray-500">Placed on May 29, 2025</p>
+                                </div>
+                                <button class="text-primary hover:underline text-sm">View Details</button>
+                            </div>
+                            <div class="flex items-center gap-4">
+                                <img src="https://readdy.ai/api/search-image?query=small%20dog%20wearing%20a%20denim%20jacket%2C%20professional%20product%20photography%20on%20white%20background%2C%20high%20quality%2C%20studio%20lighting%2C%20adorable%20pet%20fashion%2C%20clear%20details&width=100&height=100&seq=order3&orientation=squarish"
+                                    alt="Product" class="w-20 h-20 object-cover rounded-lg">
+                                <div>
+                                    <h3 class="font-medium text-gray-800">Denim Jacket</h3>
+                                    <p class="text-sm text-gray-500">Size: Medium</p>
+                                    <p class="text-sm font-medium text-gray-800 mt-1">$27.99</p>
                                 </div>
                             </div>
                         </div>
@@ -188,139 +322,71 @@
             </div>
         </div>
     </div>
-    <!-- Sign In Modal -->
-    <div id="signInModal" class="fixed inset-0 bg-black/50 z-50 hidden">
-        <div class="fixed inset-0 flex items-center justify-center p-4">
-            <div
-                class="bg-white rounded-xl shadow-xl max-w-md w-full transform transition-all duration-300 scale-95 opacity-0">
-                <div class="p-6">
-                    <div class="flex justify-between items-center mb-6">
-                        <h2 class="text-2xl font-bold text-gray-800">Sign In</h2>
-                        <button
-                            class="closeModal w-10 h-10 flex items-center justify-center text-gray-500 hover:text-gray-700">
-                            <i class="ri-close-line text-2xl"></i>
-                        </button>
-                    </div>
-                    <form id="signInForm" class="space-y-4">
-                        <div>
-                            <label for="login-email" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
-                            <input type="email" id="login-email" name="login-email" required
-                                class="w-full px-4 py-2 rounded-lg border-gray-200 focus:ring-2 focus:ring-primary text-sm"
-                                placeholder="Enter your email">
-                        </div>
-                        <div>
-                            <label for="password" class="block text-sm font-medium text-gray-700 mb-1">Password</label>
-                            <input type="password" id="password" name="password" required
-                                class="w-full px-4 py-2 rounded-lg border-gray-200 focus:ring-2 focus:ring-primary text-sm"
-                                placeholder="Enter your password">
-                        </div>
-                        <div class="flex items-center justify-between">
-                            <div class="flex items-center">
-                                <input type="checkbox" id="remember" class="custom-checkbox">
-                                <label for="remember" class="ml-2 text-sm text-gray-600">Remember me</label>
-                            </div>
-                            <a href="#" class="text-sm text-primary hover:underline">Forgot password?</a>
-                        </div>
-                        <button type="submit"
-                            class="w-full bg-primary text-white py-2 rounded-button font-medium shadow-md hover:shadow-lg transition-all whitespace-nowrap">Sign
-                            In</button>
-                    </form>
-                    <div class="mt-6 text-center">
-                        <p class="text-sm text-gray-600">Don't have an account? <button href="#" id="switchToSignUp"
-                                class="text-primary hover:underline">Create Account</button></p>
-                    </div>
+</div>
+
+<!-- Forgot password Modal -->
+<div id="forgotModal" class="fixed inset-0 bg-black/50 z-50 hidden">
+    <div class="fixed inset-0 flex items-center justify-center p-4">
+        <div
+            class="bg-white rounded-xl shadow-xl max-w-md w-full transform transition-all duration-300 scale-95 opacity-0">
+            <div class="p-6">
+                <div class="flex justify-between items-center mb-6">
+                    <h2 class="text-2xl font-bold text-gray-800">Quên mật khẩu</h2>
+                    <button
+                        class="closeModal w-10 h-10 flex items-center justify-center text-gray-500 hover:text-gray-700">
+                        <i class="ri-close-line text-2xl"></i>
+                    </button>
                 </div>
+                <form id="forgotPassForm" class="space-y-4">
+                    <div>
+                        <label for="forgot-email" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                        <input type="email" id="forgot-email" name="forgot-email" required
+                            oninvalid="this.setCustomValidity('Vui lòng nhập email của bạn')"
+                            class="w-full px-4 py-2 rounded-lg border-gray-200 focus:ring-2 focus:ring-primary text-sm"
+                            placeholder="Nhập email của bạn">
+                    </div>
+                    <p id="message-forgot"
+                        class="bg-pink-100 text-pink-800 border border-pink-300 p-4 rounded-2xl shadow-md w-fit mx-auto my-6 text-center text-sm hidden">
+                    </p>
+                    <button type="submit"
+                        class="w-full bg-primary text-white py-2 rounded-button font-medium shadow-md hover:shadow-lg transition-all whitespace-nowrap">Gửi
+                        lại mật khẩu</button>
+                </form>
             </div>
         </div>
     </div>
-    <!-- My Orders Modal -->
-    <div id="myOrdersModal" class="fixed inset-0 bg-black/50 z-50 hidden">
-        <div class="fixed inset-0 flex items-center justify-center p-4">
-            <div
-                class="bg-white rounded-xl shadow-xl max-w-4xl w-full h-[80vh] transform transition-all duration-300 scale-95 opacity-0">
-                <div class="flex flex-col h-full">
-                    <div class="flex justify-between items-center p-6 border-b">
-                        <h2 class="text-2xl font-bold text-gray-800">My Orders</h2>
-                        <button
-                            class="closeModal w-10 h-10 flex items-center justify-center text-gray-500 hover:text-gray-700">
-                            <i class="ri-close-line text-2xl"></i>
-                        </button>
-                    </div>
-                    <div class="flex-grow overflow-y-auto p-6">
-                        <div class="space-y-6" id="orders">
-                            <!-- Order Item -->
-                            <div class="bg-white rounded-lg border p-6">
-                                <div class="flex justify-between items-start mb-4">
-                                    <div>
-                                        <div class="flex items-center gap-3 mb-2">
-                                            <span class="text-sm font-medium text-gray-500">Order #12345</span>
-                                            <span
-                                                class="px-2 py-1 text-xs font-medium text-green-700 bg-green-100 rounded-full">Delivered</span>
-                                        </div>
-                                        <p class="text-sm text-gray-500">Placed on June 5, 2025</p>
-                                    </div>
-                                    <button class="text-primary hover:underline text-sm">View Details</button>
-                                </div>
-                                <div class="flex items-center gap-4">
-                                    <img src="https://readdy.ai/api/search-image?query=cute%20pink%20sweater%20for%20small%20dog%2C%20professional%20product%20photography%20on%20white%20background%2C%20high%20quality%2C%20studio%20lighting%2C%20adorable%20pet%20fashion%2C%20clear%20details&width=100&height=100&seq=order1&orientation=squarish"
-                                        alt="Product" class="w-20 h-20 object-cover rounded-lg">
-                                    <div>
-                                        <h3 class="font-medium text-gray-800">Cozy Pink Sweater</h3>
-                                        <p class="text-sm text-gray-500">Size: Small</p>
-                                        <p class="text-sm font-medium text-gray-800 mt-1">$24.99</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Order Item -->
-                            <div class="bg-white rounded-lg border p-6">
-                                <div class="flex justify-between items-start mb-4">
-                                    <div>
-                                        <div class="flex items-center gap-3 mb-2">
-                                            <span class="text-sm font-medium text-gray-500">Order #12344</span>
-                                            <span
-                                                class="px-2 py-1 text-xs font-medium text-blue-700 bg-blue-100 rounded-full">In
-                                                Transit</span>
-                                        </div>
-                                        <p class="text-sm text-gray-500">Placed on June 3, 2025</p>
-                                    </div>
-                                    <button class="text-primary hover:underline text-sm">View Details</button>
-                                </div>
-                                <div class="flex items-center gap-4">
-                                    <img src="https://readdy.ai/api/search-image?query=elegant%20bowtie%20collar%20for%20cat%2C%20professional%20product%20photography%20on%20white%20background%2C%20high%20quality%2C%20studio%20lighting%2C%20adorable%20pet%20fashion%2C%20clear%20details&width=100&height=100&seq=order2&orientation=squarish"
-                                        alt="Product" class="w-20 h-20 object-cover rounded-lg">
-                                    <div>
-                                        <h3 class="font-medium text-gray-800">Elegant Bowtie Collar</h3>
-                                        <p class="text-sm text-gray-500">Size: Universal</p>
-                                        <p class="text-sm font-medium text-gray-800 mt-1">$14.99</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Order Item -->
-                            <div class="bg-white rounded-lg border p-6">
-                                <div class="flex justify-between items-start mb-4">
-                                    <div>
-                                        <div class="flex items-center gap-3 mb-2">
-                                            <span class="text-sm font-medium text-gray-500">Order #12343</span>
-                                            <span
-                                                class="px-2 py-1 text-xs font-medium text-gray-700 bg-gray-100 rounded-full">Cancelled</span>
-                                        </div>
-                                        <p class="text-sm text-gray-500">Placed on May 29, 2025</p>
-                                    </div>
-                                    <button class="text-primary hover:underline text-sm">View Details</button>
-                                </div>
-                                <div class="flex items-center gap-4">
-                                    <img src="https://readdy.ai/api/search-image?query=small%20dog%20wearing%20a%20denim%20jacket%2C%20professional%20product%20photography%20on%20white%20background%2C%20high%20quality%2C%20studio%20lighting%2C%20adorable%20pet%20fashion%2C%20clear%20details&width=100&height=100&seq=order3&orientation=squarish"
-                                        alt="Product" class="w-20 h-20 object-cover rounded-lg">
-                                    <div>
-                                        <h3 class="font-medium text-gray-800">Denim Jacket</h3>
-                                        <p class="text-sm text-gray-500">Size: Medium</p>
-                                        <p class="text-sm font-medium text-gray-800 mt-1">$27.99</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+</div>
+
+
+<style>
+    .swal2-popup.cute-popup {
+        border-radius: 20px;
+        font-family: 'Comic Sans MS', cursive, sans-serif;
+        border: 2px dashed #ffb6c1;
+        box-shadow: 0 0 20px rgba(255, 192, 203, 0.5);
+    }
+
+    .swal2-confirm.cute-confirm-button {
+        background-color: #ffb6c1 !important;
+        color: white;
+        font-weight: bold;
+        border-radius: 12px;
+        padding: 8px 20px;
+    }
+
+    .swal2-cancel.cute-cancel-button {
+        background-color: #dcdcdc !important;
+        color: #444;
+        font-weight: bold;
+        border-radius: 12px;
+        padding: 8px 20px;
+    }
+
+    .swal2-confirm.cute-confirm-button:hover {
+        background-color: #ff69b4 !important;
+    }
+
+    .swal2-cancel.cute-cancel-button:hover {
+        background-color: #e0e0e0 !important;
+    }
+</style>
