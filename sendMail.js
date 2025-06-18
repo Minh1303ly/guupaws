@@ -65,9 +65,7 @@ async function sendOrderConfirmationEmail(order) {
           ? "Thanh toán khi nhận hàng"
           : "Thanh toán online"
       }</li>
-      <li><strong>Ngày đặt:</strong> ${new Date(date).toLocaleString(
-        "vi-VN"
-      )}</li>
+      <li><strong>Ngày đặt:</strong> ${date}</li>
     </ul>
 
     <h3 style="color:#2196F3;">📦 Sản phẩm</h3>
@@ -133,9 +131,7 @@ async function sendNewOrderToShop(order) {
           ? "Thanh toán khi nhận hàng"
           : "Thanh toán online"
       }</li>
-      <li><strong>Ngày đặt:</strong> ${new Date(date).toLocaleString(
-        "vi-VN"
-      )}</li>
+      <li><strong>Ngày đặt:</strong> ${date}</li>
     </ul>
 
     <h3>📦 Sản phẩm:</h3>

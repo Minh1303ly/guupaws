@@ -4,7 +4,7 @@
   "description": "Simple e-commerce app",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "cross-env TZ=Asia/Ho_Chi_Minh node server.js"
   },
   "dependencies": {
     "cors": "^2.8.5",
@@ -15,5 +15,8 @@
   },
   "engines": {
     "node": "22.16.0"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.3"
   }
 }

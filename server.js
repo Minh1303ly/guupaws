@@ -280,7 +280,7 @@ app.post("/api/orders", async (req, res) => {
     items: data.items,
     total: data.total,
     status: "pending",
-    date: new Date().toISOString(),
+    date: new Date().toLocaleString('vi-VN', { timeZone: 'Asia/Ho_Chi_Minh' }),
   };
   orders.push(order);
   sendMailConfirm(order);
