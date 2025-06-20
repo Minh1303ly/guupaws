@@ -1,6 +1,66 @@
 [
+    {
+    "id": 0,
+    "name": "Dreamy Bow",
+    "pet_type": ["chó", "mèo"],
+    "size": ["S", "M", "XL", "XXL"],
+    "color": ["trắng"],
+    "material": "cotton",
+    "imgUrl": "./Dreamy_Bow.JPG",
+    "price": 135000,
+    "stock": 50,
+    "description": "Áo len trắng tinh khôi với nơ xinh xắn, tôn lên vẻ đáng yêu cho thú cưng ngày lạnh."
+  },
   {
     "id": 1,
+    "name": "Sunny Bear Tank",
+    "pet_type":  ["chó", "mèo"],
+    "size": ["S", "M", "XL", "XXL"],
+    "color": ["vàng"],
+    "material": "cotton",
+    "imgUrl": "https://i.ibb.co/kV8vBSJC/Sunny-Bear-Tank.jpg",
+    "price": 100000,
+    "stock": 50,
+    "description": "Áo ba lỗ vàng rực rỡ, in hình gấu dễ thương, lý tưởng cho những buổi dạo chơi nắng ấm."
+  },
+  {
+    "id": 2,
+    "name": "Cherry Princess",
+    "pet_type":  ["chó", "mèo"],
+    "size": ["S", "M", "XL", "XXL"],
+    "color": ["hồng"],
+    "material": "cotton",
+    "imgUrl": "./Cherry_Princess_2.JPG",
+    "price": 150000,
+    "stock": 50,
+    "description": "Váy hồng ngọt ngào với phong cách công chúa, làm nổi bật vẻ nữ tính cho thú cưng nhỏ."
+  },
+  {
+    "id": 3,
+    "name": "Lilac Duchess Dress",
+    "pet_type":  ["chó", "mèo"],
+    "size": ["S", "M", "XL", "XXL"],
+    "color": ["tím"],
+    "material": "cotton",
+    "imgUrl": "Lilac_Duchess_Dress2.JPG",
+    "price": 180000,
+    "stock": 50,
+    "description": "Váy tím pastel sang trọng với thiết kế hoàng gia, giúp thú cưng toát lên vẻ quý phái."
+  },
+  {
+    "id": 4,
+    "name": "Ruby Bloom",
+    "pet_type":  ["chó", "mèo"],
+    "size": ["S", "M", "XL", "XXL"],
+    "color": ["đỏ"],
+    "material": "cotton",
+    "imgUrl": "./Ruby_Bloom_2.JPG",
+    "price": 200000,
+    "stock": 50,
+    "description": "Váy đỏ rực rỡ với chi tiết hoa nhẹ nhàng, nổi bật trong những dịp đặc biệt."
+  },
+  {
+    "id": 5,
     "name": "Blue Winter Sweater",
     "pet_type": "chó",
     "size": ["S", "M", "XL", "XXL"],
@@ -9,162 +69,114 @@
     "imgUrl": "https://readdy.ai/api/search-image?query=small%2520dog%2520wearing%2520stylish%2520blue%2520winter%2520sweater%252C%2520product%2520photography%252C%2520studio%2520lighting%252C%2520clean%2520white%2520background%252C%2520high%2520quality%252C%2520detailed%2520fabric%2520texture%252C%2520adorable%2520puppy%2520model&width=300&height=300&seq=dog-prod1&orientation=squarish",
     "price": -1,
     "stock": 50,
-    "description": "Perfect for chilly days, this adorable sweater keeps your"
+    "description": "Áo len xanh dày dặn, giữ ấm tuyệt đối cho chó nhỏ vào những ngày đông lạnh giá."
   },
   {
-    "id": 2,
+    "id": 6,
     "name": "Waterproof Raincoat",
     "pet_type": "chó",
-    "size": ["S", "M", "L"],
+    "size": ["S", "M", "XL", "XXL"],
     "color": ["trắng", "đen", "hồng"],
     "material": "lông nhân tạo",
     "imgUrl": "https://readdy.ai/api/search-image?query=small%2520dog%2520wearing%2520raincoat%2520with%2520hood%252C%2520yellow%2520color%252C%2520product%2520photography%252C%2520studio%2520lighting%252C%2520clean%2520white%2520background%252C%2520high%2520quality%252C%2520detailed%2520fabric%2520texture%252C%2520adorable%2520puppy%2520model&width=300&height=300&seq=dog-prod2&orientation=squarish",
-    "price": 200000,
+    "price": -1,
     "stock": 30,
-    "description": "Perfect for chilly days, this adorable sweater keeps your"
+    "description": " Áo mưa thời trang có mũ, không thấm nước, giữ cho chó khô ráo khi trời mưa."
   },
   {
-    "id": 3,
+    "id": 7,
     "name": "Plaid Bowtie Collar",
     "pet_type": "chó",
-    "size": ["M", "L", "XL"],
+    "size": ["S", "M", "XL", "XXL"],
     "color": ["xám", "nâu"],
     "material": "vải nỉ",
     "imgUrl": "https://readdy.ai/api/search-image?query=small%2520dog%2520wearing%2520stylish%2520plaid%2520bowtie%2520collar%252C%2520product%2520photography%252C%2520studio%2520lighting%252C%2520clean%2520white%2520background%252C%2520high%2520quality%252C%2520detailed%2520fabric%2520texture%252C%2520adorable%2520puppy%2520model&width=300&height=300&seq=dog-prod3&orientation=squarish",
-    "price": 300000,
+    "price": -1,
     "stock": 20,
-    "description": "Perfect for chilly days, this adorable sweater keeps your"
+    "description": "Vòng cổ kèm nơ caro lịch lãm, tạo vẻ trang nhã cho chó trong những dịp trang trọng."
   },
     {
-    "id": 4,
+    "id": 8,
     "name": "Denim Jacket with Patches",
     "pet_type": "chó",
-    "size": ["M", "L", "XL"],
+    "size": ["S", "M", "XL", "XXL"],
     "color": ["xám", "nâu"],
     "material": "vải nỉ",
     "imgUrl": "https://readdy.ai/api/search-image?query=small%2520dog%2520wearing%2520denim%2520jacket%2520with%2520patches%252C%2520product%2520photography%252C%2520studio%2520lighting%252C%2520clean%2520white%2520background%252C%2520high%2520quality%252C%2520detailed%2520fabric%2520texture%252C%2520adorable%2520puppy%2520model&width=300&height=300&seq=dog-prod4&orientation=squarish",
-    "price": 300000,
+    "price": -1,
     "stock": 20,
-    "description": "Perfect for chilly days, this adorable sweater keeps your"
+    "description": "Áo khoác jean cá tính với các miếng vá độc đáo, phong cách đường phố năng động cho chó."
   },
     {
-    "id": 5,
+    "id": 9,
     "name": "Cozy Pink Puppy Sweater",
     "pet_type": "chó",
-    "size": ["M", "L", "XL"],
+    "size": ["S", "M", "XL", "XXL"],
     "color": ["xám", "nâu"],
     "material": "vải nỉ",
     "imgUrl": "https://readdy.ai/api/search-image?query=cute%2520small%2520dog%2520wearing%2520pink%2520sweater%2C%2520product%2520photography%2C%2520studio%2520lighting%2C%2520clean%2520white%2520background%2C%2520high%2520quality%2C%2520detailed%2520fabric%2520texture%2C%2520adorable%2520puppy%2520model&width=400&height=400&seq=prod1&orientation=squarish",
-    "price": 300000,
+    "price": -1,
     "stock": 20,
-    "description": "Perfect for chilly days, this adorable sweater keeps your"
+    "description": "Áo len hồng nhẹ nhàng, mềm mại, giữ ấm và mang đến vẻ đáng yêu cho chó nhỏ."
   },
     {
-    "id": 6,
+    "id": 10,
     "name": "Stylish Denim Jacket",
     "pet_type": "chó",
-    "size": ["M", "L", "XL"],
+    "size": ["S", "M", "XL", "XXL"],
     "color": ["xám", "nâu"],
     "material": "vải nỉ",
     "imgUrl": "https://readdy.ai/api/search-image?query=small%2520dog%2520wearing%2520denim%2520jacket%2C%2520product%2520photography%2C%2520studio%2520lighting%2C%2520clean%2520white%2520background%2C%2520high%2520quality%2C%2520detailed%2520fabric%2520texture%2C%2520adorable%2520puppy%2520model&width=400&height=400&seq=prod3&orientation=squarish",
-    "price": 300000,
+    "price": -1,
     "stock": 20,
-    "description": "Perfect for chilly days, this adorable sweater keeps your"
-  },
-    {
-    "id": 7,
-    "name": "Elegant Bow Tie Collar",
-    "pet_type": "mèo",
-    "size": ["M", "L", "XL"],
-    "color": ["xám", "nâu"],
-    "material": "vải nỉ",
-    "imgUrl": "https://readdy.ai/api/search-image?query=cat%2520wearing%2520elegant%2520blue%2520bow%2520tie%2520collar%252C%2520product%2520photography%252C%2520studio%2520lighting%252C%2520clean%2520white%2520background%252C%2520high%2520quality%252C%2520detailed%2520fabric%2520texture%252C%2520adorable%2520kitten%2520model&width=300&height=300&seq=cat-prod1&orientation=squarish",
-    "price": 300000,
-    "stock": 20,
-    "description": "Perfect for chilly days, this adorable sweater keeps your"
-  },
-      {
-    "id": 8,
-    "name": "Soft Knit Sweater",
-    "pet_type": "mèo",
-    "size": ["M", "L", "XL"],
-    "color": ["xám", "nâu"],
-    "material": "vải nỉ",
-    "imgUrl": "https://readdy.ai/api/search-image?query=cat%2520wearing%2520light%2520knit%2520sweater%2520in%2520pastel%2520pink%252C%2520product%2520photography%252C%2520studio%2520lighting%252C%2520clean%2520white%2520background%252C%2520high%2520quality%252C%2520detailed%2520fabric%2520texture%252C%2520adorable%2520kitten%2520model&width=300&height=300&seq=cat-prod2&orientation=squarish",
-    "price": 300000,
-    "stock": 20,
-    "description": "Perfect for chilly days, this adorable sweater keeps your"
-  },
-      {
-    "id": 9,
-    "name": "Floral Bandana",
-    "pet_type": "mèo",
-    "size": ["M", "L", "XL"],
-    "color": ["xám", "nâu"],
-    "material": "vải nỉ",
-    "imgUrl": "https://readdy.ai/api/search-image?query=cat%2520wearing%2520floral%2520pattern%2520bandana%252C%2520product%2520photography%252C%2520studio%2520lighting%252C%2520clean%2520white%2520background%252C%2520high%2520quality%252C%2520detailed%2520fabric%2520texture%252C%2520adorable%2520kitten%2520model&width=300&height=300&seq=cat-prod3&orientation=squarish",
-    "price": 300000,
-    "stock": 20,
-    "description": "Perfect for chilly days, this adorable sweater keeps your"
-  },
-      {
-    "id": 10,
-    "name": "Fashionable Cat Beret",
-    "pet_type": "mèo",
-    "size": ["M", "L", "XL"],
-    "color": ["xám", "nâu"],
-    "material": "vải nỉ",
-    "imgUrl": "https://readdy.ai/api/search-image?query=cat%2520wearing%2520small%2520cute%2520hat%2520or%2520beret%252C%2520product%2520photography%252C%2520studio%2520lighting%252C%2520clean%2520white%2520background%252C%2520high%2520quality%252C%2520detailed%2520fabric%2520texture%252C%2520adorable%2520kitten%2520model&width=300&height=300&seq=cat-prod4&orientation=squarish",
-    "price": 300000,
-    "stock": 20,
-    "description": "Perfect for chilly days, this adorable sweater keeps your"
+    "description": "Áo jean xanh cổ điển, thiết kế gọn gàng và sành điệu cho chó năng động hiện đại."
   },
     {
     "id": 11,
-    "name": "Rabbit Harness with Leash",
-    "pet_type": "thỏ",
-    "size": ["M", "L", "XL"],
+    "name": "Elegant Bow Tie Collar",
+    "pet_type": "mèo",
+    "size": ["S", "M", "XL", "XXL"],
     "color": ["xám", "nâu"],
     "material": "vải nỉ",
-    "imgUrl": "https://readdy.ai/api/search-image?query=rabbit%2520wearing%2520small%2520harness%2520with%2520leash%252C%2520product%2520photography%252C%2520studio%2520lighting%252C%2520clean%2520white%2520background%252C%2520high%2520quality%252C%2520detailed%2520fabric%2520texture%252C%2520adorable%2520bunny%2520model&width=300&height=300&seq=small-prod1&orientation=squarish",
-    "price": 300000,
+    "imgUrl": "https://readdy.ai/api/search-image?query=cat%2520wearing%2520elegant%2520blue%2520bow%2520tie%2520collar%252C%2520product%2520photography%252C%2520studio%2520lighting%252C%2520clean%2520white%2520background%252C%2520high%2520quality%252C%2520detailed%2520fabric%2520texture%252C%2520adorable%2520kitten%2520model&width=300&height=300&seq=cat-prod1&orientation=squarish",
+    "price": -1,
     "stock": 20,
-    "description": "Perfect for chilly days, this adorable sweater keeps your"
+    "description": "Vòng cổ nơ sang trọng màu xanh dương, hoàn hảo cho mèo trong các buổi chụp ảnh."
   },
-    {
+      {
     "id": 12,
-    "name": "Guinea Pig Bow Tie",
-    "pet_type": "thỏ",
-    "size": ["M", "L", "XL"],
+    "name": "Soft Knit Sweater",
+    "pet_type": "mèo",
+    "size": ["S", "M", "XL", "XXL"],
     "color": ["xám", "nâu"],
     "material": "vải nỉ",
-    "imgUrl": "https://readdy.ai/api/search-image?query=guinea%2520pig%2520wearing%2520small%2520bow%2520tie%2520accessory%252C%2520product%2520photography%252C%2520studio%2520lighting%252C%2520clean%2520white%2520background%252C%2520high%2520quality%252C%2520detailed%2520fabric%2520texture%252C%2520adorable%2520guinea%2520pig%2520model&width=300&height=300&seq=small-prod2&orientation=squarish",
-    "price": 300000,
+    "imgUrl": "https://readdy.ai/api/search-image?query=cat%2520wearing%2520light%2520knit%2520sweater%2520in%2520pastel%2520pink%252C%2520product%2520photography%252C%2520studio%2520lighting%252C%2520clean%2520white%2520background%252C%2520high%2520quality%252C%2520detailed%2520fabric%2520texture%252C%2520adorable%2520kitten%2520model&width=300&height=300&seq=cat-prod2&orientation=squarish",
+    "price": -1,
     "stock": 20,
-    "description": "Perfect for chilly days, this adorable sweater keeps your"
+    "description": "Áo len hồng pastel nhẹ nhàng, mềm mại cho mèo, lý tưởng trong những ngày se lạnh."
   },
-    {
+      {
     "id": 13,
-    "name": "Cozy Hamster Bed",
-    "pet_type": "thỏ",
-    "size": ["M", "L", "XL"],
+    "name": "Floral Bandana",
+    "pet_type": "mèo",
+    "size": ["S", "M", "XL", "XXL"],
     "color": ["xám", "nâu"],
     "material": "vải nỉ",
-    "imgUrl": "https://readdy.ai/api/search-image?query=hamster%2520bed%2520or%2520house%2520with%2520soft%2520fabric%252C%2520product%2520photography%252C%2520studio%2520lighting%252C%2520clean%2520white%2520background%252C%2520high%2520quality%252C%2520detailed%2520fabric%2520texture%252C%2520cute%2520small%2520pet%2520bed&width=300&height=300&seq=small-prod3&orientation=squarish",
-    "price": 300000,
+    "imgUrl": "https://readdy.ai/api/search-image?query=cat%2520wearing%2520floral%2520pattern%2520bandana%252C%2520product%2520photography%252C%2520studio%2520lighting%252C%2520clean%2520white%2520background%252C%2520high%2520quality%252C%2520detailed%2520fabric%2520texture%252C%2520adorable%2520kitten%2520model&width=300&height=300&seq=cat-prod3&orientation=squarish",
+    "price": -1,
     "stock": 20,
-    "description": "Perfect for chilly days, this adorable sweater keeps your"
+    "description": "Khăn yếm họa tiết hoa tinh tế, tăng thêm sự duyên dáng và phong cách cho mèo."
   },
-    {
+      {
     "id": 14,
-    "name": "Small Pet Costume Hat",
-    "pet_type": "thỏ",
-    "size": ["M", "L", "XL"],
+    "name": "Fashionable Cat Beret",
+    "pet_type": "mèo",
+    "size": ["S", "M", "XL", "XXL"],
     "color": ["xám", "nâu"],
     "material": "vải nỉ",
-    "imgUrl": "https://readdy.ai/api/search-image?query=small%2520pet%2520costume%2520or%2520hat%2520for%2520guinea%2520pig%2520or%2520rabbit%252C%2520product%2520photography%252C%2520studio%2520lighting%252C%2520clean%2520white%2520background%252C%2520high%2520quality%252C%2520detailed%2520fabric%2520texture%252C%2520cute%2520small%2520pet%2520accessory&width=300&height=300&seq=small-prod4&orientation=squarish",
-    "price": 300000,
+    "imgUrl": "https://readdy.ai/api/search-image?query=cat%2520wearing%2520small%2520cute%2520hat%2520or%2520beret%252C%2520product%2520photography%252C%2520studio%2520lighting%252C%2520clean%2520white%2520background%252C%2520high%2520quality%252C%2520detailed%2520fabric%2520texture%252C%2520adorable%2520kitten%2520model&width=300&height=300&seq=cat-prod4&orientation=squarish",
+    "price": -1,
     "stock": 20,
-    "description": "Perfect for chilly days, this adorable sweater keeps your"
+    "description": " Mũ beret nhỏ nhắn cực thời trang, tôn lên nét dễ thương của mèo trong từng bức hình."
   }
 ]
