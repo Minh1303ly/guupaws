@@ -444,8 +444,24 @@
                                     checked />
                                 <div class="ml-3 flex items-center justify-between w-full">
                                     <span class="font-medium text-gray-800">Thanh toán khi nhận hàng
-                                        <div class="w-8 h-5 flex items-center justify-center">
-                                        </div>
+                                        <span class="font-medium text-red-400 text-sm ml-2"></span>
+                                    </span>
+                                    <div class="w-8 h-5 flex items-center justify-center">
+                                        <i class="ri-motorbike-fill text-gray-800"></i>
+                                    </div>
+                                </div>
+                            </label>
+
+                            <label
+                                class="flex items-center p-3 border border-gray-200 rounded-lg cursor-pointer hover:border-primary transition-colors">
+                                <input type="radio" name="paymentMethod" value="qrCode" class="custom-radio" />
+                                <div class="ml-3 flex items-center justify-between w-full">
+                                    <span class="font-medium text-gray-800">Chuyển khoản ngân hàng
+                                        <span class="font-medium text-red-400 text-sm ml-2"></span>
+                                    </span>
+                                    <div class="w-8 h-5 flex items-center justify-center">
+                                        <i class="ri-bank-fill text-gray-800"></i>
+                                    </div>
                                 </div>
                             </label>
 
@@ -525,19 +541,6 @@
                                 </div>
                             </label>
 
-                            <label
-                                class="flex items-center p-3 border border-gray-200 rounded-lg cursor-pointer hover:border-primary transition-colors">
-                                <input type="radio" name="paymentMethod" value="applePay" class="custom-radio" />
-                                <div class="ml-3 flex items-center justify-between w-full">
-                                    <span class="font-medium text-gray-800">Apple Pay
-                                        <span class="font-medium text-red-400 text-sm ml-2">Đang triển khai</span>
-                                    </span>
-                                    <div class="w-8 h-5 flex items-center justify-center">
-                                        <i class="ri-apple-fill text-gray-800"></i>
-                                    </div>
-                                </div>
-                            </label>
-
                             <div class="flex items-center text-sm text-gray-600 mt-4">
                                 <div class="w-5 h-5 flex items-center justify-center mr-2 text-primary">
                                     <i class="ri-lock-line"></i>
@@ -603,7 +606,7 @@
                             </div>
                             <div class="flex justify-between">
                                 <span class="text-gray-600">Giao hàng</span>
-                                <span class="font-medium text-green-600">Miễn phí</span>
+                                <span id="shipCost" data-value="0" class="font-medium text-green-600">Miễn phí</span>
                             </div>
                         </div>
 
@@ -765,18 +768,12 @@
                         cardDetails.style.display = "block";
                         await setTimeout(showCuteApology(), 100);
                         cardDetails.style.display = "none";
-                    } else if (this.value === "cashDelivered") {
-
+                    } else if (this.value === "cashDelivered" || this.value === "qrCode") {
+                        this.checked = true;
                     } else {
                         cardDetails.style.display = "none";
                         showCuteApology();
                     }
-
-                    paymentMethods.forEach(element => {
-                        if (element.value === "cashDelivered") {
-                            element.checked = true;
-                        }
-                    })
 
                 });
             });
@@ -794,7 +791,7 @@
             const orderElement = document.getElementById("order-items");
             loadOrderItems(orderElement, carts);
 
-            checkoutForm.addEventListener("submit", function (e) {
+            checkoutForm.addEventListener("submit", async function (e) {
                 e.preventDefault();
 
                 const valueBtnSubmit = document.getElementById("btnSumitForm").value;
@@ -823,17 +820,23 @@
                 const notes = document.getElementById("notes").value;
                 const shippingMethod = document.querySelector('input[name="shippingMethod"]:checked').value;
                 const paymentMethod = document.querySelector('input[name="paymentMethod"]:checked').value;
+                const shipCost = document.getElementById("shipCost");
 
                 let total = cartItems.reduce(
                     (sum, item) => sum + item.quantity * item.price,
                     0
-                );
+                ) + Number(shipCost.dataset.value);
                 const data = {
                     userId: localStorage.getItem("userId"),
                     infor: { fullName, email, phone, address, cityName, districtName, wardName, notes, shippingMethod, paymentMethod },
                     items: JSON.stringify(carts),
                     total: total
                 }
+
+                if(paymentMethod === "qrCode"){
+                    await openQrModal(total, `Khách hàng: ${fullName} ${phone} thanh toán`);
+                }
+
                 if (addOrder(data)) {
                     setCookieObject("cart_items", cartItems, 0);
                     showOrderSuccess();
@@ -887,10 +890,12 @@
                 (sum, item) => sum + item.quantity * item.price,
                 0
             );
+            document.getElementById("subtotal-order").dataset.value  = cost;
             document.getElementById("subtotal-order").textContent = formatCurrencyVND(cost);
-            document.getElementById("total-order").textContent = formatCurrencyVND(cost);
-
-
+            const shipCost =  document.getElementById("shipCost").dataset.value;
+            const total = Number(cost)  + Number(shipCost);
+            document.getElementById("total-order").dataset.value = total;
+            document.getElementById("total-order").textContent= formatCurrencyVND(total);
         }
 
         async function loadConfirmLayout() {
@@ -1267,6 +1272,16 @@
             async function loadDistricts(provinceCode) {
                 const res = await fetch(`https://provinces.open-api.vn/api/p/${provinceCode}?depth=2`);
                 const data = await res.json();
+                const shipCost = document.getElementById("shipCost");
+                shipCost.dataset.value = provinceCode == 1 ? 0 : 30000;
+                shipCost.textContent = provinceCode == 1 ? "Miễn phí" : formatCurrencyVND(30000);
+                const subtotal = document.getElementById("subtotal-order").dataset.value
+                
+                const total = Number(subtotal)  + Number(shipCost.dataset.value);
+                document.getElementById("total-order").dataset.value = total;
+                document.getElementById("total-order").textContent= formatCurrencyVND(total);
+
+
                 districtSelect.innerHTML = '<option disable value="">Chọn Quận/Huyện</option>';
                 wardSelect.innerHTML = '<option value="">Chọn Phường/Xã</option>';
                 data.districts.forEach(d => {
@@ -1310,6 +1325,100 @@
     <script>
         (function () { if (!window.chatbase || window.chatbase("getState") !== "initialized") { window.chatbase = (...arguments) => { if (!window.chatbase.q) { window.chatbase.q = [] } window.chatbase.q.push(arguments) }; window.chatbase = new Proxy(window.chatbase, { get(target, prop) { if (prop === "q") { return target.q } return (...args) => target(prop, ...args) } }) } const onLoad = function () { const script = document.createElement("script"); script.src = "https://www.chatbase.co/embed.min.js"; script.id = "hrUO4CP17SdTN0LWq62A0"; script.domain = "www.chatbase.co"; document.body.appendChild(script) }; if (document.readyState === "complete") { onLoad() } else { window.addEventListener("load", onLoad) } })();
     </script>
+
+      <!-- Modal -->
+  <div id="qrModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <h3>Quét mã để chuyển khoản 🐾</h3>
+      <img id="qrImage" class="qr-img" width="240" height="240" alt="Mã QR">
+      <div class="caption">Ngân hàng: MBBank - BUI QUANG MINH</div>
+      <span style="color:red;font-size: x-small;">Đơn hàng sẽ tự hủy sau 1 ngày nếu quý khách chưa thanh toán!</span>
+    </div>
+  </div>
+
+  <style>
+    /* Modal styles */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 99;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(255, 182, 193, 0.4); /* pastel pink overlay */
+      overflow: hidden;
+    }
+
+    .modal-content {
+      background-color: #fff0f5;
+      padding: 30px;
+      border: 2px solid #ffb6c1;
+      width: 400px;
+      border-radius: 20px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+      text-align: center;
+      position: relative;
+      animation: fadeIn 0.4s ease;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    @keyframes fadeIn {
+      from {opacity: 0; transform: translateY(-20px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+
+    .close {
+      color: #ff69b4;
+      position: absolute;
+      top: 10px;
+      right: 16px;
+      font-size: 22px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .qr-img {
+      margin: 20px auto 0px;
+      border-radius: 16px;
+      border: 4px dashed #ffb6c1;
+      background: #fff;
+      padding: 10px;
+    }
+
+    .caption {
+      font-size: 14px;
+      color: #cc3366;
+      margin-top: 10px;
+    }
+  </style>
+  <script>
+    async function openQrModal(amount, message) {
+        return new Promise((resolve) => {
+        // Save resolver to call later
+            window.resumeLoop = resolve;
+            const accountNumber = '0001195226511';
+            const bankCode = 'MB';
+            const accountName = 'BUI QUANG MINH';
+
+            const baseUrl = `https://img.vietqr.io/image/${bankCode}-${accountNumber}-compact2.jpg`;
+            const query = `?amount=${amount}&addInfo=${encodeURIComponent(message)}&accountName=${encodeURIComponent(accountName)}`;
+            const qrUrl = baseUrl + query;
+
+            document.getElementById("qrImage").src = qrUrl;
+            document.getElementById("qrModal").style.display = "block";
+        });
+    }
+
+    function closeModal() {
+      document.getElementById("qrModal").style.display = "none";
+      window.resumeLoop();
+    }
+</script>
 
 </body>
 

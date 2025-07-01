@@ -322,6 +322,16 @@ app.put("/api/orders/:orderId", async (req, res) => {
   res.json(updateOrder);
 });
 
+// Update status order
+app.get("/api/orders", async (req, res) => {
+  const orders = await readJson(ORDERS_FILE);
+  const { auth } = req.body;
+  if(auth != "MinhAdmin"){
+    return res.status(400).json({ error: "Dont have author to access" });
+  }
+  res.json(orders);
+});
+
 // Helper to calculate total
 async function calculateTotal(items) {
   return items.reduce((total, item) => total + item.price * item.quantity, 0);

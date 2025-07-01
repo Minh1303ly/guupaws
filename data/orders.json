@@ -58,5 +58,25 @@
     "total": 300000,
     "status": "pending",
     "date": "00:34:49 19/6/2025"
+  },
+  {
+    "id": 4,
+    "userId": "1",
+    "infor": {
+      "fullName": "Bui Minh",
+      "email": "bminh1410@gmail.com",
+      "phone": "0367382521",
+      "address": "Nam Dinh",
+      "cityName": "Tỉnh Sơn La",
+      "districtName": "Huyện Yên Châu",
+      "wardName": "Chọn Phường/Xã",
+      "notes": "",
+      "shippingMethod": "standard",
+      "paymentMethod": "qrCode"
+    },
+    "items": "[{\"id\":1,\"productId\":2,\"name\":\"Cherry Princess\",\"size\":[\"S\",\"M\",\"XL\",\"XXL\"],\"imgUrl\":\"./Cherry_Princess_2.JPG\",\"price\":150000,\"quantity\":1,\"selectedSize\":\"S\"}]",
+    "total": 180000,
+    "status": "pending",
+    "date": "17:12:09 1/7/2025"
   }
 ]
