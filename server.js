@@ -301,6 +301,9 @@ async function sendMailConfirm(order) {
 // Get order history
 app.get("/api/orders/:userId", async (req, res) => {
   const orders = await readJson(ORDERS_FILE);
+  if(orders == null){
+     return res.status(404); 
+  }
   const userOrders = orders.filter(
     (order) => order.userId == parseInt(req.params.userId)
   );

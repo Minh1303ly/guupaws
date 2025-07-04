@@ -874,7 +874,7 @@
             divElement.innerHTML = products.map(
                 product =>
                     `            <div class="flex items-start">
-                                <img src="${product.imgUrl}"
+                                <img src="${product.imgUrl[0]}"
                                     alt="${product.name}" class="w-16 h-16 object-cover rounded-md" />
                                 <div class="ml-4 flex-grow">
                                     <h3 class="font-medium text-gray-800">${product.name}</h3>

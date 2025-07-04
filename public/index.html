@@ -615,7 +615,7 @@
     <script src="navigation.js"></script>
 
     <script id="checkbox-script">
-        document.addEventListener('DOMContentLoaded', function () {
+        document.addEventListener('DOMContentLoaded', async function () {
             const checkboxes = document.querySelectorAll('.custom-checkbox input[type="checkbox"]');
             checkboxes.forEach(checkbox => {
                 checkbox.addEventListener('change', function () {
@@ -627,7 +627,37 @@
                     }
                 });
             });
-            loadFeaturedProducts();
+
+            await loadFeaturedProducts();
+            document.querySelectorAll('.carousel').forEach((carousel) => {
+                const slides = carousel.querySelectorAll('.slide');
+                const prevBtn = carousel.parentElement.querySelector('.prev');
+                const nextBtn = carousel.parentElement.querySelector('.next');
+                let index = 0;
+
+                function showSlide(i) {
+                    slides.forEach((slide, j) => {
+                    slide.classList.toggle('opacity-100', j === i);
+                    slide.classList.toggle('opacity-0', j !== i);
+                    });
+                }
+                showSlide(index);
+                nextBtn.addEventListener('click', () => {
+                    index = (index + 1) % slides.length;
+                    showSlide(index);
+                });
+
+                prevBtn.addEventListener('click', () => {
+                    index = (index - 1 + slides.length) % slides.length;
+                    showSlide(index);
+                });
+
+                // Optional auto-advance
+                setInterval(() => {
+                   index = (index + 1) % slides.length;
+                   showSlide(index);
+                 }, 15000);
+            });
         });
 
 
@@ -652,10 +682,25 @@
                 .map(
                     (product) => `
                 <div class="animation-product bg-white rounded-lg shadow-md overflow-hidden group flex-shrink-0 snap-start w-[300px] md:w-[350px]">
-                    <div class="relative">
-                        <img src="${product.imgUrl}"
-                            alt="${product.name
-                        }r" class="w-full h-64 object-cover object-top">
+                    <div class="relative group w-full max-w-md mx-auto overflow-hidden rounded-lg shadow-lg bg-white">
+                        <div class="carousel relative w-full h-64">
+                            ${product.imgUrl.map(img => `
+                                <div class="slide absolute inset-0 transition-opacity duration-500 opacity-100">
+                                    <img src="${img}"
+                                        alt="${product.name}" class="w-full h-64 object-cover object-top">
+                                </div>
+                            `)}
+
+                        </div>
+                        <!-- Navigation Arrows -->
+                        <div class="absolute inset-0 flex justify-between items-center px-3">
+                            <button class="prev bg-white bg-opacity-80 hover:bg-opacity-100 text-gray-700 rounded-full p-2 shadow">
+                                <i class="ri-arrow-left-s-line ri-xl"></i>
+                            </button>
+                            <button class="next bg-white bg-opacity-80 hover:bg-opacity-100 text-gray-700 rounded-full p-2 shadow">
+                                <i class="ri-arrow-right-s-line ri-xl"></i>
+                            </button>
+                        </div>
                         <button
                             class="absolute top-3 right-3 w-10 h-10 flex items-center justify-center bg-white rounded-full shadow-md opacity-0 group-hover:opacity-100 transition">
                             <i class="ri-heart-line text-pink-500 ri-lg"></i>

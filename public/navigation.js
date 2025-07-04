@@ -342,7 +342,7 @@ async function loadOrders() {
                                     </div>                                   
                                 </div>
                                 <div class="flex items-center gap-4">
-                                    <img src="${order.item.imgUrl}"
+                                    <img src="${order.item.imgUrl[0]}"
                                         alt="Product" class="w-20 h-20 object-cover rounded-lg">
                                     <div>
                                         <h3 class="font-medium text-gray-800">${
@@ -427,7 +427,7 @@ async function loadCart() {
       (item) => `
                                 <!-- Cart Item -->
                                 <div class="flex items-center gap-3">
-                                    <img src="${item.imgUrl}"
+                                    <img src="${item.imgUrl[0]}"
                                         alt="Blue Winter Sweater" class="w-16 h-16 object-cover rounded" />
                                     <div class="flex-1">
                                         <h4 class="text-sm font-medium">${
